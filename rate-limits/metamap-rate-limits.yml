@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: MetaMap
+providerId: metamap
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Identity Verification
+  - KYC
+  - Rate Limiting
+description: >-
+  MetaMap does not publish explicit numeric rate limits in its public developer
+  documentation. The API uses an OAuth 2.0 client-credentials flow that issues a
+  one-hour JWT bearer token; concurrency is governed by the per-account verification
+  volume tier negotiated with sales. SDK Cooldown is a product-level throttle that
+  prevents duplicate verifications from the same origin within a configurable window.
+  This document records the throttling surface so consumers know which headers and
+  response codes to expect.
+sources:
+  - https://docs.metamap.com/reference/authentication
+  - https://docs.metamap.com/docs/sdk-cooldown
+  - https://docs.metamap.com/docs/errors
+headers:
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: retry-after
+responseCodes:
+  unauthorized: 401
+  forbidden: 403
+  notFound: 404
+  throttled: 429
+  serverError: 500
+algorithm: unspecified
+tokenLifetimeSeconds: 3600
+authentication:
+  type: oauth2
+  flow: client-credentials
+  tokenEndpoint: https://api.prod.metamap.com/oauth
+  description: >-
+    Exchange client_id and client_secret (HTTP Basic) for a JWT access token.
+    Tokens expire after one hour. Tokens are scoped to the merchant account and
+    its configured Metamaps.
+cooldown:
+  productControl: SDK Cooldown
+  description: >-
+    Blocks a verification when it originates from the same point of origin
+    (device, IP, or user identifier) within a configurable cooldown window.
+    Configured per-Metamap from the dashboard.
+notes:
+  - Public docs do not publish a requests-per-second or per-minute limit.
+  - Production volumes are gated by the merchant's commercial agreement.
+  - Standalone check endpoints (GovChecks, Watchlist, Email, Phone) may be
+    subject to upstream provider rate limits (Comply Advantage, Serasa,
+    country-specific government databases).

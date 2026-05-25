@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/metamap/main/json-schema/metamap-verification-schema.json",
+  "title": "MetaMap Verification",
+  "description": "Result of a MetaMap user verification including identity, flow, document, biometric, and step outcomes.",
+  "type": "object",
+  "required": ["id", "identity", "flow"],
+  "properties": {
+    "id": {"type": "string", "description": "Unique verification identifier."},
+    "identity": {"type": "string", "description": "Stable identity ID assigned by MetaMap."},
+    "flow": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"}
+      },
+      "required": ["id"]
+    },
+    "expired": {"type": "boolean"},
+    "hasProblem": {"type": "boolean"},
+    "metadata": {
+      "description": "Caller-supplied metadata returned with every webhook. ≤ 4 KB, one level deep.",
+      "type": ["object", "string"]
+    },
+    "documents": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Document"}
+    },
+    "inputs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Input"}
+    },
+    "steps": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Step"}
+    },
+    "deviceFingerprint": {
+      "type": "object",
+      "properties": {
+        "ua": {"type": "string", "description": "User agent string."},
+        "ip": {"type": "string", "format": "ipv4"},
+        "vpnDetectionEnabled": {"type": "boolean"}
+      }
+    }
+  },
+  "$defs": {
+    "Document": {
+      "type": "object",
+      "properties": {
+        "type": {"type": "string", "examples": ["national-id", "passport", "driver-license"]},
+        "country": {"type": "string", "description": "ISO 3166-1 alpha-2 country code."},
+        "region": {"type": "string"},
+        "fields": {"type": "object"},
+        "photos": {"type": "array", "items": {"type": "string", "format": "uri"}},
+        "steps": {"type": "array", "items": {"$ref": "#/$defs/Step"}}
+      }
+    },
+    "Input": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "examples": ["connection-data", "document-photo", "selfie-photo", "video-selfie"]},
+        "status": {"type": "integer"},
+        "optional": {"type": "boolean"},
+        "group": {"type": "integer"}
+      },
+      "required": ["id"]
+    },
+    "Step": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "status": {"type": "integer", "description": "0 indicates pending, 200 indicates success, 4xx/5xx indicate failure."},
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "type": {"type": "string"},
+            "message": {"type": "string"}
+          }
+        },
+        "data": {"type": "object"}
+      },
+      "required": ["id"]
+    }
+  }
+}

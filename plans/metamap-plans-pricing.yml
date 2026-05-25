@@ -1,0 +1,142 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: MetaMap
+providerId: metamap
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Identity Verification
+  - KYC
+  - AML
+  - Compliance
+description: >-
+  MetaMap does not publish public pricing. Pricing is sales-led and negotiated
+  per-verification with per-check add-on fees and monthly-volume tiers. This
+  document captures the structure of the commercial offering and the metered
+  units used by the platform; specific unit prices are intentionally left null
+  pending direct quoting.
+sources:
+  - https://metamap.com
+  - https://metamap.com/contact-metamap
+  - https://docs.metamap.com/docs/verification-results
+  - https://docs.metamap.com/docs/govcheck
+plans:
+  - id: metamap-free-trial
+    name: Free Trial
+    type: trial
+    description: >-
+      Trial usage available via the MetaMap Dashboard. Limited to test
+      verifications and sandbox flows; production usage requires a sales
+      engagement.
+    entries:
+      - label: Trial verifications
+        name: trial-verifications
+        type: included
+        metric: verification
+        limit: -1
+        timeFrame: trial
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: metamap-contact-sales
+    name: Contact Sales
+    type: usage-based
+    description: >-
+      Production tier. Negotiated per-verification base price plus per-check
+      add-ons for GovChecks, Watchlist, Email, Phone, Credit, and Background
+      Checks. Tiered by monthly verification volume and by region (LatAm,
+      Africa, Philippines).
+    entries:
+      - label: Per verification (document + biometric)
+        name: verification
+        type: metered
+        metric: verification
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: GovCheck (per country/dataset)
+        name: govcheck
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Watchlist (Comply Advantage)
+        name: watchlist
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Email Check (ownership or risk)
+        name: email-check
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Phone Check (ownership or risk)
+        name: phone-check
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Credit Check (Brazil Serasa)
+        name: credit-check
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: BR
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Background / Court Records Check
+        name: background-check
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Facematch
+        name: facematch
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false
+      - label: Custom Watchlist Upload & Screening
+        name: custom-watchlist
+        type: metered
+        metric: check
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: null
+        userMultiplied: false

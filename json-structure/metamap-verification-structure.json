@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-09/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/metamap/main/json-structure/metamap-verification-structure.json",
+  "title": "MetaMap Verification Structure",
+  "description": "JSON Structure description of the verification resource at the heart of the MetaMap API.",
+  "type": "object",
+  "properties": {
+    "id": {"type": "string"},
+    "identity": {"type": "string"},
+    "flow": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"}
+      }
+    },
+    "expired": {"type": "boolean"},
+    "hasProblem": {"type": "boolean"},
+    "documents": {"type": "array"},
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "status": {"type": "integer"},
+          "optional": {"type": "boolean"},
+          "group": {"type": "integer"}
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "status": {"type": "integer"}
+        }
+      }
+    },
+    "metadata": {"type": "object"},
+    "deviceFingerprint": {
+      "type": "object",
+      "properties": {
+        "ua": {"type": "string"},
+        "ip": {"type": "string"},
+        "vpnDetectionEnabled": {"type": "boolean"}
+      }
+    }
+  }
+}

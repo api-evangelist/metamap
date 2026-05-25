@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.prod.metamap.com/safety/v1/checks/comply-advantage",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <YOUR_METAMAP_ACCESS_TOKEN>"
+    },
+    "body": {
+      "fullName": "John Doe",
+      "dateOfBirth": "1980-05-12",
+      "country": "MX",
+      "callbackUrl": "https://yourdomain.com/webhook-listener"
+    }
+  },
+  "response": {
+    "screened": true,
+    "hits": [
+      {
+        "list": "OFAC SDN",
+        "name": "John Doe",
+        "category": "sanction",
+        "score": 0.87
+      }
+    ]
+  }
+}

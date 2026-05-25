@@ -1,0 +1,129 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: MetaMap
+providerId: metamap
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - Identity Verification
+  - KYC
+description: >-
+  FOCUS-aligned FinOps definition for MetaMap's identity verification platform.
+  MetaMap's commercial model is sales-led and meters verification events plus
+  individual standalone checks (GovChecks, Watchlist, Email, Phone, Credit,
+  Background, Facematch). Specific unit prices are negotiated per-customer and
+  therefore not published; the categories and metric units below are stable.
+sources:
+  - https://metamap.com/contact-metamap
+  - https://docs.metamap.com/docs/verification-results
+  - https://docs.metamap.com/docs/govcheck
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: MetaMap
+serviceCategory: Identity Verification and Compliance
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: verification
+  secondaryUnits:
+    - check
+    - country-dataset
+serviceModel:
+  delivery: SaaS
+  region:
+    primary:
+      - Latin America
+      - Africa
+      - Philippines
+    secondary:
+      - Global
+  contracting:
+    - Sales-led
+    - Annual or volume-tiered commitment
+    - Free dashboard trial
+chargeCategories:
+  - name: Usage
+    description: >-
+      Per-verification and per-standalone-check charges. Verifications combine
+      document, biometric, and any configured step types into a single billable
+      event; standalone checks (GovChecks, Watchlist, Email, Phone, Credit,
+      Background) bill independently.
+  - name: Adjustment
+    description: Credits issued for failed verifications, service degradations, or negotiated allowances.
+metricCatalog:
+  - id: verification
+    name: Verification
+    description: One completed identity verification, including all configured steps.
+    unit: count
+  - id: govcheck
+    name: GovCheck
+    description: One lookup against a country / dataset combination (e.g. mx/curp, br/cpf).
+    unit: count
+  - id: watchlist
+    name: Watchlist Check
+    description: One Comply Advantage screen (sanctions / PEP / adverse media).
+    unit: count
+  - id: custom-watchlist
+    name: Custom Watchlist Check
+    description: One screen against a customer-uploaded watchlist.
+    unit: count
+  - id: email-check
+    name: Email Check
+    description: One email ownership (OTP) or risk-score lookup.
+    unit: count
+  - id: phone-check
+    name: Phone Check
+    description: One phone ownership (SMS OTP) or risk-score lookup.
+    unit: count
+  - id: credit-check
+    name: Credit Check
+    description: One credit-bureau check (Brazil Serasa).
+    unit: count
+  - id: background-check
+    name: Background / Court Records Check
+    description: One court-records lookup (currently Mexico and Brazil).
+    unit: count
+  - id: facematch
+    name: Facematch
+    description: One biometric comparison (document vs. selfie or selfie vs. selfie).
+    unit: count
+costAttribution:
+  dimensions:
+    - merchant
+    - metamap (workflow id)
+    - country
+    - check-type
+    - environment (production vs sandbox)
+  webhookFields:
+    - eventName
+    - resource
+    - flow
+    - identity
+    - step
+    - status
+optimization:
+  recommendations:
+    - Use SDK Cooldown to suppress duplicate verifications from the same origin.
+    - Configure metamap workflows with the minimum set of steps required for the
+      target use case to avoid paying for unused checks.
+    - Trigger standalone checks (e.g. PEP, Watchlist) only after document and
+      biometric steps pass to avoid spend on rejected applicants.
+    - Use Customer Access Management (re-verification) instead of starting a new
+      full verification for returning users.
+    - Use webhooks rather than polling Get Verification Media to retrieve results.

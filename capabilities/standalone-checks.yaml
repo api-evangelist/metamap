@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MetaMap API — Standalone Checks
+  description: 'MetaMap API — Standalone Checks. Watchlist screening (Comply Advantage), Email and Phone
+    ownership/risk, Credit Check (Brazil Serasa), Background / Court Records (Mexico and Brazil), and Custom
+    Watchlist upload. Self-contained Naftiko capability covering MetaMap''s "Standalone Checks" surface.'
+  tags:
+  - MetaMap
+  - Watchlist
+  - AML
+  - Risk
+  - Email
+  - Phone
+  - Credit Check
+  - Background Check
+  - Compliance
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    METAMAP_ACCESS_TOKEN: METAMAP_ACCESS_TOKEN
+capability:
+  consumes:
+  - type: http
+    namespace: metamap-checks
+    baseUri: https://api.prod.metamap.com
+    description: MetaMap Standalone Checks business capability.
+    resources:
+    - name: safety
+      path: /safety/v1
+      operations:
+      - name: complyadvantage
+        method: POST
+        path: /safety/v1/checks/comply-advantage
+        description: Screen a user or company against Comply Advantage watchlists (sanctions, PEP, adverse media).
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: emailownership
+        method: POST
+        path: /safety/v1/checks/email/otp
+        description: Send an OTP to an email address to verify ownership.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: emailrisk
+        method: POST
+        path: /safety/v1/checks/email/risk
+        description: Behavioral risk assessment for an email address.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: phoneownership
+        method: POST
+        path: /safety/v1/checks/phone/otp
+        description: Send an SMS OTP to verify phone ownership.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: phonerisk
+        method: POST
+        path: /safety/v1/checks/phone/risk
+        description: Behavioral risk assessment for a phone number.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: uploadcustomwatchlist
+        method: POST
+        path: /safety/v1/upload/watchlists/file
+        description: Upload a custom watchlist file.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+    - name: credit
+      path: /creditchecks/v1
+      operations:
+      - name: brserasa
+        method: POST
+        path: /creditchecks/v1/br/credit-serasa
+        description: Retrieve a user's credit score from Brazil's Serasa bureau.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+    - name: background
+      path: /backgroundchecks/v1
+      operations:
+      - name: mxcourts
+        method: POST
+        path: /backgroundchecks/v1/mx/background-buholegal
+        description: Mexico court-records lookup.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+      - name: brcourts
+        method: POST
+        path: /backgroundchecks/v1/br/background
+        description: Brazil court-records lookup.
+        outputRawFormat: json
+        outputParameters: [{name: result, type: object, value: $.}]
+        inputParameters: [{name: body, in: body, type: object, required: true}]
+    authentication:
+      type: apikey
+      key: Authorization
+      value: 'Bearer {{env.METAMAP_ACCESS_TOKEN}}'
+      placement: header
+  exposes:
+  - type: mcp
+    namespace: metamap-checks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MetaMap Standalone Checks. One tool per consumed operation.
+    tools:
+    - {name: metamap-watchlist-screen, description: 'Screen a person/company against Comply Advantage watchlists.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.complyadvantage, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-email-ownership, description: 'Send OTP to verify email ownership.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.emailownership, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-email-risk, description: 'Get behavioral risk score for an email.', hints: {readOnly: true, destructive: false, idempotent: true}, call: metamap-checks.emailrisk, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-phone-ownership, description: 'Send SMS OTP to verify phone ownership.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.phoneownership, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-phone-risk, description: 'Get behavioral risk score for a phone number.', hints: {readOnly: true, destructive: false, idempotent: true}, call: metamap-checks.phonerisk, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-credit-check-brazil, description: 'Look up Brazil Serasa credit score.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.brserasa, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-court-records-mexico, description: 'Mexico court-records check.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.mxcourts, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-court-records-brazil, description: 'Brazil court-records check.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.brcourts, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}
+    - {name: metamap-upload-custom-watchlist, description: 'Upload a custom watchlist file.', hints: {readOnly: false, destructive: false, idempotent: false}, call: metamap-checks.uploadcustomwatchlist, with: {body: tools.body}, outputParameters: [{type: object, mapping: $.}]}

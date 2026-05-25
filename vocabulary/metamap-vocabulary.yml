@@ -1,0 +1,143 @@
+vocabulary: MetaMap
+version: '1.0'
+provider: MetaMap
+providerId: metamap
+created: '2026-05-25'
+modified: '2026-05-25'
+description: >-
+  Domain vocabulary for MetaMap's identity verification platform: business surfaces
+  (operational), check categories (capabilities), supported regions, and the core
+  data entities that flow through verifications and webhooks.
+operational:
+  surfaces:
+    - id: verifications
+      label: Verifications
+      description: Lifecycle of a user verification — create, send inputs, update status, retrieve, delete, download PDF.
+    - id: govchecks
+      label: GovChecks
+      description: Per-country government-database lookups (40+ datasets across LatAm, Africa, Asia).
+    - id: watchlist
+      label: Watchlist Checks
+      description: Comply Advantage screening for sanctions, PEPs, and adverse media plus custom watchlist screening.
+    - id: email-checks
+      label: Email Checks
+      description: Email ownership (OTP) and behavioral risk scoring.
+    - id: phone-checks
+      label: Phone Checks
+      description: Phone ownership (SMS OTP) and behavioral risk scoring.
+    - id: credit-checks
+      label: Credit Checks
+      description: Credit-bureau lookups (currently Brazil Serasa).
+    - id: background-checks
+      label: Background Checks
+      description: Court-records lookups (Mexico, Brazil).
+    - id: webhooks
+      label: Webhooks
+      description: Asynchronous delivery of verification, step, and check results.
+capabilities:
+  - id: document-verification
+    label: Document Verification
+  - id: biometric-verification
+    label: Biometric Verification
+  - id: facematch
+    label: Facematch
+  - id: liveness
+    label: Liveness Detection
+  - id: kyc
+    label: Know Your Customer
+  - id: kyb
+    label: Know Your Business
+  - id: aml
+    label: Anti-Money Laundering
+  - id: pep
+    label: Politically Exposed Person Screening
+  - id: location-intelligence
+    label: Location Intelligence
+  - id: customer-access-management
+    label: Customer Access Management (re-verification)
+  - id: e-signature
+    label: E-Signature
+  - id: video-agreement
+    label: Video Agreement
+  - id: tax-check
+    label: Tax Check
+  - id: custom-input
+    label: Custom Input
+  - id: custom-document
+    label: Custom Document
+  - id: on-demand-configuration
+    label: On-Demand Configuration
+  - id: sdk-cooldown
+    label: SDK Cooldown
+  - id: custom-encryption
+    label: Custom Encryption
+regions:
+  latam:
+    - BR
+    - MX
+    - CO
+    - CL
+    - CR
+    - DO
+    - PA
+    - PY
+    - PE
+    - UY
+  africa:
+    - GH
+    - KE
+    - NG
+  asia:
+    - PH
+  global:
+    - global
+entities:
+  - id: verification
+    label: Verification
+    description: A single onboarding or re-verification flow execution with one or more steps.
+  - id: identity
+    label: Identity
+    description: A stable identity record that can be re-used for re-verification.
+  - id: flow
+    label: Flow / Metamap
+    description: A configured workflow combining merits (tools) the user runs through.
+  - id: merit
+    label: Merit / Tool
+    description: A single verification building block (document, selfie, govcheck, watchlist, etc.).
+  - id: input
+    label: Input
+    description: A piece of data submitted to a verification (document photo, selfie, video).
+  - id: step
+    label: Step
+    description: An individual verification action that produces a status and optional error/data.
+  - id: webhook
+    label: Webhook Event
+    description: Server-to-server callback announcing a verification, step, or check state change.
+  - id: govcheck
+    label: GovCheck Result
+    description: Outcome of one country/dataset lookup.
+  - id: watchlist-hit
+    label: Watchlist Hit
+    description: A single match returned by Comply Advantage or a custom watchlist.
+  - id: risk-score
+    label: Risk Score
+    description: Behavioral risk score returned for email or phone checks.
+sdks:
+  - id: web
+    name: Web Button & Web SDK
+  - id: ios
+    name: iOS SDK
+  - id: android
+    name: Android SDK
+  - id: react-native
+    name: React Native plugin
+  - id: flutter
+    name: Flutter plugin
+  - id: cordova
+    name: Cordova / Ionic plugin
+  - id: capacitor
+    name: Capacitor plugin
+sources:
+  - https://metamap.com
+  - https://docs.metamap.com/llms.txt
+  - https://docs.metamap.com/docs/list-of-government-checks-by-country

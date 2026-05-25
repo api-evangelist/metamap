@@ -1,0 +1,45 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.prod.metamap.com/v2/verifications",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <YOUR_METAMAP_ACCESS_TOKEN>"
+    },
+    "body": {
+      "flowId": "<YOUR_METAMAP_FLOW_ID>",
+      "metadata": {
+        "user": "JOHN DOE",
+        "id": "123e4567-e89b-12d3-a456-426614174000"
+      }
+    }
+  },
+  "response": {
+    "documents": [],
+    "expired": false,
+    "flow": {
+      "id": "<YOUR_METAMAP_FLOW_ID>",
+      "name": "default_workflow"
+    },
+    "identity": "65f3a1d2c8a4f100123abc45",
+    "inputs": [
+      {"id": "connection-data", "status": 200, "optional": false},
+      {"id": "document-photo", "status": 0, "group": 0}
+    ],
+    "metadata": {
+      "user": "JOHN DOE",
+      "id": "123e4567-e89b-12d3-a456-426614174000"
+    },
+    "steps": [
+      {"status": 0, "id": "document"},
+      {"status": 0, "id": "selfie"}
+    ],
+    "id": "65f3a1d2c8a4f100123abc99",
+    "deviceFingerprint": {
+      "ua": "PostmanRuntime/7.29.0",
+      "ip": "203.0.113.42",
+      "vpnDetectionEnabled": false
+    },
+    "hasProblem": false
+  }
+}

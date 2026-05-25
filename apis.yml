@@ -1,0 +1,381 @@
+aid: metamap
+url: https://raw.githubusercontent.com/api-evangelist/metamap/refs/heads/main/apis.yml
+apis:
+- aid: metamap:metamap-api
+  name: MetaMap API
+  tags:
+  - Identity Verification
+  - KYC
+  - AML
+  - Compliance
+  - Authentication
+  - Verifications
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  properties:
+  - url: https://docs.metamap.com/docs/api-guide
+    type: Documentation
+  - url: https://docs.metamap.com/reference/authentication
+    type: Documentation
+  - url: openapi/metamap-openapi.yml
+    type: OpenAPI
+  - url: https://docs.metamap.com/llms.txt
+    type: Documentation
+  - url: https://docs.metamap.com/docs/webhook-specifications
+    type: Webhooks
+  - url: https://docs.metamap.com/docs/configure-your-webhook-url
+    type: Webhooks
+  - url: https://docs.metamap.com/docs/errors
+    type: Errors
+  description: MetaMap's identity verification REST API. Start and manage user verifications, send document
+    photos/selfies/videos, run watchlist screening (Comply Advantage and custom watchlists), email and phone
+    ownership/risk checks, credit checks, court-record background checks, and 40+ government database checks
+    across Latin America (Brazil, Mexico, Colombia, Chile, Costa Rica, Dominican Republic, Panama, Paraguay,
+    Peru, Uruguay), Africa (Ghana, Kenya, Nigeria), and Asia (Philippines). OAuth 2.0 client-credentials flow
+    yields a 1-hour JWT bearer token; results are delivered via configurable webhooks.
+name: MetaMap
+tags:
+- Identity Verification
+- KYC
+- AML
+- Anti-Money Laundering
+- Compliance
+- Biometrics
+- Document Verification
+- Facematch
+- Liveness
+- GovCheck
+- Watchlist
+- Background Check
+- Credit Check
+- Risk
+- Fraud Prevention
+- Onboarding
+- LatAm
+- Africa
+- Mobile SDK
+kind: contract
+image: https://files.readme.io/8daff99-MetaMap_logo.svg
+access: 3rd-Party
+common:
+- url: https://metamap.com
+  type: Portal
+- url: https://metamap.com/about-metamap
+  name: About MetaMap
+  type: AboutUs
+- url: https://metamap.com/why-metamap
+  name: Why MetaMap
+  type: Documentation
+- url: https://metamap.com/verification-tools-library
+  name: Verification Tools Library
+  type: Documentation
+- url: https://metamap.com/all-industries
+  name: Industries
+  type: Documentation
+- url: https://metamap.com/kyc-solutions-aml-compliance/
+  name: KYC & AML Compliance
+  type: Documentation
+- url: https://metamap.com/banking-industry-kyc-solutions/
+  name: Banking KYC
+  type: Documentation
+- url: https://metamap.com/fintech-kyc-solutions/
+  name: Fintech KYC
+  type: Documentation
+- url: https://metamap.com/lending-payments-kyc-solutions/
+  name: Lending & Payments KYC
+  type: Documentation
+- url: https://metamap.com/telecommunication-kyc-solutions/
+  name: Telco KYC
+  type: Documentation
+- url: https://metamap.com/transportation-kyc-solutions/
+  name: Transportation KYC
+  type: Documentation
+- url: https://metamap.com/contact-metamap
+  name: Contact Sales
+  type: Contact
+- url: https://metamap.com/careers
+  name: Careers
+  type: Documentation
+- url: https://metamap.com/press-and-media/
+  name: Press & Media
+  type: Press
+- url: https://metamap.com/resources-home
+  name: Resources
+  type: Documentation
+- url: https://metamap.com/privacy-policy
+  type: PrivacyPolicy
+- url: https://status.metamap.com
+  type: StatusPage
+- url: https://dashboard.getmati.com/
+  name: MetaMap Dashboard
+  type: SignUp
+- url: https://dashboard.getmati.com/dev
+  name: Developer Integration Settings
+  type: Documentation
+- url: https://docs.metamap.com/
+  name: MetaMap Developer Hub
+  type: Documentation
+- url: https://docs.metamap.com/docs/getting-started
+  type: GettingStarted
+- url: https://docs.metamap.com/docs/dashboard
+  name: Dashboard Guide
+  type: Documentation
+- url: https://docs.metamap.com/docs/single-sign-on
+  type: Documentation
+- url: https://docs.metamap.com/docs/metamaps
+  name: Workflows (metamaps)
+  type: Documentation
+- url: https://docs.metamap.com/docs/merits
+  name: Tools (merits)
+  type: Documentation
+- url: https://docs.metamap.com/docs/metamap-button
+  name: MetaMap Button & SDK
+  type: Documentation
+- url: https://docs.metamap.com/docs/verification-results
+  type: Documentation
+- url: https://docs.metamap.com/docs/custom-encryption
+  type: Documentation
+- url: https://docs.metamap.com/docs/sdk-customization
+  type: Documentation
+- url: https://docs.metamap.com/docs/document-verification
+  name: Document Verification
+  type: Documentation
+- url: https://docs.metamap.com/docs/biometrics
+  name: Biometric Verification
+  type: Documentation
+- url: https://docs.metamap.com/docs/govcheck
+  name: Government Check
+  type: Documentation
+- url: https://docs.metamap.com/docs/list-of-government-checks-by-country
+  name: GovChecks by Country
+  type: Documentation
+- url: https://docs.metamap.com/docs/location-intelligence
+  type: Documentation
+- url: https://docs.metamap.com/docs/uam
+  name: Customer Access Management
+  type: Documentation
+- url: https://docs.metamap.com/docs/facematch
+  type: Documentation
+- url: https://docs.metamap.com/docs/email-check
+  type: Documentation
+- url: https://docs.metamap.com/docs/phone-check
+  type: Documentation
+- url: https://docs.metamap.com/docs/anti-money-laundering
+  name: Watchlist Check
+  type: Documentation
+- url: https://docs.metamap.com/docs/custom-watchlists
+  type: Documentation
+- url: https://docs.metamap.com/docs/e-signature
+  type: Documentation
+- url: https://docs.metamap.com/docs/credit-check
+  type: Documentation
+- url: https://docs.metamap.com/docs/tax-data
+  name: Tax Check
+  type: Documentation
+- url: https://docs.metamap.com/docs/background-check
+  name: Court Records
+  type: Documentation
+- url: https://docs.metamap.com/docs/video-agreement-1
+  type: Documentation
+- url: https://docs.metamap.com/docs/on-demand-configuration-odc
+  name: On-Demand Configuration
+  type: Documentation
+- url: https://docs.metamap.com/docs/webhooks
+  name: Webhooks Overview
+  type: Webhooks
+- url: https://docs.metamap.com/docs/webhook-specifications
+  name: Webhook Specifications
+  type: Webhooks
+- url: https://docs.metamap.com/docs/webhook-faq
+  type: FAQ
+- url: https://docs.metamap.com/docs/errors
+  name: Webhook & Step Errors
+  type: Errors
+- url: https://docs.metamap.com/docs/sdk
+  name: SDK Overview
+  type: SDK
+- url: https://docs.metamap.com/docs/quick-start-6
+  name: Web Quick Start
+  type: GettingStarted
+- url: https://docs.metamap.com/docs/android
+  name: Android SDK Guide
+  type: SDK
+- url: https://docs.metamap.com/docs/ios
+  name: iOS SDK Guide
+  type: SDK
+- url: https://docs.metamap.com/docs/quick-start-1
+  name: Flutter Plugin Quick Start
+  type: SDK
+- url: https://docs.metamap.com/docs/quick-start-3
+  name: React Native Plugin Quick Start
+  type: SDK
+- url: https://docs.metamap.com/docs/android-changelog
+  name: Android SDK Changelog
+  type: ChangeLog
+- url: https://docs.metamap.com/docs/ios-changelog
+  name: iOS SDK Changelog
+  type: ChangeLog
+- url: https://github.com/GetMetaMap
+  name: GetMetaMap GitHub Organization
+  type: GitHubOrganization
+- url: https://github.com/GetMetaMap/metamap-android-sdk
+  name: MetaMap Android SDK
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-ios-sdk
+  name: MetaMap iOS SDK
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-flutter-plugin
+  name: MetaMap Flutter Plugin
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-reactnative-plugin
+  name: MetaMap React Native Plugin
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-cordova-plugin
+  name: MetaMap Cordova / Ionic Plugin
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-capacitor-plugin
+  name: MetaMap Capacitor Plugin
+  type: SDK
+- url: https://github.com/GetMetaMap/metamap-mobile-examples
+  name: MetaMap Mobile Examples
+  type: CodeExamples
+- url: https://github.com/GetMetaMap/metamap-android-demo-kotlin
+  name: MetaMap Android Kotlin Demo
+  type: CodeExamples
+- url: https://github.com/GetMetaMap/metamap-demo-web-apps
+  name: MetaMap Web Apps Demo
+  type: CodeExamples
+- url: https://github.com/GetMetaMap/iOS_app_with_web_sdk_integration
+  name: iOS App with Web SDK Integration
+  type: CodeExamples
+- url: https://github.com/GetMetaMap/android_app_with_web_sdk_integration
+  name: Android App with Web SDK Integration
+  type: CodeExamples
+- url: https://github.com/GetMetaMap/mati-python
+  name: Mati Python Client (legacy)
+  type: SDK
+- url: https://github.com/GetMetaMap/mati_ruby
+  name: Mati Ruby Client (legacy)
+  type: SDK
+- url: https://github.com/GetMetaMap/mati-node
+  name: Mati Node.js Helper (archived)
+  type: SDK
+- type: Features
+  data:
+  - Customer onboarding with configurable verification workflows ("Metamaps")
+  - Document verification with reading, alteration detection, and validity scoring
+  - Biometric verification with liveness detection and selfie capture
+  - Facematch service for biometric comparison between document and selfie or two arbitrary faces
+  - 40+ Government Database Checks (GovChecks) across LatAm, Africa, and Asia
+  - GovChecks - Brazil (CPF, CPF-light, CNPJ extended validation)
+  - GovChecks - Chile (Registro Civil)
+  - GovChecks - Colombia (Civil Registry, Migration, RUES, PPT, Unified Legal Search)
+  - GovChecks - Costa Rica (TSE)
+  - GovChecks - Dominican Republic (RNC)
+  - GovChecks - Mexico (CURP, INE, RFC, RFC Status, PEP)
+  - GovChecks - Panama (TSE with optional facematch)
+  - GovChecks - Paraguay (RCP)
+  - GovChecks - Peru (GovCheck, Migration Institute, SUNAT)
+  - GovChecks - Uruguay (Registro Civil)
+  - GovChecks - Ghana (Ghana Card with optional facematch)
+  - GovChecks - Kenya (BRS, IPRS)
+  - GovChecks - Nigeria (NIN, VIN, Driver License, CAC, TIN, CAC Affiliates)
+  - GovChecks - Philippines (UMID / SSN)
+  - Watchlist screening via Comply Advantage (international sanctions, PEPs, adverse media)
+  - Custom Watchlist upload and check
+  - Email Check (ownership OTP and behavioral risk scoring)
+  - Phone Check (SMS OTP ownership and risk scoring)
+  - Credit Check (Brazil Serasa integration)
+  - Background Checks (Mexico and Brazil court records)
+  - Location Intelligence (geo-restriction and VPN detection)
+  - Customer Access Management (re-verification of existing biometric identities)
+  - E-Signature with identity authentication
+  - Video Agreement capture
+  - Tax Check against tax-agency records
+  - Custom Input and Custom Document templates
+  - Webhook delivery of all verification, step, and error events
+  - On-Demand Configuration (ODC) for runtime metamap selection
+  - SDK Cooldown to prevent duplicate verifications from a single origin
+  - Custom Encryption for verification payloads
+  - Web button and direct-link integration plus iOS, Android, Flutter, React Native, Cordova, and Capacitor SDKs
+  - PDF download of verification results
+  - Verification media (documents, photos, videos) retrieval via signed URLs
+  - Identity dashboard with verification review, audit logs, and SSO
+  sources:
+  - https://metamap.com
+  - https://docs.metamap.com/llms.txt
+  - https://docs.metamap.com/docs/api-guide
+  - https://docs.metamap.com/docs/list-of-government-checks-by-country
+  updated: '2026-05-25'
+- type: Pricing
+  url: https://metamap.com/contact-metamap
+  name: Sales-Led Pricing
+  data:
+  - id: contact-sales
+    name: Contact Sales
+    entries:
+    - geo: global
+      unit: 1
+      label: Custom
+      price: Call
+      metric: verification
+      timeFrame: usage
+      description: MetaMap does not publish public pricing. Pricing is negotiated per-verification (with
+        per-check add-ons for GovChecks, Watchlist, Email, Phone, Credit, and Background Checks) and tiered by
+        monthly volume. Contact Sales for a quote.
+    elements:
+    - name: Per-verification base price (document + biometric)
+    - name: Per-check pricing for each GovCheck, Watchlist, Email, Phone, Credit, and Background Check
+    - name: Volume-tiered discounts
+    - name: Region-specific bundles for Latin America, Africa, and the Philippines
+    description: MetaMap follows a sales-led pricing model. Free trial available via the dashboard.
+- type: SignUp
+  url: https://dashboard.getmati.com/
+- type: Sandbox
+  url: https://dashboard.getmati.com/
+- type: Forum
+  url: https://docs.metamap.com/discuss
+- url: plans/metamap-plans-pricing.yml
+  type: Plans
+- url: rate-limits/metamap-rate-limits.yml
+  type: RateLimits
+- url: finops/metamap-finops.yml
+  type: FinOps
+- type: TrustCenter
+  url: https://app.vanta.com/metamap/trust/home
+- url: https://docs.metamap.com/docs/biometric-verification-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/document-verification-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/location-intelligence-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/customer-access-management-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/custom-watchlist-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/email-check-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/phone-check-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/video-agreement-webhooks
+  type: Webhooks
+- url: https://docs.metamap.com/docs/webhook-messages
+  type: Webhooks
+created: '2026-05-25'
+modified: '2026-05-25'
+position: Consuming
+description: MetaMap (formerly Mati) is an identity verification platform founded in 2017 in San Francisco
+  and headquartered there, serving 600+ companies across 50+ countries with a focus on Latin America, Africa,
+  and other emerging markets. The platform combines document verification, biometric liveness, facematch,
+  watchlist screening, behavioral risk signals, and 40+ government-database "GovChecks" to power KYC, AML
+  compliance, customer onboarding, authentication, and financial risk management workflows for banks,
+  fintechs, lenders, telcos, and transportation providers. Developers integrate via a REST API on
+  api.prod.metamap.com, configurable workflows ("metamaps"), webhooks, and native SDKs for Web, iOS, Android,
+  Flutter, React Native, Cordova, and Capacitor. MetaMap joined Incode in 2024 to expand identity-verification
+  coverage globally.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

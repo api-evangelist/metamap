@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/metamap/main/json-schema/metamap-webhook-schema.json",
+  "title": "MetaMap Webhook Event",
+  "description": "Common envelope used for every MetaMap webhook delivery — verifications, document, biometric, location, email/phone, custom watchlist, and video-agreement events.",
+  "type": "object",
+  "required": ["eventName", "resource"],
+  "properties": {
+    "eventName": {
+      "type": "string",
+      "description": "The event identifier. Examples: 'verification_started', 'verification_completed', 'step_completed', 'verification_updated', 'verification_expired', 'verification_inputs_completed'.",
+      "examples": [
+        "verification_started",
+        "verification_completed",
+        "verification_updated",
+        "verification_expired",
+        "step_completed"
+      ]
+    },
+    "resource": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL to GET the full payload for this event. Authenticated with the same JWT used for the REST API."
+    },
+    "identity": {"type": "string", "description": "Stable identity ID."},
+    "verification": {"type": "string", "description": "Verification ID."},
+    "flow": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"}
+      }
+    },
+    "step": {
+      "type": "object",
+      "description": "Present on step_completed events.",
+      "properties": {
+        "id": {"type": "string"},
+        "status": {"type": "integer"},
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "type": {"type": "string"},
+            "message": {"type": "string"}
+          }
+        },
+        "data": {"type": "object"}
+      }
+    },
+    "metadata": {
+      "type": ["object", "string"],
+      "description": "The caller-supplied metadata associated with the verification (≤ 4 KB)."
+    }
+  }
+}

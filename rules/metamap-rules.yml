@@ -1,0 +1,76 @@
+extends:
+  - [spectral:oas, all]
+rules:
+  metamap-server-url:
+    description: All paths must be served from api.prod.metamap.com (or the documented media / legacy hosts).
+    given: $.servers[*].url
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://(api\\.prod\\.metamap\\.com|media\\.prod\\.metamap\\.com|api\\.getmati\\.com)(/|$)"
+
+  metamap-operation-tagged:
+    description: Every operation must be assigned to exactly one of the MetaMap business surfaces.
+    given: $.paths[*][get,post,put,delete,patch]
+    severity: error
+    then:
+      - field: tags
+        function: truthy
+      - field: tags
+        function: length
+        functionOptions:
+          min: 1
+          max: 1
+
+  metamap-known-tag:
+    description: Operation tags must be one of the canonical MetaMap categories.
+    given: $.paths[*][get,post,put,delete,patch].tags[*]
+    severity: warn
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - Authentication
+          - Verifications
+          - Webhooks
+          - Custom Watchlists
+          - Watchlist Checks
+          - Email Checks
+          - Phone Checks
+          - GovChecks
+          - Credit Checks
+          - Background Checks
+
+  metamap-operation-id-kebab:
+    description: operationId must be lowercase kebab-case (or snake_case fallback).
+    given: $.paths[*][get,post,put,delete,patch].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_-]*$"
+
+  metamap-bearer-security:
+    description: Non-OAuth-token-exchange operations must declare bearerAuth or inherit a global bearerAuth security requirement.
+    given: $.paths[?(@path !~ '/oauth')][*].security
+    severity: warn
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          items:
+            type: object
+            patternProperties:
+              "^bearerAuth$":
+                type: array
+
+  metamap-summary-title-case:
+    description: Operation summary should be Title Case.
+    given: $.paths[*][get,post,put,delete,patch].summary
+    severity: hint
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 /:&'\\-]+$"

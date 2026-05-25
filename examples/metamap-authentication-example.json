@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.prod.metamap.com/oauth",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic $(echo -n '<client_id>:<client_secret>' | base64)"
+    },
+    "body": "grant_type=client_credentials"
+  },
+  "response": {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1ZjNhMWQyYzhhNGYxMDAxMjNhYmM0NSJ9LCJpYXQiOjE3NzkwMDAwMDB9.<signature>",
+    "expiresIn": 3600,
+    "payload": {
+      "user": {
+        "_id": "65f3a1d2c8a4f100123abc45"
+      }
+    }
+  }
+}

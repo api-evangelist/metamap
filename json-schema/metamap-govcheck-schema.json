@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/metamap/main/json-schema/metamap-govcheck-schema.json",
+  "title": "MetaMap GovCheck",
+  "description": "Common shape for MetaMap GovCheck (government-database) requests and responses across the 40+ country/dataset endpoints.",
+  "type": "object",
+  "properties": {
+    "country": {"type": "string", "description": "ISO 3166-1 alpha-2 country code (e.g. BR, MX, CO, NG)."},
+    "dataset": {"type": "string", "description": "Dataset slug (e.g. curp, ine, rfc, cnpj-extended, cpf-validation, nin, brs, iprs, ppt, rues)."},
+    "request": {
+      "type": "object",
+      "description": "Request body for the GovCheck. Common fields used across many endpoints.",
+      "properties": {
+        "personalNumber": {"type": "string"},
+        "firstName": {"type": "string"},
+        "lastName": {"type": "string"},
+        "fullName": {"type": "string"},
+        "dateOfBirth": {"type": "string", "format": "date"},
+        "documentNumber": {"type": "string"},
+        "callbackUrl": {"type": "string", "format": "uri"},
+        "metadata": {"type": ["object", "string"]},
+        "imageBase64": {"type": "string", "description": "Base64-encoded selfie for facematch-enabled GovChecks."}
+      }
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "match": {"type": "boolean", "description": "Whether the supplied identity matches the government record."},
+        "data": {"type": "object", "description": "Country-specific fields returned by the government database."},
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "message": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

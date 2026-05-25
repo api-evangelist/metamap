@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.prod.metamap.com/govchecks/v1/mx/curp",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <YOUR_METAMAP_ACCESS_TOKEN>"
+    },
+    "body": {
+      "personalNumber": "PEGJ850125HDFRNN09",
+      "firstName": "Juan",
+      "lastName": "Pérez García",
+      "dateOfBirth": "1985-01-25",
+      "callbackUrl": "https://yourdomain.com/webhook-listener",
+      "metadata": {
+        "verification": "65f3a1d2c8a4f100123abc99"
+      }
+    }
+  },
+  "response": {
+    "match": true,
+    "data": {
+      "curp": "PEGJ850125HDFRNN09",
+      "name": "JUAN",
+      "fatherName": "PÉREZ",
+      "motherName": "GARCÍA",
+      "sex": "H",
+      "birthDate": "1985-01-25",
+      "birthState": "DF",
+      "nationality": "MEX"
+    }
+  }
+}
