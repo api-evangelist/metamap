@@ -1,0 +1,993 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/oauth/token",
+            "headers": [
+              {
+                "name": "x-mati-app",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "application_key",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                },
+                {
+                  "name": "flow_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use this API to get your access token for the Skip Verification Upload Wait Time API"
+        },
+        {
+          "info": {
+            "name": "Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/oauth",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use your `client_id` and `client_secret` as your username and password to get your access token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Background Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Brazil: Court Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/backgroundchecks/v1/br/background",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to check for users for court records in Brazil"
+        },
+        {
+          "info": {
+            "name": "Mexico: Court Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/backgroundchecks/v1/mx/background-buholegal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to check for users for court records in Mexico."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credit Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Brazil Credit Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/creditchecks/v1/br/credit-serasa",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Review a user's credit score against Brazil's Serasa"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Watchlist Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Comply Advantage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/comply-advantage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this check to verify whether a user or company is listed on international watchlists."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Verifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.prod.metamap.com/verifications/:verificationId",
+            "params": [
+              {
+                "name": "verificationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique string assigned to a user's verification status"
+              }
+            ]
+          },
+          "docs": "Delete Verification"
+        },
+        {
+          "info": {
+            "name": "Download Verification Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/verification/v1/pdf/download",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to download verification results in a PDF file."
+        },
+        {
+          "info": {
+            "name": "Get Verification Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prod.metamap.com/file",
+            "params": [
+              {
+                "name": "media_auth",
+                "value": "",
+                "type": "path",
+                "description": "The `media_auth` is part of the path returned when a Retrieve Webhook Resource call succeeds."
+              }
+            ]
+          },
+          "docs": "Use this API to download user documents, photos, and videos."
+        },
+        {
+          "info": {
+            "name": "Send Inputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/v2/identities/:identity/send-input",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "identity",
+                "value": "",
+                "type": "path",
+                "description": "The identity is in the successful response to a Verification Creation request"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to send documents, selfies, videos, or other identifying information"
+        },
+        {
+          "info": {
+            "name": "Skip Verification Upload Wait Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prod.metamap.com/v2/verifications/:verification_id/inputs/document-photo/skip",
+            "headers": [
+              {
+                "name": "x-mati-app",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "verification_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID returned by the Start Verification endpoint."
+              }
+            ]
+          },
+          "docs": "Use this API to skip the wait time when uploading the back of a document"
+        },
+        {
+          "info": {
+            "name": "Start Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/v2/verifications",
+            "headers": [
+              {
+                "name": "x-forwarded-for",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to create a new user verification or reverify an existing user."
+        },
+        {
+          "info": {
+            "name": "Update Verification Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prod.metamap.com/v2/verifications/:verificationId/status",
+            "params": [
+              {
+                "name": "verificationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique string assigned to a user's verification status"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Verification Status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Email Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Email Ownership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/email/otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API sends an OTP to the email address to verify user ownership"
+        },
+        {
+          "info": {
+            "name": "Email Risk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/email/risk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API provides a behavioral risk assessment based on email address"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GovChecks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GovCheck: Ghana Verify Card (Facematch)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/gh/verify-card-facematch",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information and performs biometric face verification against the government’s biometric database."
+        },
+        {
+          "info": {
+            "name": "GovCheck: Ghana Verify Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/gh/verify-card",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information by checking against Ghana’s National Identification Authority (NIA) database for the Ghana Card."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico PEP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/pep",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check whether a user is a Politically Exposed Person"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico RFC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/rfc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate CURP and RFC numbers to validate users are eligible to pay taxes"
+        },
+        {
+          "info": {
+            "name": "GovCheck: Paraguay RCP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/py/rcp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information by checking against Paraguay’s RCP database for the Cédula de Identidad Civil."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CNPJ Extended Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cnpj-extended",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a business's National Registry of Legal Entities number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CPF-light",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cpf-light",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's CPF number and identity."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CPF Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cpf-validation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's CPF number and identity."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Chile Registro Civil",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/cl/registro-civil",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user's RUN number against the Chilean Civil Registry database"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Govcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/govcheck",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's ID card against the Colombian Civil Registry"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Migration Institute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/migraciones",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has a valid immigration status in Colombia"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia PPT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/ppt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify the validity of the Colombian PPT (Permiso por protección temporal =  Temporary Protection Permit)"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia RUES",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/rues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check a business's national tax ID against Colombian Single Business and Social Registry"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Unified Legal Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/unified-criminal-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check a user's full name against Colombian police records."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Costa Rica TSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/cr/tse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI against the Costa Rican TSE database"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Dominican RNC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/do/rnc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an individual's business against the National Registry of Taxpayers"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Kenya BRS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ke/brs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a business against the Kenyan Business Registration Service"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Kenya IPRS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ke/iprs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an individual's national identity card against the Kenyan Integrated Population Registration System"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico CURP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/curp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a user's CURP number and identity"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico INE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/ine",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a user's national ID against Mexico's National Electoral Institute"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico RFC Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/rfc-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate CURP and RFC numbers to obtain tax data from users and companies"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria CAC Affiliates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/cac-affiliates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns major affiliate names and titles for the given companies."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria CAC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/cac",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a company's Corporate Affairs Commission (CAC) number is valid."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria Driver License",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/dl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's driver license number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria NIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/nin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's National Identity Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria TIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/tin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a company's Tax Identification Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria VIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/vin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's Voting Identity Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Panama TSE Facematch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pa/tse-facematch",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information and performs biometric face verification against the government’s biometric database."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Panama TSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pa/tse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI against the Panamanian TSE database via document number and a selfie photo"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru Govcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/govcheck",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI and identity"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru Migration Institute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/migration-institute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has a valid immigration status in Peru"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru SUNAT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/sunat",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has valid Peruvian tax status"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Philippines UMID/SSN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ph/umid-ssn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's UMID/SSN against the Philippine UMID/SSN database via document number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Uruguay Registro Civil",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/uy/registro-civil",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's national ID against the Uruguay DGREC database"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Phone Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Phone Ownership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/phone/otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API sends an OTP through SMS to verify ownership"
+        },
+        {
+          "info": {
+            "name": "Phone Risk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/phone/risk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to assess a user's behavioral risk through their phone number"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Webhook Resource Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prod.metamap.com/v2/verifications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The `id` is in the successful response to a [Verification Creation](https://docs.metamap.com/reference/verification-creation) request"
+              }
+            ]
+          },
+          "docs": "Use this API to retrieve Webhook Resource Data"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom Watchlists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload a Custom Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/upload/watchlists/file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to upload a custom watchlist"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
