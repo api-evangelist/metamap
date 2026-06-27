@@ -26,7 +26,7 @@ apis:
   - url: https://docs.metamap.com/docs/configure-your-webhook-url
     type: Webhooks
   - url: https://docs.metamap.com/docs/errors
-    type: Errors
+    type: ErrorCodes
   description: MetaMap's identity verification REST API. Start and manage user verifications, send document
     photos/selfies/videos, run watchlist screening (Comply Advantage and custom watchlists), email and phone
     ownership/risk checks, credit checks, court-record background checks, and 40+ government database checks
@@ -108,7 +108,7 @@ common:
   type: StatusPage
 - url: https://dashboard.getmati.com/
   name: MetaMap Dashboard
-  type: SignUp
+  type: Signup
 - url: https://dashboard.getmati.com/dev
   name: Developer Integration Settings
   type: Documentation
@@ -190,25 +190,25 @@ common:
   type: FAQ
 - url: https://docs.metamap.com/docs/errors
   name: Webhook & Step Errors
-  type: Errors
+  type: ErrorCodes
 - url: https://docs.metamap.com/docs/sdk
   name: SDK Overview
-  type: SDK
+  type: SDKs
 - url: https://docs.metamap.com/docs/quick-start-6
   name: Web Quick Start
   type: GettingStarted
 - url: https://docs.metamap.com/docs/android
   name: Android SDK Guide
-  type: SDK
+  type: SDKs
 - url: https://docs.metamap.com/docs/ios
   name: iOS SDK Guide
-  type: SDK
+  type: SDKs
 - url: https://docs.metamap.com/docs/quick-start-1
   name: Flutter Plugin Quick Start
-  type: SDK
+  type: SDKs
 - url: https://docs.metamap.com/docs/quick-start-3
   name: React Native Plugin Quick Start
-  type: SDK
+  type: SDKs
 - url: https://docs.metamap.com/docs/android-changelog
   name: Android SDK Changelog
   type: ChangeLog
@@ -220,22 +220,22 @@ common:
   type: GitHubOrganization
 - url: https://github.com/GetMetaMap/metamap-android-sdk
   name: MetaMap Android SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-ios-sdk
   name: MetaMap iOS SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-flutter-plugin
   name: MetaMap Flutter Plugin
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-reactnative-plugin
   name: MetaMap React Native Plugin
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-cordova-plugin
   name: MetaMap Cordova / Ionic Plugin
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-capacitor-plugin
   name: MetaMap Capacitor Plugin
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/metamap-mobile-examples
   name: MetaMap Mobile Examples
   type: CodeExamples
@@ -253,13 +253,13 @@ common:
   type: CodeExamples
 - url: https://github.com/GetMetaMap/mati-python
   name: Mati Python Client (legacy)
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/mati_ruby
   name: Mati Ruby Client (legacy)
-  type: SDK
+  type: SDKs
 - url: https://github.com/GetMetaMap/mati-node
   name: Mati Node.js Helper (archived)
-  type: SDK
+  type: SDKs
 - type: Features
   data:
   - Customer onboarding with configurable verification workflows ("Metamaps")
@@ -329,11 +329,11 @@ common:
     - name: Volume-tiered discounts
     - name: Region-specific bundles for Latin America, Africa, and the Philippines
     description: MetaMap follows a sales-led pricing model. Free trial available via the dashboard.
-- type: SignUp
+- type: Signup
   url: https://dashboard.getmati.com/
 - type: Sandbox
   url: https://dashboard.getmati.com/
-- type: Forum
+- type: Forums
   url: https://docs.metamap.com/discuss
 - url: plans/metamap-plans-pricing.yml
   type: Plans
