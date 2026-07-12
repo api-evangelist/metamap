@@ -58,6 +58,10 @@ kind: contract
 image: https://files.readme.io/8daff99-MetaMap_logo.svg
 access: 3rd-Party
 common:
+- type: DomainSecurity
+  url: security/metamap-domain-security.yml
+- type: Authentication
+  url: authentication/metamap-authentication.yml
 - url: https://metamap.com
   type: Portal
 - url: https://metamap.com/about-metamap
@@ -361,6 +365,8 @@ common:
   type: Webhooks
 - url: https://docs.metamap.com/docs/webhook-messages
   type: Webhooks
+- url: https://metamap.com/feed/
+  type: Blog
 created: '2026-05-25'
 modified: '2026-05-25'
 position: Consuming

@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/metamap-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+  sources:
+  - openapi/metamap-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Used only on POST /oauth for the initial token exchange.
+  sources:
+  - openapi/metamap-openapi.yml
