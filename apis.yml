@@ -58,6 +58,8 @@ kind: contract
 image: https://files.readme.io/8daff99-MetaMap_logo.svg
 access: 3rd-Party
 common:
+- type: AgenticAccess
+  url: agentic-access/metamap-agentic-access.yml
 - type: DomainSecurity
   url: security/metamap-domain-security.yml
 - type: Authentication
