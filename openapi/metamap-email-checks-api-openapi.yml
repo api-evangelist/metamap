@@ -1,0 +1,293 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication Email Checks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Email Checks
+paths:
+  /safety/v1/checks/email/otp:
+    post:
+      summary: Email Ownership
+      description: This API sends an OTP to the email address to verify user ownership
+      operationId: email-ownership
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - callbackURL
+              - recipient
+              properties:
+                callbackURL:
+                  type: string
+                locale:
+                  type: string
+                  description: 'Language and country codes: for example, "en_US" for English and United States.'
+                  default: en_US
+                recipient:
+                  type: string
+                  description: User's email address
+                senderName:
+                  type: string
+                  description: User's name
+                senderEmail:
+                  type: string
+                  description: Address that sends the email
+                metadata:
+                  type: string
+                  description: Metadata to be sent to a webhook (callbackUrl)
+                  default: '{ "user-defined-1" : "abcde", "user-defined-2" : "12345" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n\t\"error\": null,\n  \"data\": {\n  \t\"confirmationCode\": \"0301\"\n  },\n  \"metadata\": {\n  \t\"user_defined\": \"id00000\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      confirmationCode:
+                        type: string
+                        example: '0301'
+                  metadata:
+                    type: object
+                    properties:
+                      user_defined:
+                        type: string
+                        example: id00000
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "POST https://api.getmati.com/safety/v1/checks/email/otp \n-H 'Content-Type: application/json' \\\n-H \"Authorization: Bearer <access_token>\" \\\n{\n\t\"recipient\": \"example@mati.io\",\n  \"callbackUrl\": \"https://some.webhook.url\",\n  \"locale\": \"es_MX\",\n  \"senderEmail\": \"some@doman.com\",\n  \"senderName\": \"Acme Company\",\n  \"metadata\": { \n  \t\"user_defined\": \"id00000\n  }\n}"
+        samples-languages:
+        - curl
+      tags:
+      - Email Checks
+  /safety/v1/checks/email/risk:
+    post:
+      summary: Email Risk
+      description: This API provides a behavioral risk assessment based on email address
+      operationId: email-risk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - recipient
+              - callbackUrl
+              properties:
+                recipient:
+                  type: string
+                  description: User's email address
+                callbackUrl:
+                  type: string
+                  description: Webhook URL to receive risk assessment information.
+                metadata:
+                  type: string
+                  description: Metadata to be sent to a webhook (callbackUrl)
+                  default: '{ "user-defined-1" : "abcde", "user-defined-2" : "12345" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"email\": \"example@mati.io\",\n    \"riskScore\": 0,\n    \"message\": \"Success.\",\n    \"success\": true,\n    \"valid\": true,\n    \"disposable\": false,\n    \"smtp_score\": 2,\n    \"overall_score\": 3,\n    \"first_name\": \"Corporate\",\n    \"generic\": true,\n    \"common\": false,\n    \"dns_valid\": true,\n    \"honeypot\": false,\n    \"deliverability\": \"medium\",\n    \"frequent_complainer\": false,\n    \"spam_trap_score\": \"none\",\n    \"catch_all\": true,\n    \"timed_out\": false,\n    \"suspect\": true,\n    \"recent_abuse\": false,\n    \"suggested_domain\": \"N/A\",\n    \"leaked\": false,\n    \"domain_age\": {\n      \"human\": \"7 years ago\",\n      \"timestamp\": 1439710398,\n      \"iso\": \"2015-08-16T03:33:18-04:00\"\n    },\n    \"first_seen\": {\n      \"human\": \"4 minutes ago\",\n      \"timestamp\": 1650250506,\n      \"iso\": \"2022-04-17T22:55:06-04:00\"\n    },\n    \"sanitized_email\": \"example@mati.io\",\n    \"domain_velocity\": \"Enterprise Mini or higher required.\",\n    \"user_activity\": \"Enterprise L4+ required.\",\n    \"request_id\": \"3Ab9vwBZsY\"\n  },\n  \"metadata\": {\n  \t\"user_defined\": \"id00000\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        example: example@mati.io
+                      riskScore:
+                        type: integer
+                        example: 0
+                        default: 0
+                      message:
+                        type: string
+                        example: Success.
+                      success:
+                        type: boolean
+                        example: true
+                        default: true
+                      valid:
+                        type: boolean
+                        example: true
+                        default: true
+                      disposable:
+                        type: boolean
+                        example: false
+                        default: true
+                      smtp_score:
+                        type: integer
+                        example: 2
+                        default: 0
+                      overall_score:
+                        type: integer
+                        example: 3
+                        default: 0
+                      first_name:
+                        type: string
+                        example: Corporate
+                      generic:
+                        type: boolean
+                        example: true
+                        default: true
+                      common:
+                        type: boolean
+                        example: false
+                        default: true
+                      dns_valid:
+                        type: boolean
+                        example: true
+                        default: true
+                      honeypot:
+                        type: boolean
+                        example: false
+                        default: true
+                      deliverability:
+                        type: string
+                        example: medium
+                      frequent_complainer:
+                        type: boolean
+                        example: false
+                        default: true
+                      spam_trap_score:
+                        type: string
+                        example: none
+                      catch_all:
+                        type: boolean
+                        example: true
+                        default: true
+                      timed_out:
+                        type: boolean
+                        example: false
+                        default: true
+                      suspect:
+                        type: boolean
+                        example: true
+                        default: true
+                      recent_abuse:
+                        type: boolean
+                        example: false
+                        default: true
+                      suggested_domain:
+                        type: string
+                        example: N/A
+                      leaked:
+                        type: boolean
+                        example: false
+                        default: true
+                      domain_age:
+                        type: object
+                        properties:
+                          human:
+                            type: string
+                            example: 7 years ago
+                          timestamp:
+                            type: integer
+                            example: 1439710398
+                            default: 0
+                          iso:
+                            type: string
+                            example: '2015-08-16T03:33:18-04:00'
+                      first_seen:
+                        type: object
+                        properties:
+                          human:
+                            type: string
+                            example: 4 minutes ago
+                          timestamp:
+                            type: integer
+                            example: 1650250506
+                            default: 0
+                          iso:
+                            type: string
+                            example: '2022-04-17T22:55:06-04:00'
+                      sanitized_email:
+                        type: string
+                        example: example@mati.io
+                      domain_velocity:
+                        type: string
+                        example: Enterprise Mini or higher required.
+                      user_activity:
+                        type: string
+                        example: Enterprise L4+ required.
+                      request_id:
+                        type: string
+                        example: 3Ab9vwBZsY
+                  metadata:
+                    type: object
+                    properties:
+                      user_defined:
+                        type: string
+                        example: id00000
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/email/risk' \\\n--header 'Authorization: Bearer <access_token> \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\t\"recipient\": \"example@mati.io\",\n\t\"callbackUrl\": \"https://some.webhook.url\",\n\t\"metadata\": {\t\"user_defined\": \"id00000\" }\n}'"
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - Email Checks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

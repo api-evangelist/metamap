@@ -1,0 +1,4015 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication GovChecks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: GovChecks
+paths:
+  /govchecks/v1/gh/verify-card-facematch:
+    post:
+      summary: 'GovCheck: Ghana Verify Card (Facematch)'
+      description: Validates national identity information and performs biometric face verification against the government’s biometric database.
+      operationId: govcheck-ghana-verify-card-facematch
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - personalNumber
+              - imageBase64
+              - callbackUrl
+              properties:
+                personalNumber:
+                  type: string
+                imageBase64:
+                  type: string
+                callbackUrl:
+                  type: string
+                metadata:
+                  type: string
+                  description: '{"key":"value"}'
+                  format: json
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"required\",\n            \"dataPath\": \"\",\n            \"schemaPath\": \"#/required\",\n            \"params\": {\n                \"missingProperty\": \"documentNumber\"\n            },\n            \"message\": \"should have required property 'documentNumber'\",\n            \"nodeID\": \"safety-85b9845fc5-fgznw-1\",\n            \"action\": \"govChecks.getpanamaTseFacematch\"\n        }\n    ]\n}"
+                VALIDATION ERRROR imageBase64:
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"required\",\n            \"dataPath\": \"\",\n            \"schemaPath\": \"#/required\",\n            \"params\": {\n                \"missingProperty\": \"selfie\"\n            },\n            \"message\": \"should have required property 'selfie'\",\n            \"nodeID\": \"safety-7f546fd8b8-crsr8-1\",\n            \"action\": \"govChecks.getPanamaTseFacematch\"\n        }\n    ]\n}"
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    name:
+                      type: string
+                      example: ValidationError
+                    message:
+                      type: string
+                      example: Parameters validation error!
+                    code:
+                      type: integer
+                      example: 422
+                      default: 0
+                    type:
+                      type: string
+                      example: VALIDATION_ERROR
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          keyword:
+                            type: string
+                            example: required
+                          dataPath:
+                            type: string
+                            example: ''
+                          schemaPath:
+                            type: string
+                            example: '#/required'
+                          params:
+                            type: object
+                            properties:
+                              missingProperty:
+                                type: string
+                                example: documentNumber
+                          message:
+                            type: string
+                            example: should have required property 'documentNumber'
+                          nodeID:
+                            type: string
+                            example: safety-85b9845fc5-fgznw-1
+                          action:
+                            type: string
+                            example: govChecks.getpanamaTseFacematch
+                - title: VALIDATION ERRROR imageBase64
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: ValidationError
+                    message:
+                      type: string
+                      example: Parameters validation error!
+                    code:
+                      type: integer
+                      example: 422
+                      default: 0
+                    type:
+                      type: string
+                      example: VALIDATION_ERROR
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          keyword:
+                            type: string
+                            example: required
+                          dataPath:
+                            type: string
+                            example: ''
+                          schemaPath:
+                            type: string
+                            example: '#/required'
+                          params:
+                            type: object
+                            properties:
+                              missingProperty:
+                                type: string
+                                example: selfie
+                          message:
+                            type: string
+                            example: should have required property 'selfie'
+                          nodeID:
+                            type: string
+                            example: safety-7f546fd8b8-crsr8-1
+                          action:
+                            type: string
+                            example: govChecks.getPanamaTseFacematch
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.prod.metamap.com/govchecks/v1/gh/verify-card-facematch \\\n     --header 'Content-Type: application/json' \\\n     --header 'accept: application/json' \\\n     --header 'authorization: Bearer token' \\\n     --data '\n{\n  \"personalNumber\": \"GH-000000000-0\",\n  \"imageBase64\": \"iVBORw0KGgoAAAANSUhEU...\",\n  \"callbackUrl\": \"https://yourdomain.com/webhook-listener\",\n  \"metadata\": \"{\"key\":\"value\"}\"\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/gh/verify-card:
+    post:
+      summary: 'GovCheck: Ghana Verify Card'
+      description: Validates national identity information by checking against Ghana’s National Identification Authority (NIA) database for the Ghana Card.
+      operationId: govcheck-ghana-verify-card
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - personalNumber
+              - callbackUrl
+              properties:
+                personalNumber:
+                  type: string
+                callbackUrl:
+                  type: string
+                metadata:
+                  type: string
+                  description: '{"key":"value"}'
+                  format: json
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"required\",\n            \"dataPath\": \"\",\n            \"schemaPath\": \"#/required\",\n            \"params\": {\n                \"missingProperty\": \"personalNumber\"\n            },\n            \"message\": \"should have required property 'personalNumber'\",\n            \"nodeID\": \"safety-7f5400d8b8-df9f8-1\",\n            \"action\": \"govChecks.getGhanaianVerifyCard\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: ValidationError
+                  message:
+                    type: string
+                    example: Parameters validation error!
+                  code:
+                    type: integer
+                    example: 422
+                    default: 0
+                  type:
+                    type: string
+                    example: VALIDATION_ERROR
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string
+                          example: required
+                        dataPath:
+                          type: string
+                          example: ''
+                        schemaPath:
+                          type: string
+                          example: '#/required'
+                        params:
+                          type: object
+                          properties:
+                            missingProperty:
+                              type: string
+                              example: personalNumber
+                        message:
+                          type: string
+                          example: should have required property 'personalNumber'
+                        nodeID:
+                          type: string
+                          example: safety-7f5400d8b8-df9f8-1
+                        action:
+                          type: string
+                          example: govChecks.getGhanaianVerifyCard
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.prod.metamap.com/govchecks/v1/gh/verify-card \\\n     --header 'Content-Type: application/json' \\\n     --header 'accept: application/json' \\\n     --header 'authorization: Bearer 1' \\\n     --data '\n{\n  \"personalNumber\": \"GH-00000000-0\",\n  \"callbackUrl\": \"https://yourdomain.com/webhook-listener\",\n  \"metadata\": \"{\"key\":\"value\"}\"\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/mx/pep:
+    post:
+      summary: 'GovChecks: Mexico PEP'
+      description: Check whether a user is a Politically Exposed Person
+      operationId: govcheck-mexico-pep
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - callbackUrl
+              - fullName
+              properties:
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+                fullName:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                User is Not a Politically Exposed Person:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"pep\": false,\n    \"country\": \"MX\",\n    \"fullName\": \"Jose Antonio Saavedra Hernandez\",\n    \"PEPdata\": null\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      pep:
+                        type: boolean
+                        example: false
+                        default: true
+                      country:
+                        type: string
+                        example: MX
+                      fullName:
+                        type: string
+                        example: Jose Antonio Saavedra Hernandez
+                      PEPdata: {}
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                User is a Politically Exposed Person:
+                  value: "{\n\"error\": {\n  \"type\":\"legacy.error\",\n  \"code\":\"mxPepError.matchFound\",\n  \"message\":\"The user was found to be a PEP\"\n  },\n  \"data\": {\n  \"pep\": true,\n  \"country\": \"MX\",\n  \"fullName\": \"Jose Antonio Saavedra Hernandez\",\n  \"PEPdata\": \n    [{\n      \"PEPfullName\": \"Jose Antonio Saavedra Hernandez\",\n      \"state\":\"Tamaulipas\",\n      \"institution\": \"Sistema para el Desarrollo Integral de la Familia del Municipio de Victoria.\",\n      \"position\": \"AUXILIAR DE PROGRAMA\",\n      \"period\":\"01/10/2020 - 31/12/2020\"\n    }\n    ]\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: legacy.error
+                      code:
+                        type: string
+                        example: mxPepError.matchFound
+                      message:
+                        type: string
+                        example: The user was found to be a PEP
+                  data:
+                    type: object
+                    properties:
+                      pep:
+                        type: boolean
+                        example: true
+                        default: true
+                      country:
+                        type: string
+                        example: MX
+                      fullName:
+                        type: string
+                        example: Jose Antonio Saavedra Hernandez
+                      PEPdata:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            PEPfullName:
+                              type: string
+                              example: Jose Antonio Saavedra Hernandez
+                            state:
+                              type: string
+                              example: Tamaulipas
+                            institution:
+                              type: string
+                              example: Sistema para el Desarrollo Integral de la Familia del Municipio de Victoria.
+                            position:
+                              type: string
+                              example: AUXILIAR DE PROGRAMA
+                            period:
+                              type: string
+                              example: 01/10/2020 - 31/12/2020
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Service is Unavailable:
+                  value: "{\n    \"error\": {\n            \"type\": \"systemError\",\n            \"code\": \"system.serviceUnavailable\",\n            \"message\": \"The PEP Service is unavailable\"\n        },\n    \"data\": null\n  }\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/govchecks/v1/mx/pep \\\n     --header 'Accept: application/json'\n     --data-raw '{\n     \t\t\"fullName\": \"JOHN JAY DOE\"\n        }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/mx/rfc:
+    post:
+      summary: 'GovChecks: Mexico RFC'
+      description: Validate CURP and RFC numbers to validate users are eligible to pay taxes
+      operationId: govcheck-mexico-rfc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - callbackUrl
+              - CURP
+              properties:
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+                CURP:
+                  type: string
+                  description: User's CURP or RFC number
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Registered taxpayer:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"curp\": \"AAAA000000HCHLRN00\",\n    \"registeredTaxPayer\": true\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      curp:
+                        type: string
+                        example: AAAA000000HCHLRN00
+                      registeredTaxPayer:
+                        type: boolean
+                        example: true
+                        default: true
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/govchecks/v1/mx/rfc \\\n     --header 'Accept: application/json' \\\n     --data-raw {\n     \"curp\": \"AAAA000000HCHLRN00\",\n     \"callbackUrl\": \"https://some.webhook.url\"\n     }\n     "
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/py/rcp:
+    post:
+      summary: 'GovCheck: Paraguay RCP'
+      description: Validates national identity information by checking against Paraguay’s RCP database for the Cédula de Identidad Civil.
+      operationId: govcheck-paraguay-rcp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - dateOfBirth
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                dateOfBirth:
+                  type: string
+                  description: DD/MM/YYYY
+                callbackUrl:
+                  type: string
+                metadata:
+                  type: string
+                  description: '{"key":"value"}'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.prod.metamap.com/govchecks/v1/py/rcp \\\n     --header 'Content-Type: application/json' \\\n     --header 'accept: application/json' \\\n     --header 'authorization: Bearer 1' \\\n     --data '\n{\n  \"documentNumber\": \"0000000\",\n  \"dateOfBirth\": \"31/01/1999\",\n  \"callbackUrl\": \"https://yourdomain.com/webhook-listener\",\n  \"metadata\": {\"key\":\"value\"}\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/br/cnpj-extended:
+    post:
+      summary: 'GovChecks: Brazil CNPJ Extended Validation'
+      description: Validate a business's National Registry of Legal Entities number
+      operationId: govchecks-brazil-cnpj-extended-validation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cnpj
+              - callbackURL
+              properties:
+                cnpj:
+                  type: string
+                callbackURL:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Valid and Active CNPJ:
+                  value: "{\n    \"error\": null,\n    \"data\": {\n      \"registrationNumber\": \"00000000000000\",\n      \"tipoEstabelecimento\": \"1\",\n      \"companyName\": \"METAMAP\",\n      \"legalName\": \"METAMAP\",\n      \"cadastralStatus\": {\n        \"registrationStatus\": \"2\",\n        \"statusDate\": \"2016-01-01\",\n        \"reason\": \"\"\n      },\n      \"legalNature\": {\n        \"legalCode\": \"2054\",\n        \"legalDescription\": \"Sociedade Anônima Fechada\"\n      },\n      \"registrationDate\": \"2016-01-01\",\n      \"cnaePrincipal\": {\n        \"cnaeCode\": \"4751201\",\n        \"cnaeDescription\": \"Comércio varejista especializado de equipamentos e suprimentos de informática\"\n      },\n      \"address\": {\n        \"street\": \"RUA\",\n        \"locality\": \"CARLOS GOMES\",\n        \"areaNumber\": \"1234\",\n        \"additionalAddress\": \"ANDAR 10A 10\",\n        \"postcode\": \"80013\",\n        \"localitySector\": \"CENTRO\",\n        \"federationUnit\": \"SP\",\n        \"country\": {\n          \"code\": \"105\",\n          \"description\": \"BRASIL\"\n        },\n        \"county\": {\n          \"administrativeCode\": \"6639\",\n          \"administrativeName\": \"LIMEIRA\"\n        }\n      },\n      \"municipalitiesJurisdiction\": {\n        \"code\": \"0811200\",\n        \"description\": \"LIMEIRA\"\n      },\n      \"phones\": [\n        {\n          \"phoneCode\": \"19\",\n          \"phoneNumber\": \"21138250\"\n        }\n      ],\n      \"email\": \"welcome@metamap.com\",\n      \"capitalSocial\": 77766517900,\n      \"companySize\": \"05\",\n      \"situacaoEspecial\": \"\",\n      \"dataSituacaoEspecial\": \"\",\n      \"informacoesAdicionais\": {\n        \"optanteSimples\": \"NÃO\",\n        \"optanteMei\": \"NÃO\",\n        \"listaPeriodosSimples\": []\n      },\n      \"shareholdersInfo\": [\n        {\n          \"shareholderType\": \"2\",\n          \"cpfNumber\": \"00000000000\",\n          \"shareholderName\": \"FILIP VICTOR\",\n          \"qualificacao\": \"10\",\n          \"assignationDate\": \"2022-07-06\",\n          \"country\": {\n            \"code\": \"105\",\n            \"description\": \"BRASIL\"\n          },\n          \"legalRepresentation\": {\n            \"representativeCpf\": \"00000000000\",\n            \"representativeName\": \"\",\n            \"qualificacao\": \"00\"\n          }\n        },\n        {\n          \"shareholderType\": \"2\",\n          \"cpfNumber\": \"00000000000\",\n          \"shareholderName\": \"MEGHNA MANN\", \n          \"qualificacao\": \"10\",\n          \"assignationDate\": \"2022-07-06\",\n          \"country\": {\n            \"code\": \"105\",\n            \"description\": \"BRASIL\"\n          },\n          \"legalRepresentation\": {\n            \"representativeCpf\": \"00000000000\",\n            \"representativeName\": \"\",\n            \"qualificacao\": \"00\"\n          }\n        }\n      ]\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      registrationNumber:
+                        type: string
+                        example: '00000000000000'
+                      tipoEstabelecimento:
+                        type: string
+                        example: '1'
+                      companyName:
+                        type: string
+                        example: METAMAP
+                      legalName:
+                        type: string
+                        example: METAMAP
+                      cadastralStatus:
+                        type: object
+                        properties:
+                          registrationStatus:
+                            type: string
+                            example: '2'
+                          statusDate:
+                            type: string
+                            example: '2016-01-01'
+                          reason:
+                            type: string
+                            example: ''
+                      legalNature:
+                        type: object
+                        properties:
+                          legalCode:
+                            type: string
+                            example: '2054'
+                          legalDescription:
+                            type: string
+                            example: Sociedade Anônima Fechada
+                      registrationDate:
+                        type: string
+                        example: '2016-01-01'
+                      cnaePrincipal:
+                        type: object
+                        properties:
+                          cnaeCode:
+                            type: string
+                            example: '4751201'
+                          cnaeDescription:
+                            type: string
+                            example: Comércio varejista especializado de equipamentos e suprimentos de informática
+                      address:
+                        type: object
+                        properties:
+                          street:
+                            type: string
+                            example: RUA
+                          locality:
+                            type: string
+                            example: CARLOS GOMES
+                          areaNumber:
+                            type: string
+                            example: '1234'
+                          additionalAddress:
+                            type: string
+                            example: ANDAR 10A 10
+                          postcode:
+                            type: string
+                            example: '80013'
+                          localitySector:
+                            type: string
+                            example: CENTRO
+                          federationUnit:
+                            type: string
+                            example: SP
+                          country:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                example: '105'
+                              description:
+                                type: string
+                                example: BRASIL
+                          county:
+                            type: object
+                            properties:
+                              administrativeCode:
+                                type: string
+                                example: '6639'
+                              administrativeName:
+                                type: string
+                                example: LIMEIRA
+                      municipalitiesJurisdiction:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            example: 0811200
+                          description:
+                            type: string
+                            example: LIMEIRA
+                      phones:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            phoneCode:
+                              type: string
+                              example: '19'
+                            phoneNumber:
+                              type: string
+                              example: '21138250'
+                      email:
+                        type: string
+                        example: welcome@metamap.com
+                      capitalSocial:
+                        type: integer
+                        example: 77766517900
+                        default: 0
+                      companySize:
+                        type: string
+                        example: '05'
+                      situacaoEspecial:
+                        type: string
+                        example: ''
+                      dataSituacaoEspecial:
+                        type: string
+                        example: ''
+                      informacoesAdicionais:
+                        type: object
+                        properties:
+                          optanteSimples:
+                            type: string
+                            example: NÃO
+                          optanteMei:
+                            type: string
+                            example: NÃO
+                          listaPeriodosSimples:
+                            type: array
+                            items:
+                              type: object
+                              properties: {}
+                      shareholdersInfo:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            shareholderType:
+                              type: string
+                              example: '2'
+                            cpfNumber:
+                              type: string
+                              example: '00000000000'
+                            shareholderName:
+                              type: string
+                              example: FILIP VICTOR
+                            qualificacao:
+                              type: string
+                              example: '10'
+                            assignationDate:
+                              type: string
+                              example: '2022-07-06'
+                            country:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  example: '105'
+                                description:
+                                  type: string
+                                  example: BRASIL
+                            legalRepresentation:
+                              type: object
+                              properties:
+                                representativeCpf:
+                                  type: string
+                                  example: '00000000000'
+                                representativeName:
+                                  type: string
+                                  example: ''
+                                qualificacao:
+                                  type: string
+                                  example: '00'
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Not found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"brazilianCnpjExtended.notFound\",\n    \"message\": \"No results were found in the Brazilian CNPJ database\"\n  }\n}"
+                Not valid parameters:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"brazilianCnpjExtended.notValidParams\",\n    \"message\": \"The data passed appears to be invalid\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: Not found
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: brazilianCnpjExtended.notFound
+                        message:
+                          type: string
+                          example: No results were found in the Brazilian CNPJ database
+                - title: Not valid parameters
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: brazilianCnpjExtended.notValidParams
+                        message:
+                          type: string
+                          example: The data passed appears to be invalid
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/br/cnpj-extended' \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer <access_token>' \\\n--data-raw '{\n    \"cnpj\": \"00000000000000\",\\\n    \"callbackUrl\":\"https://some.webhook.url\"\\\n    }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/br/cpf-light:
+    post:
+      summary: 'GovChecks: Brazil CPF-light'
+      description: Verify a user's CPF number and identity.
+      operationId: govchecks-brazil-cpf-light
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cpf
+              - callbackURL
+              properties:
+                cpf:
+                  type: string
+                  description: CPF number.
+                callbackURL:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Valid ID Example:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"brazilian-cpf-light-validation\",\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"<JOHN DOE>\",\n    \"dateOfBirth\": \"1900-01-01\",\n    \"cpf\": \"01234567890\",\n    \"taxStatus\": \"Regular\"\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                User Not Found:
+                  value: "{\n    \"status\": 200,\n    \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"brazilianCpfLight.noResults\",\n      \"message\": \"The user was not found in the CPF database\"\n    },\n    \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                oneOf:
+                - title: Valid ID Example
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: brazilian-cpf-light-validation
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                          example: <JOHN DOE>
+                        dateOfBirth:
+                          type: string
+                          example: '1900-01-01'
+                        cpf:
+                          type: string
+                          example: 01234567890
+                        taxStatus:
+                          type: string
+                          example: Regular
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+                - title: User Not Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: stepError
+                        code:
+                          type: string
+                          example: brazilianCpfLight.noResults
+                        message:
+                          type: string
+                          example: The user was not found in the CPF database
+                    data: {}
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Irregular Tax Status:
+                  value: "{\n    \"status\": 200,\n    \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"brazilianCpfLight.irregularTaxStatus\",\n      \"message\": \"The user's tax status is irregular\"\n    },\n    \"data\": {\n      \"fullName\": \"<JOHN DOE>\",\n      \"dateOfBirth\": \"1900-01-01\",\n      \"cpf\": \"01234567890\",\n      \"taxStatus\": \"Suspensa\"\n    },\n    \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                    default: 0
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: stepError
+                      code:
+                        type: string
+                        example: brazilianCpfLight.irregularTaxStatus
+                      message:
+                        type: string
+                        example: The user's tax status is irregular
+                  data:
+                    type: object
+                    properties:
+                      fullName:
+                        type: string
+                        example: <JOHN DOE>
+                      dateOfBirth:
+                        type: string
+                        example: '1900-01-01'
+                      cpf:
+                        type: string
+                        example: 01234567890
+                      taxStatus:
+                        type: string
+                        example: Suspensa
+                  timestamp:
+                    type: string
+                    example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/br/cpf-light' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer {{ACCESS_TOKEN}}' \\\n--data-raw '{\n    \"cpf\": \"01234567\",\\\n    \"callbackUrl\":\"<callback URL>\"\\\n    }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/br/cpf-validation:
+    post:
+      summary: 'GovChecks: Brazil CPF Validation'
+      description: Verify a user's CPF number and identity.
+      operationId: govchecks-brazil-cpf-validation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cpfNumber
+              - fullName
+              properties:
+                cpfNumber:
+                  type: string
+                fullName:
+                  type: string
+                dateOfBirth:
+                  type: string
+                  format: date
+                mothersName:
+                  type: string
+                fathersName:
+                  type: string
+                documentType:
+                  type: string
+                  description: '`nationalId` or `driving-license`'
+                documentNumber:
+                  type: string
+                  default: '1234567890'
+                callbackURL:
+                  type: string
+                gender:
+                  type: string
+                  description: '"m" for male, "f" for female. Returns `null` if there is no gender data.'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Valid ID Example:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"cpfNumberMatched\": true,\n    \"gender\": \"M\",\n    \"nationality\": \"Brazilian\",\n    \"taxStatus\": \"regular\",\n    \"fullNameSimilarity\": 1,\n    \"dateOfBirthMatched\": true,\n    \"documentType\": \"national-id\",\n    \"documentNumberMatched\": true,\n    \"mothersNameSimilarity\": 1,\n    \"fathersNameSimilarity\": 1\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      cpfNumberMatched:
+                        type: boolean
+                        example: true
+                        default: true
+                      gender:
+                        type: string
+                        example: M
+                      nationality:
+                        type: string
+                        example: Brazilian
+                      taxStatus:
+                        type: string
+                        example: regular
+                      fullNameSimilarity:
+                        type: integer
+                        example: 1
+                        default: 0
+                      dateOfBirthMatched:
+                        type: boolean
+                        example: true
+                        default: true
+                      documentType:
+                        type: string
+                        example: national-id
+                      documentNumberMatched:
+                        type: boolean
+                        example: true
+                        default: true
+                      mothersNameSimilarity:
+                        type: integer
+                        example: 1
+                        default: 0
+                      fathersNameSimilarity:
+                        type: integer
+                        example: 1
+                        default: 0
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Data Mismatch Error:
+                  value: "{\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"error.dataMismatch\",\n    \"message\": \"One or more fields do no match the government database\"\n  },\n  \"data\": {\n    \"cpfNumber\": \"123.456.789-01\",\n    \"taxStatus\": \"regular\",\n    \"dateOfBirth\": \"1901-01-02\",\n    \"fullName\": \"JOHN JAMES DOE\",\n    \"documentType\": null,\n    \"documentNumber\": null\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: govCheckError
+                      code:
+                        type: string
+                        example: error.dataMismatch
+                      message:
+                        type: string
+                        example: One or more fields do no match the government database
+                  data:
+                    type: object
+                    properties:
+                      cpfNumber:
+                        type: string
+                        example: 123.456.789-01
+                      taxStatus:
+                        type: string
+                        example: regular
+                      dateOfBirth:
+                        type: string
+                        example: '1901-01-02'
+                      fullName:
+                        type: string
+                        example: JOHN JAMES DOE
+                      documentType: {}
+                      documentNumber: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/br/cpf-validation' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer Token \\\n--data-raw '{\n  \"cpfNumber\": \"012.345.678-90\",\n  \"fullName\": \"JOHN DOE\",\n  \"dateOfBirth\": \"1900-01-01\",\n  \"mothersName\": \"JANE DOE\",\n  \"fathersName\": \"JAMES DOE\",\n  \"documentType\": \"national-id\",\n  \"documentNumber\": \"0123456789\",\n  \"callbackUrl\": \"https://webhook.site/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/cl/registro-civil:
+    post:
+      summary: 'GovChecks: Chile Registro Civil'
+      description: Verify that a user's RUN number against the Chilean Civil Registry database
+      operationId: govchecks-chile-registro-civil
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - runNumber
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                runNumber:
+                  type: string
+                documentType:
+                  type: string
+                nationality:
+                  type: string
+                  description: 3-letter country code as per [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3).
+                  default: CHL
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Document Number is Valid:
+                  value: "{\n  \"data\": {\n    \"documentNumber\": \"12.142.658-7\"\n  },\n  \"error\": null\n}"
+                No Document Found:
+                  value: "{\n    \"error\": {\n\t   \"code\": \"registroCivilError.notFound\",\n\t   \"message\":\"No results were found in the Registro Civil database\"\n\t},\n    \"data\": null,\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      documentNumber:
+                        type: string
+                        example: 12.142.658-7
+                  error: {}
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Chile Registro Civil is Unavailable:
+                  value: "{\n    \"error\": {\n            \"type\": \"systemError\",\n            \"code\": \"system.serviceUnavailable\",\n            \"message\": \"The Registro Civil service is unavailable\"\n        },\n    \"data\": null\n  }\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/cl/registro-civil \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n  \"runNumber\": \"{{runNumber}}\",\n  \"documentType:\": \"national-id\",\n  \"nationality\": \"{{nationality}}\",\n  \"documentNumber\": \"{{documentNumber}}\",\n  \"callbackUrl\": \"{{webhookUrl}}\"\n}'"
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/co/govcheck:
+    post:
+      summary: 'GovChecks: Colombia Govcheck'
+      description: Verify a user's ID card against the Colombian Civil Registry
+      operationId: govchecks-colombia-govcheck
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              properties:
+                documentNumber:
+                  type: string
+                  description: Document number for a National ID
+                callbackUrl:
+                  type: string
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Document Verified:
+                  value: ''
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Bad Request:
+                  value: ''
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.prod.metamap.com/govchecks/v1/co/govcheck \\\n     --header 'Accept: application/json'\n     --data-raw '{\n         \"documentNumber\": \"1234567890\",\n         \"callbackUrl\":\"{{callbackUrl}}\"\n       }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/co/migraciones:
+    post:
+      summary: 'GovChecks: Colombia Migration Institute'
+      description: Verify that a user has a valid immigration status in Colombia
+      operationId: govchecks-colombia-migration-institute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - dateOfIssue
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                dateOfIssue:
+                  type: string
+                  format: date
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                User Found:
+                  value: "{\n  \"status\": 200,\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"JOHN DOE\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"nationality\": \"211 CHILENA\",\n    \"status\": \"VIGENTE\",\n    \"dateOfExpiry\": \"2024-01-01\",\n    \"dateOfIssue\": \"2021-01-01\",\n    \"certificateCode\": \"2202181425227532BAA6\"\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                User Not Found:
+                  value: "{\n  \"status\": 200,\n    \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"colombianMigrationInstitute.noResults\",\n      \"message\": \"The user was not found in the foreign immigration database\"\n    },\n  \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                oneOf:
+                - title: User Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                          example: JOHN DOE
+                        dateOfBirth:
+                          type: string
+                          example: '1990-01-01'
+                        nationality:
+                          type: string
+                          example: 211 CHILENA
+                        status:
+                          type: string
+                          example: VIGENTE
+                        dateOfExpiry:
+                          type: string
+                          example: '2024-01-01'
+                        dateOfIssue:
+                          type: string
+                          example: '2021-01-01'
+                        certificateCode:
+                          type: string
+                          example: 2202181425227532BAA6
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+                - title: User Not Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: stepError
+                        code:
+                          type: string
+                          example: colombianMigrationInstitute.noResults
+                        message:
+                          type: string
+                          example: The user was not found in the foreign immigration database
+                    data: {}
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/co/migraciones \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n  \"documentNumber\": \"00000000\", \n  \"dateOfIssue\": \"2022-01-01\", \n  \"callbackUrl\":\"https://webhook.url\"\n  }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/co/ppt:
+    post:
+      summary: 'GovChecks: Colombia PPT'
+      description: Verify the validity of the Colombian PPT (Permiso por protección temporal =  Temporary Protection Permit)
+      operationId: govchecks-colombia-ppt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - rumv
+              - dni
+              - dateOfBirth
+              - callbackUrl
+              properties:
+                rumv:
+                  type: string
+                  description: User's RUMV number
+                dni:
+                  type: string
+                  description: User's DNI number
+                dateOfBirth:
+                  type: string
+                  description: Date of Birth format is DD-MM-YYYY
+                callbackUrl:
+                  type: string
+                  description: Callback URL to receive request results.
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Document Verified:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"JHONNY ALBO TOS CRUCS\",\n    \"phone\": \"6715010 - 3232010811\",\n    \"email\": \"jhon@gmail.com\",\n    \"documentType\": \"DOCUMENTO EXTRANJERO\",\n    \"dni\": \"19723043\",\n    \"status\": \"IMPRESO\"\n  }\n}"
+                Result Not Found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"colombianPpt.notFound\",\n    \"message\": \"No results were found in the Colombian PPT database\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: Document Verified
+                  type: object
+                  properties:
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                          example: JHONNY ALBO TOS CRUCS
+                        phone:
+                          type: string
+                          example: 6715010 - 3232010811
+                        email:
+                          type: string
+                          example: jhon@gmail.com
+                        documentType:
+                          type: string
+                          example: DOCUMENTO EXTRANJERO
+                        dni:
+                          type: string
+                          example: '19723043'
+                        status:
+                          type: string
+                          example: IMPRESO
+                - title: Result Not Found
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: colombianPpt.notFound
+                        message:
+                          type: string
+                          example: No results were found in the Colombian PPT database
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Parameters validation error:
+                  value: "{\n  \"name\": \"ValidationError\",\n  \"message\": \"Parameters validation error!\",\n  \"code\": 422,\n  \"type\": \"VALIDATION_ERROR\",\n  \"data\": [\n    {\n      \"keyword\": \"required\",\n      \"dataPath\": \"\",\n      \"schemaPath\": \"#/required\",\n      \"params\": {\n        \"missingProperty\": \"dni\"\n      },\n      \"message\": \"should have required property 'dni'\",\n      \"nodeID\": \"mol-safety-548d5876c6-tzq5k-27\",\n      \"action\": \"govChecks.getColombianPpt\"\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: ValidationError
+                  message:
+                    type: string
+                    example: Parameters validation error!
+                  code:
+                    type: integer
+                    example: 422
+                    default: 0
+                  type:
+                    type: string
+                    example: VALIDATION_ERROR
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string
+                          example: required
+                        dataPath:
+                          type: string
+                          example: ''
+                        schemaPath:
+                          type: string
+                          example: '#/required'
+                        params:
+                          type: object
+                          properties:
+                            missingProperty:
+                              type: string
+                              example: dni
+                        message:
+                          type: string
+                          example: should have required property 'dni'
+                        nodeID:
+                          type: string
+                          example: mol-safety-548d5876c6-tzq5k-27
+                        action:
+                          type: string
+                          example: govChecks.getColombianPpt
+      deprecated: false
+      tags:
+      - GovChecks
+  /govchecks/v1/co/rues:
+    post:
+      summary: 'GovChecks: Colombia RUES'
+      description: Check a business's national tax ID against Colombian Single Business and Social Registry
+      operationId: govchecks-colombia-rues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - nit
+              - callbackUrl
+              properties:
+                nit:
+                  type: string
+                  description: Company's national tax ID number
+                callbackUrl:
+                  type: string
+                  description: Callback URL to receive request results.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Records Found, Company is Active:
+                  value: "{\n  \"status\": 200,\n  \"error\": null,\n  \"data\": {\n    \"companyName\": \"ACME CORPORATION\",\n    \"nit\": \"000000000\",\n    \"shortName\": null,\n    \"municipality\": \"ENVIGADO / ANTIOQUIA\",\n    \"category\": \"SOCIEDAD ó PERSONA JURIDICA PRINCIPAL ó ESAL\",\n    \"status\": \"ACTIVA\",\n    \"enrollmentNumber\": \"00000\",\n    \"lastRenewal\": \"2021\",\n    \"renewalDate\": \"20210101\",\n    \"enrollmentDate\": \"19900101\",\n    \"expirationDate\": \"20810101\",\n    \"enrollmentStatus\": \"ACTIVA\",\n    \"annullmentReason\": \"NORMAL\",\n    \"companyType\": \"SOCIEDAD COMERCIAL\",\n    \"organizationType\": \"SOCIEDAD ANONIMA\",\n    \"enrollmentCategory\": \"SOCIEDAD ó PERSONA JURIDICA PRINCIPAL ó ESAL\",\n    \"lastUpdate\": \"20210707\",\n    \"economicActivities\": [\n      \"1410 Confección de prendas de vestir, excepto prendas de piel\",\n      \"6810 Actividades inmobiliarias realizadas con bienes propios o arrendados\"    ],\n    \"mainLegalRepresentative\": \"0000000 - DOE JOHN\",\n    \"otherLegalRepresentatives\": [\"00000000 - DOE JANE\"],\n    \"entities\": [{\n      \"entityName\":\"ACME CORPORATION\",\"commerceChamber\":\"BARRANQUILLA\",\"enrollmentNumber\":\"000000\",\"status\":\"CANCELADA\",\"category\":\"Agencia\",\"enrollmentDate\":\"20010328\",\"renewalDate\":\"\t20100223\",\"lastRenewed\":\"\t2010\"}]\n},\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                No Entry Found:
+                  value: "{\n  \"status\": 200,\n  \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"colombianRues.noResults\",\n      \"message\": \"The user was not found in the RUES database\"\n    },\n  \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                Records Found, Company is Inactive:
+                  value: "{\n  \"status\": 200,\n  \"error\": null,\n  \"data\": {\n    \"companyName\": \"ACME CORPORATION\",\n    \"nit\": \"000000000\",\n    \"shortName\": null,\n    \"municipality\": \"ENVIGADO / ANTIOQUIA\",\n    \"category\": \"SOCIEDAD ó PERSONA JURIDICA PRINCIPAL ó ESAL\",\n    \"status\": \"INACTIVA\",\n    \"enrollmentNumber\": \"00000\",\n    \"lastRenewal\": \"2021\",\n    \"renewalDate\": \"20210101\",\n    \"enrollmentDate\": \"19900101\",\n    \"expirationDate\": \"20810101\",\n    \"enrollmentStatus\": \"INACTIVA\",\n    \"annullmentReason\": \"NORMAL\",\n    \"companyType\": \"SOCIEDAD COMERCIAL\",\n    \"organizationType\": \"SOCIEDAD ANONIMA\",\n    \"enrollmentCategory\": \"SOCIEDAD ó PERSONA JURIDICA PRINCIPAL ó ESAL\",\n    \"lastUpdate\": \"20210707\",\n    \"economicActivities\": [\n      \"1410 Confección de prendas de vestir, excepto prendas de piel\",\n      \"6810 Actividades inmobiliarias realizadas con bienes propios o arrendados\"    ],\n    \"mainLegalRepresentative\": \"0000000 - DOE JOHN\",\n    \"otherLegalRepresentatives\": [\"00000000 - DOE JANE\"],\n    \"entities\": [{\n      \"entityName\":\"ACME CORPORATION\",\"commerceChamber\":\"BARRANQUILLA\",\"enrollmentNumber\":\"000000\",\"status\":\"CANCELADA\",\"category\":\"Agencia\",\"enrollmentDate\":\"20010328\",\"renewalDate\":\"\t20100223\",\"lastRenewed\":\"\t2010\"}]\n},\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                    default: 0
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: stepError
+                      code:
+                        type: string
+                        example: colombianRues.noResults
+                      message:
+                        type: string
+                        example: The user was not found in the RUES database
+                  data: {}
+                  timestamp:
+                    type: string
+                    example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/co/rues' \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n  \"nit\":\"000000000\",\n  \"callbackUrl\":\"https://some.webhook.url\"}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/co/unified-criminal-search:
+    post:
+      summary: 'GovChecks: Colombia Unified Legal Search'
+      description: Check a user's full name against Colombian police records.
+      operationId: govchecks-colombia-unified-legal-search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - fullName
+              - callbackUrl
+              properties:
+                fullName:
+                  type: string
+                  description: User's full legal name
+                callbackUrl:
+                  type: string
+                  description: Callback URL to receive request results.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                No Records Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"colombian-unified-criminal-search\",\n  \"error\": null,\n  \"data\": {\n    \"results\": null\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                Too Many Results:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"colombian-unified-criminal-search\",\n  \"error\": {\n    \"type\": \"stepError\",\n    \"code\": \"unifiedCriminalSearch.manyResults\",\n    \"message\": \"There are too many results associated to the name obtained / provided\"\n  },\n  \"data\": {\n    \"results\": null\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                Active Legal Case Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"colombian-unified-criminal-search\",\n  \"error\": {\n    \"type\": \"stepError\",\n    \"code\": \"unifiedCriminalSearch.activeProcesses\",\n    \"message\": \"Active legal processes found\"\n  },\n  \"data\": {\n    \"results\": [\n      {\n        \"idProceso\": 00000000,\n        \"llaveProceso\": \"00000000000000000000000\",\n        \"fechaProceso\": \"2020-01-14T00:00:00\",\n        \"fechaUltimaActuacion\": \"2020-03-11T00:00:00\",\n        \"despacho\": \"JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ \",\n        \"departamento\": \"BOGOTÁ\",\n        \"sujetosProcesales\": \"Demandante: PLANTIFF | Demandado: JANE DOE \"\n      },\n      {\n        \"idProceso\": 00000000,\n        \"llaveProceso\": \"00000000000000000000000\",\n        \"fechaProceso\": \"2021-06-28T00:00:00\",\n        \"fechaUltimaActuacion\": \"2021-09-10T00:00:00\",\n        \"despacho\": \"JUZGADO 055 CIVIL MUNICIPAL DE BOGOTÁ \",\n        \"departamento\": \"BOGOTÁ\",\n        \"sujetosProcesales\": \"Demandante: PLAINTIFF | Demandado: JANE DOE \"\n      }\n    ]\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                oneOf:
+                - title: No Records Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: colombian-unified-criminal-search
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        results: {}
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+                - title: Too Many Results
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: colombian-unified-criminal-search
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: stepError
+                        code:
+                          type: string
+                          example: unifiedCriminalSearch.manyResults
+                        message:
+                          type: string
+                          example: There are too many results associated to the name obtained / provided
+                    data:
+                      type: object
+                      properties:
+                        results: {}
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \n--location \n--request POST 'https://api.getmati.com/govchecks/v1/co/unified-criminal-search \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n  \"fullName\": \"JOHN DOE\",\n  \"callbackUrl\" : \"https://some.webhook.url\"\n  }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/cr/tse:
+    post:
+      summary: 'GovChecks: Costa Rica TSE'
+      description: Verify a user's DNI against the Costa Rican TSE database
+      operationId: govchecks-costa-rica-tse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackURL
+              properties:
+                documentNumber:
+                  type: string
+                  description: The document number of a National ID
+                callbackURL:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Document Validated:
+                  value: "{\n\t\"error\":null,\n\t\"data\":\n\t{\n  \t\"documentNumber\": \"123456789\",\n  \t\"firstName\" : \"ENRIQUE\",\n   \t\"lastName\" : \"BLANCO\",\n   \t\"secondLastName\" : \"MIRANDA\",\n   \t\"dateOfBirth\" : \"1990-10-01\",\n   \t\"nationality\" : \"COSTARRICENSE\",\n    \"deceased\" :false\n\t}\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      documentNumber:
+                        type: string
+                        example: '123456789'
+                      firstName:
+                        type: string
+                        example: ENRIQUE
+                      lastName:
+                        type: string
+                        example: BLANCO
+                      secondLastName:
+                        type: string
+                        example: MIRANDA
+                      dateOfBirth:
+                        type: string
+                        example: '1990-10-01'
+                      nationality:
+                        type: string
+                        example: COSTARRICENSE
+                      deceased:
+                        type: boolean
+                        example: false
+                        default: true
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Document Issuee is Deceased:
+                  value: "{\n\"error\":{\n\t   \"code\": \"TSEError.deceased\",\n\t   \"message\":\"Government records indicate the user is deceased\"\n\t},\n\"data\":\n\t{\n  \t\"documentNumber\": \"123456789\",\n  \t\"firstName\" : \"ENRIQUE\",\n   \t\"lastName\" : \"BLANCO\",\n   \t\"secondLastName\" : \"MIRANDA\",\n   \t\"dateOfBirth\" : \"1990-10-01\",\n   \t\"nationality\" : \"COSTARRICENSE\",\n    \"deceased\" :true\n\t}\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: TSEError.deceased
+                      message:
+                        type: string
+                        example: Government records indicate the user is deceased
+                  data:
+                    type: object
+                    properties:
+                      documentNumber:
+                        type: string
+                        example: '123456789'
+                      firstName:
+                        type: string
+                        example: ENRIQUE
+                      lastName:
+                        type: string
+                        example: BLANCO
+                      secondLastName:
+                        type: string
+                        example: MIRANDA
+                      dateOfBirth:
+                        type: string
+                        example: '1990-10-01'
+                      nationality:
+                        type: string
+                        example: COSTARRICENSE
+                      deceased:
+                        type: boolean
+                        example: true
+                        default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Invalid Document Number:
+                  value: "{\n    \"error\": {\n\t   \"code\": \"TSEError.invalidDocumentNumber\",\n\t   \"message\":\"The document number appears to be invalid\"\n\t},\n    \"data\": null,\n  }\n}"
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Document Not Found:
+                  value: "{\n    \"error\": {\n\t   \"code\": \"TSEError.notFound\",\n\t   \"message\":\"No results were found in the TSE database\"\n\t},\n    \"data\": null,\n  }\n}"
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Service is Unavailable:
+                  value: "{\n    \"error\": {\n            \"type\": \"systemError\",\n            \"code\": \"system.serviceUnavailable\",\n            \"message\": \"The TSE service is unavailable\"\n        },\n    \"data\": null\n  }\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/govchecks/v1/cr/tse \\\n     --header 'Accept: application/json'\n     --data-raw '{\n         \"documentNumber\": \"1234567890\",\n         \"callbackUrl\": \"{{callback_URL}}\"\n     }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/do/rnc:
+    post:
+      summary: 'GovChecks: Dominican RNC'
+      description: Validate an individual's business against the National Registry of Taxpayers
+      operationId: govchecks-dominican-rnc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackURL
+              properties:
+                documentNumber:
+                  type: string
+                  description: Document number from a Dominican national ID card
+                callbackURL:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                RNC found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"dominican-rnc-validation\",\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"<FULL NAME>\",\n    \"rnc\": \"01234567890\",\n    \"commercialName\": \"<COMMERCIAL NAME>\",\n    \"category\": \"0\",\n    \"paymentScheme\": \"2\",\n    \"status\": \"2\"\n    }\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                No Match Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"dominican-rnc-validation\",\n    \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"dominicanRnc.noResults\",\n      \"message\": \"The user was not found in the RNC database\"\n    },\n  \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                    default: 0
+                  id:
+                    type: string
+                    example: dominican-rnc-validation
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: stepError
+                      code:
+                        type: string
+                        example: dominicanRnc.noResults
+                      message:
+                        type: string
+                        example: The user was not found in the RNC database
+                  data: {}
+                  timestamp:
+                    type: string
+                    example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/do/rnc \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n    \"documentNumber\": \"01234567\",\\\n    \"callbackUrl\":\"<callback URL>\"\n    }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ke/brs:
+    post:
+      summary: 'GovChecks: Kenya BRS'
+      description: Validate a business against the Kenyan Business Registration Service
+      operationId: govchecks-kenya-brs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - registrationNumber
+              - callbackURL
+              properties:
+                registrationNumber:
+                  type: string
+                  description: Registration number of a Kenyan business
+                callbackURL:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                ID Found:
+                  value: "{\n    \"status\": 200,\n    \"id\": \"kenyan-brs-validation\",\n    \"error\": null,\n    \"data\": {\n\t\t\t\"registrationNumber\": \"CPR/2010/000000\",\n\t\t\t\"companyName\": \"ACME CORPORATION\",\n\t\t\t\"companyType\": \"CR13\",\n\t\t\t\"registrationDate\": \"2010-01-01\",\n\t\t\t\"registrationStatus\": true,\n\t\t\t\"postalAddress\": \"00000 - 00000\",\n\t\t\t\"physicalAddress\": \"L.R.NO.000/0000 ,  SOMETHING ROAD, L.R.NO.000/0000\",\n\t\t\t\"phoneNumber\": \"+254000000000\",\n\t\t\t\"kraPIN\": \"P000000000H\",\n\t\t\t\"shareCapital\": \"1000 ORDINARY\",\n\t\t\t\"shareNominalValue\": 100.0,\n\t\t\t\"shareHolders\": [\n\t\t\t\t\"name\": \"JANE DOE\",\n\t\t\t\t\"shares\": \"2 ORDINARY\",\n\t\t\t\t\"idType\": \"visitor\",\n\t\t\t\t\"idNumber\": \"000000000\"\n\t\t\t], \n\t\t\t[\n\t\t\t\t\"name\": \"JOHN DOE\",\n\t\t\t\t\"shares\": \"5 ORDINARY\",\n\t\t\t\t\"idType\": \"citizen\",\n\t\t\t\t\"idNumber\": \"0000001\"\n\t\t\t]\n\t\t\t\"verified\": \"Verified\",\n    }\n    \"timestamp\": \"2021-01-08T12:48:01.819Z\"\n}"
+                No Results Found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"kenyanBrs.notFound\",\n    \"message\": \"No results were found in the Kenyan Brs database\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  data: {}
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: govCheckError
+                      code:
+                        type: string
+                        example: kenyanBrs.notFound
+                      message:
+                        type: string
+                        example: No results were found in the Kenyan Brs database
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/ke/brs \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n    \"registrationNumber\": \"CPR/2010/000000\",\\\n    \"callbackUrl\":\"https://some.webhook.url\"\n    }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ke/iprs:
+    post:
+      summary: 'GovChecks: Kenya IPRS'
+      description: Validate an individual's national identity card against the Kenyan Integrated Population Registration System
+      operationId: govchecks-kenya-iprs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - firstName
+              - lastName
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                  description: Document number from a Kenyan national ID card
+                firstName:
+                  type: string
+                  description: First Name from a Kenyan National ID
+                lastName:
+                  type: string
+                  description: Last Name from a Kenyan National ID
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                ID Found:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"dateOfBirth\": \"22-09-1964\",\n    \"documentNumber\": \"0000000\",\n    \"givenNames\": \"JOHN\",\n    \"lastName\": \"DOE\",\n    \"fullName\": \"JOHN DOE\",\n    \"gender\": \"F\"\n  }\n}"
+                Service Unavailable:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"systemError\",\n    \"code\": \"kenyanIprs.serviceUnavailable\",\n    \"message\": \"The Kenyan Iprs service is unavailable\"\n  }\n}"
+                No Results Found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"kenyanIprs.notFound\",\n    \"message\": \"No results were found in the Kenyan Iprs database\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: ID Found
+                  type: object
+                  properties:
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        dateOfBirth:
+                          type: string
+                          example: 22-09-1964
+                        documentNumber:
+                          type: string
+                          example: '0000000'
+                        givenNames:
+                          type: string
+                          example: JOHN
+                        lastName:
+                          type: string
+                          example: DOE
+                        fullName:
+                          type: string
+                          example: JOHN DOE
+                        gender:
+                          type: string
+                          example: F
+                - title: Service Unavailable
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: systemError
+                        code:
+                          type: string
+                          example: kenyanIprs.serviceUnavailable
+                        message:
+                          type: string
+                          example: The Kenyan Iprs service is unavailable
+                - title: No Results Found
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: kenyanIprs.notFound
+                        message:
+                          type: string
+                          example: No results were found in the Kenyan Iprs database
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/ke/iprs \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n    \"documentNumber\": \"00000000\",\n    \"firstName\": \"Test1\",\n    \"lasName\": \"Test2\",\n    \"callbackUrl\":\"https://some.webhook.url\"\n    }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/mx/curp:
+    post:
+      summary: 'GovChecks: Mexico CURP'
+      description: Validate a user's CURP number and identity
+      operationId: govchecks-mexico-curp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - curp
+              - callbackUrl
+              properties:
+                curp:
+                  type: string
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Successful Validation Example:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"curp\": \"BAME921103HCHLRN00\",\n    \"birthDate\": \"1992-11-03\",\n    \"gender\": \"HOMBRE\",\n    \"fullName\": \"BLANCO MIRANDA ENRIQUE ARTURO\",\n    \"name\": \"ENRIQUE ARTURO\",\n    \"surname\": \"BLANCO\",\n    \"secondSurname\": \"MIRANDA\",\n    \"nationality\": \"Mexico\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      curp:
+                        type: string
+                        example: BAME921103HCHLRN00
+                      birthDate:
+                        type: string
+                        example: '1992-11-03'
+                      gender:
+                        type: string
+                        example: HOMBRE
+                      fullName:
+                        type: string
+                        example: BLANCO MIRANDA ENRIQUE ARTURO
+                      name:
+                        type: string
+                        example: ENRIQUE ARTURO
+                      surname:
+                        type: string
+                        example: BLANCO
+                      secondSurname:
+                        type: string
+                        example: MIRANDA
+                      nationality:
+                        type: string
+                        example: Mexico
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/govchecks/v1/mx/curp \\\n     --header 'Accept: application/json'\n     --data-raw '{\n       \"curp\": \"ABCD123456EFGHIJ78\",\n       \"callbackUrl\": \"{webhook URL}\"\n     }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/mx/ine:
+    post:
+      summary: 'GovChecks: Mexico INE'
+      description: Validate a user's national ID against Mexico's National Electoral Institute
+      operationId: govchecks-mexico-ine
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - ocrNumber
+              properties:
+                documentNumber:
+                  type: string
+                  description: The national ID card number
+                ocrNumber:
+                  type: string
+                  description: The national ID's OCR number
+                subType:
+                  type: string
+                  description: The national ID card's issue version (A, B, C, or D)
+                webhookUrl:
+                  type: string
+                  description: Webhook URL to receive asynchronous data.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                'Error: The data passed appears to be invalid':
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"mexicanIne.notValidParams\",\n    \"message\": \"The data passed appears to be invalid\"\n  }\n}"
+                Result:
+                  value: "{\n        \"status\": 200,\n        \"id\": \"mexican-ine-validation\",\n        \"error\": null,\n        \"data\": {\n            \"documentNumber\": \"179297127\",\n            \"cde\": \"BLMREN92110308H400\",\n            \"ne\": \"3\",\n            \"ocrNumber\": \"4526087814717\",\n            \"registrationYear\": \"2010\",\n            \"emissionYear\": \"2018\"\n        }\n}"
+              schema:
+                oneOf:
+                - title: 'Error: The data passed appears to be invalid'
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: mexicanIne.notValidParams
+                        message:
+                          type: string
+                          example: The data passed appears to be invalid
+                - type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: mexican-ine-validation
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        documentNumber:
+                          type: string
+                          example: '179297127'
+                        cde:
+                          type: string
+                          example: BLMREN92110308H400
+                        ne:
+                          type: string
+                          example: '3'
+                        ocrNumber:
+                          type: string
+                          example: '4526087814717'
+                        registrationYear:
+                          type: string
+                          example: '2010'
+                        emissionYear:
+                          type: string
+                          example: '2018'
+      deprecated: false
+      tags:
+      - GovChecks
+  /govchecks/v1/mx/rfc-status:
+    post:
+      summary: 'GovChecks: Mexico RFC Status'
+      description: Validate CURP and RFC numbers to obtain tax data from users and companies
+      operationId: govchecks-mexico-rfc-status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - callbackUrl
+              - rfc
+              properties:
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+                rfc:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Company, 2 Certificates Found - All OK:
+                  value: "{\n  \"status\": 200,\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"COMPANY NAME COMMERCIAL NAME\",\n    \"rfc\": \"AAA000000AA0\",\n    \"legalRepresentativeRfc\": \"AAAA000000A00\",\n    \"legalRepresentativeCurp\": \"AAAA000000AAAAAA00\",\n    \"certificates\": {\n      \"1\": {\n        \"serialNumber\": \"0000000000000000000\",\n        \"status\": \"Activo\",\n        \"type\": \"SELLO\",\n        \"startDate\": \"2022-02-17 18:31:26\",\n        \"endDate\": \"2026-02-17 18:31:26\",\n        \"base64Certificate\": \"{{BASE_64_STRING}}\",\n        \"certificateData\": {\n          \"issuer\": {\n            \"issuerName\": \"SERVICIO DE ADMINISTRACION TRIBUTARIA\",\n            \"type\": \"AUTORIDAD CERTIFICADORA\",\n            \"authorityName\": \"SAT-IES Authority\",\n            \"emailAddress\": \"contacto.tecnico@sat.gob.mx\",\n            \"street\": \"STREET NAME\",\n            \"zipCode\": \"00000\",\n            \"country\": \"MX\",\n            \"state\": \"CIUDAD DE MEXICO\",\n            \"municipality\": \"CUAUHTEMOC\",\n            \"responsible\": \"ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE\",\n            \"rfc\": \"SAT970701NN3\"\n          },\n          \"issueDate\": \"Feb 17 18:31:26 2022 GMT\",\n          \"expiryDate\": \"Feb 17 18:31:26 2026 GMT\",\n          \"issuedTo\": {\n            \"companyName\": \"COMPANY NAME COMMERCIAL NAME\",\n            \"commercialName\": \"COMMERCIAL NAME\",\n            \"otherName\": \"COMPANY NAME COMMERCIAL NAME\",\n            \"companyRfc\": \"AAA000000AA0\",\n            \"legalRepresentativeRfc\": \"AAAA000000A00\",\n            \"legalRepresentativeCurp\": \"AAAA000000AAAAAA00\"\n          }\n        }\n      },\n      \"2\": {\n        \"serialNumber\": \"0000000000000000000\",\n        \"status\": \"Activo\",\n        \"type\": \"SELLO\",\n        \"startDate\": \"2022-02-17 18:31:26\",\n        \"endDate\": \"2026-02-17 18:31:26\",\n        \"base64Certificate\": \"{{BASE_64_STRING}}\",\n        \"certificateData\": {\n          \"issuer\": {\n            \"issuerName\": \"SERVICIO DE ADMINISTRACION TRIBUTARIA\",\n            \"type\": \"AUTORIDAD CERTIFICADORA\",\n            \"authorityName\": \"SAT-IES Authority\",\n            \"emailAddress\": \"contacto.tecnico@sat.gob.mx\",\n            \"street\": \"STREET NAME\",\n            \"zipCode\": \"06300\",\n            \"country\": \"MX\",\n            \"state\": \"CIUDAD DE MEXICO\",\n            \"municipality\": \"CUAUHTEMOC\",\n            \"responsible\": \"ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE\",\n            \"rfc\": \"AAA000000AA0\"\n          },\n          \"issueDate\": \"Feb 17 18:31:26 2022 GMT\",\n          \"expiryDate\": \"Feb 17 18:31:26 2026 GMT\",\n          \"issuedTo\": {\n            \"companyName\": \"COMPANY NAME COMMERCIAL NAME\",\n            \"commercialName\": \"COMMERCIAL NAME\",\n            \"otherName\": \"COMPANY NAME COMMERCIAL NAME\",\n            \"companyRfc\": \"AAA000000AA0\",\n            \"legalRepresentativeRfc\": \"AAAA000000A00\",\n            \"legalRepresentativeCurp\": \"AAAA000000AAAAAA00\"\n          }\n        }\n      }\n    },\n    \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n  }\n}"
+                Individual, 1 Certificate Found - All OK:
+                  value: "{\n  \"status\": 200,\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"JOHN DOE\",\n    \"rfc\": \"AAAA000000000\",\n    \"legalRepresentativeRfc\": \"AAAA000000000\",\n    \"legalRepresentativeCurp\": \"AAAA000000AAAAAA00\",\n    \"certificates\": {\n      \"1\": {\n        \"serialNumber\": \"0000000000000000000\",\n        \"status\": \"Activo\",\n        \"type\": \"SELLO\",\n        \"startDate\": \"2022-02-17 18:31:26\",\n        \"endDate\": \"2026-02-17 18:31:26\",\n        \"base64Certificate\": \"{{BASE_64_STRING}}\",\n        \"certificateData\": {\n          \"issuer\": {\n            \"issuerName\": \"SERVICIO DE ADMINISTRACION TRIBUTARIA\",\n            \"type\": \"AUTORIDAD CERTIFICADORA\",\n            \"authorityName\": \"SAT-IES Authority\",\n            \"emailAddress\": \"contacto.tecnico@sat.gob.mx\",\n            \"street\": \"STREET ADDRESS\",\n            \"zipCode\": \"00000\",\n            \"country\": \"MX\",\n            \"state\": \"CIUDAD DE MEXICO\",\n            \"municipality\": \"CUAUHTEMOC\",\n            \"responsible\": \"ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE\",\n            \"rfc\": \"SAT970701NN3\"\n          },\n          \"issueDate\": \"Feb 17 18:31:26 2022 GMT\",\n          \"expiryDate\": \"Feb 17 18:31:26 2026 GMT\",\n          \"issuedTo\": {\n            \"companyName\": \"JOHN DOE\",\n            \"name\": \"JOHN DOE\",\n            \"organization\": \"JOHN DOE\",\n            \"rfc\": \"AAAA000000000\",\n            \"legalRepresentativeRfc\": null,\n            \"legalRepresentativeCurp\": \"AAAA000000AAAAAA00\"\n          }\n        }\n      }\n    },\n    \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n  }\n}"
+                No Entries Found:
+                  value: "{\n  \"status\": 200,\n  \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"mexicanRfcStatus.noResults\",\n      \"message\": \"The user was not found in the RFC database\"\n    },\n  \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                Company, 3 Certificate Found - Inactive:
+                  value: "{\n  \"status\": 200,\n  \"error\": {\n      \"type\": \"stepError\",\n      \"code\": \"mexicanRfcStatus.inactive\",\n      \"message\": \"The RFC provided does not have any active FIEL\"\n    },\n  \"data\": {\n    \"fullName\": \"COMPANY NAME COMMERCIAL NAME\",\n    \"rfc\": \"AAA000000AA0\",\n    \"certificates\":{\n      \"1\":{\n        \"serialNumber\":\"0000000000000000000\",\n        \"status\":\"Activo\",\n        \"type\":\"SELLO\",\n        \"startDate\":\"2022-02-17 18:31:26\",\n        \"endDate\":\"2026-02-17 18:31:26\",\n        \"base64Certificate\":\"{{BASE_64_STRING}}\"\n      },\n      \"2\":{\n        \"serialNumber\":\"0000000000000000000\",\n        \"status\":\"Revocado\",\n        \"type\":\"SELLO\",\n        \"startDate\":\"\t2022-02-17 18:31:26\",\n        \"endDate\":\"2026-02-17 18:31:26\",\n        \"base64Certificate\":\"{{BASE_64_STRING}}\"\n      },\n      \"3\":{\n        \"serialNumber\":\"0000000000000000000\",\n        \"status\":\"Revocado\",\n        \"type\":\"FIEL\",\n        \"startDate\":\"\t2022-02-17 18:31:26\",\n        \"endDate\":\"2026-02-17 18:31:26\",\n        \"base64Certificate\":\"{{BASE_64_STRING}}\"\n      }\n    }\n  },\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                oneOf:
+                - title: Company, 2 Certificates Found - All OK
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                          example: COMPANY NAME COMMERCIAL NAME
+                        rfc:
+                          type: string
+                          example: AAA000000AA0
+                        legalRepresentativeRfc:
+                          type: string
+                          example: AAAA000000A00
+                        legalRepresentativeCurp:
+                          type: string
+                          example: AAAA000000AAAAAA00
+                        certificates:
+                          type: object
+                          properties:
+                            '1':
+                              type: object
+                              properties:
+                                serialNumber:
+                                  type: string
+                                  example: '0000000000000000000'
+                                status:
+                                  type: string
+                                  example: Activo
+                                type:
+                                  type: string
+                                  example: SELLO
+                                startDate:
+                                  type: string
+                                  example: '2022-02-17 18:31:26'
+                                endDate:
+                                  type: string
+                                  example: '2026-02-17 18:31:26'
+                                base64Certificate:
+                                  type: string
+                                  example: '{{BASE_64_STRING}}'
+                                certificateData:
+                                  type: object
+                                  properties:
+                                    issuer:
+                                      type: object
+                                      properties:
+                                        issuerName:
+                                          type: string
+                                          example: SERVICIO DE ADMINISTRACION TRIBUTARIA
+                                        type:
+                                          type: string
+                                          example: AUTORIDAD CERTIFICADORA
+                                        authorityName:
+                                          type: string
+                                          example: SAT-IES Authority
+                                        emailAddress:
+                                          type: string
+                                          example: contacto.tecnico@sat.gob.mx
+                                        street:
+                                          type: string
+                                          example: STREET NAME
+                                        zipCode:
+                                          type: string
+                                          example: '00000'
+                                        country:
+                                          type: string
+                                          example: MX
+                                        state:
+                                          type: string
+                                          example: CIUDAD DE MEXICO
+                                        municipality:
+                                          type: string
+                                          example: CUAUHTEMOC
+                                        responsible:
+                                          type: string
+                                          example: ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE
+                                        rfc:
+                                          type: string
+                                          example: SAT970701NN3
+                                    issueDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2022 GMT
+                                    expiryDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2026 GMT
+                                    issuedTo:
+                                      type: object
+                                      properties:
+                                        companyName:
+                                          type: string
+                                          example: COMPANY NAME COMMERCIAL NAME
+                                        commercialName:
+                                          type: string
+                                          example: COMMERCIAL NAME
+                                        otherName:
+                                          type: string
+                                          example: COMPANY NAME COMMERCIAL NAME
+                                        companyRfc:
+                                          type: string
+                                          example: AAA000000AA0
+                                        legalRepresentativeRfc:
+                                          type: string
+                                          example: AAAA000000A00
+                                        legalRepresentativeCurp:
+                                          type: string
+                                          example: AAAA000000AAAAAA00
+                            '2':
+                              type: object
+                              properties:
+                                serialNumber:
+                                  type: string
+                                  example: '0000000000000000000'
+                                status:
+                                  type: string
+                                  example: Activo
+                                type:
+                                  type: string
+                                  example: SELLO
+                                startDate:
+                                  type: string
+                                  example: '2022-02-17 18:31:26'
+                                endDate:
+                                  type: string
+                                  example: '2026-02-17 18:31:26'
+                                base64Certificate:
+                                  type: string
+                                  example: '{{BASE_64_STRING}}'
+                                certificateData:
+                                  type: object
+                                  properties:
+                                    issuer:
+                                      type: object
+                                      properties:
+                                        issuerName:
+                                          type: string
+                                          example: SERVICIO DE ADMINISTRACION TRIBUTARIA
+                                        type:
+                                          type: string
+                                          example: AUTORIDAD CERTIFICADORA
+                                        authorityName:
+                                          type: string
+                                          example: SAT-IES Authority
+                                        emailAddress:
+                                          type: string
+                                          example: contacto.tecnico@sat.gob.mx
+                                        street:
+                                          type: string
+                                          example: STREET NAME
+                                        zipCode:
+                                          type: string
+                                          example: '06300'
+                                        country:
+                                          type: string
+                                          example: MX
+                                        state:
+                                          type: string
+                                          example: CIUDAD DE MEXICO
+                                        municipality:
+                                          type: string
+                                          example: CUAUHTEMOC
+                                        responsible:
+                                          type: string
+                                          example: ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE
+                                        rfc:
+                                          type: string
+                                          example: AAA000000AA0
+                                    issueDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2022 GMT
+                                    expiryDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2026 GMT
+                                    issuedTo:
+                                      type: object
+                                      properties:
+                                        companyName:
+                                          type: string
+                                          example: COMPANY NAME COMMERCIAL NAME
+                                        commercialName:
+                                          type: string
+                                          example: COMMERCIAL NAME
+                                        otherName:
+                                          type: string
+                                          example: COMPANY NAME COMMERCIAL NAME
+                                        companyRfc:
+                                          type: string
+                                          example: AAA000000AA0
+                                        legalRepresentativeRfc:
+                                          type: string
+                                          example: AAAA000000A00
+                                        legalRepresentativeCurp:
+                                          type: string
+                                          example: AAAA000000AAAAAA00
+                        timestamp:
+                          type: string
+                          example: '2020-11-17T18:36:57.198Z'
+                - title: Individual, 1 Certificate Found - All OK
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                          example: JOHN DOE
+                        rfc:
+                          type: string
+                          example: AAAA000000000
+                        legalRepresentativeRfc:
+                          type: string
+                          example: AAAA000000000
+                        legalRepresentativeCurp:
+                          type: string
+                          example: AAAA000000AAAAAA00
+                        certificates:
+                          type: object
+                          properties:
+                            '1':
+                              type: object
+                              properties:
+                                serialNumber:
+                                  type: string
+                                  example: '0000000000000000000'
+                                status:
+                                  type: string
+                                  example: Activo
+                                type:
+                                  type: string
+                                  example: SELLO
+                                startDate:
+                                  type: string
+                                  example: '2022-02-17 18:31:26'
+                                endDate:
+                                  type: string
+                                  example: '2026-02-17 18:31:26'
+                                base64Certificate:
+                                  type: string
+                                  example: '{{BASE_64_STRING}}'
+                                certificateData:
+                                  type: object
+                                  properties:
+                                    issuer:
+                                      type: object
+                                      properties:
+                                        issuerName:
+                                          type: string
+                                          example: SERVICIO DE ADMINISTRACION TRIBUTARIA
+                                        type:
+                                          type: string
+                                          example: AUTORIDAD CERTIFICADORA
+                                        authorityName:
+                                          type: string
+                                          example: SAT-IES Authority
+                                        emailAddress:
+                                          type: string
+                                          example: contacto.tecnico@sat.gob.mx
+                                        street:
+                                          type: string
+                                          example: STREET ADDRESS
+                                        zipCode:
+                                          type: string
+                                          example: '00000'
+                                        country:
+                                          type: string
+                                          example: MX
+                                        state:
+                                          type: string
+                                          example: CIUDAD DE MEXICO
+                                        municipality:
+                                          type: string
+                                          example: CUAUHTEMOC
+                                        responsible:
+                                          type: string
+                                          example: ADMINISTRACION CENTRAL DE SERVICIOS TRIBUTARIOS AL CONTRIBUYENTE
+                                        rfc:
+                                          type: string
+                                          example: SAT970701NN3
+                                    issueDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2022 GMT
+                                    expiryDate:
+                                      type: string
+                                      example: Feb 17 18:31:26 2026 GMT
+                                    issuedTo:
+                                      type: object
+                                      properties:
+                                        companyName:
+                                          type: string
+                                          example: JOHN DOE
+                                        name:
+                                          type: string
+                                          example: JOHN DOE
+                                        organization:
+                                          type: string
+                                          example: JOHN DOE
+                                        rfc:
+                                          type: string
+                                          example: AAAA000000000
+                                        legalRepresentativeRfc: {}
+                                        legalRepresentativeCurp:
+                                          type: string
+                                          example: AAAA000000AAAAAA00
+                        timestamp:
+                          type: string
+                          example: '2020-11-17T18:36:57.198Z'
+                - title: No Entries Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: stepError
+                        code:
+                          type: string
+                          example: mexicanRfcStatus.noResults
+                        message:
+                          type: string
+                          example: The user was not found in the RFC database
+                    data: {}
+                    timestamp:
+                      type: string
+                      example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n--url https://api.getmati.com/govchecks/v1/mx/rfc-status \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw {\n  \"rfc\": \"BAME000000000\",\n  \"callbackUrl\":\"https://some.webhook.url\"\n  }"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/cac-affiliates:
+    post:
+      summary: 'GovChecks: Nigeria CAC Affiliates'
+      description: Returns major affiliate names and titles for the given companies.
+      operationId: govchecks-nigeria-cac-affiliates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - companyIds
+              - callbackUrl
+              properties:
+                companyIds:
+                  type: array
+                  description: Enter a list of company Ids (returned by Nigeria CAC endpoint).
+                  items:
+                    type: string
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"affiliates\": {\n      \"0000000\": [\n        {\n          \"accreditationNumber\": \"CAC-ACC-1029384\",\n          \"address\": \"17 Adebayo Crescent, Victoria Island, Lagos\",\n          \"city\": \"Lagos\",\n          \"dateOfBirth\": \"1985-11-22\",\n          \"email\": \"nkechi.udeh@fabrikamsolutions.ng\",\n          \"idNumber\": \"NIMC-0019283745\",\n          \"idType\": \"National ID\",\n          \"name\": \"Nkechi Udeh\",\n          \"phoneNumber\": \"+234 802 456 7890\",\n          \"position\": \"Managing Director\",\n          \"shares\": \"20000\",\n          \"status\": \"ACTIVE\"\n        }\n      ],\n      \"1111111\": [\n        {\n          \"accreditationNumber\": \"CAC-ACC-7483920\",\n          \"address\": \"Plot 4, Ahmadu Bello Way, Garki 2, Abuja\",\n          \"city\": \"Abuja\",\n          \"dateOfBirth\": \"1978-03-09\",\n          \"email\": \"tunde.adelaja@fabrikamsolutions.ng\",\n          \"idNumber\": \"NIMC-0098374653\",\n          \"idType\": \"Passport\",\n          \"name\": \"Tunde Adelaja\",\n          \"phoneNumber\": \"+234 805 332 1100\",\n          \"position\": \"Director\",\n          \"shares\": \"15000\",\n          \"status\": \"ACTIVE\"\n        }\n      ]\n    }\n  }\n}"
+                No Results Found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"nigerianCacAffiliates.notFound\",\n    \"message\": \"No results were found in the Nigerian CAC Affiliates database\"\n  }\n}"
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        affiliates:
+                          type: object
+                          properties:
+                            '1111111':
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  accreditationNumber:
+                                    type: string
+                                    example: CAC-ACC-7483920
+                                  address:
+                                    type: string
+                                    example: Plot 4, Ahmadu Bello Way, Garki 2, Abuja
+                                  city:
+                                    type: string
+                                    example: Abuja
+                                  dateOfBirth:
+                                    type: string
+                                    example: '1978-03-09'
+                                  email:
+                                    type: string
+                                    example: tunde.adelaja@fabrikamsolutions.ng
+                                  idNumber:
+                                    type: string
+                                    example: NIMC-0098374653
+                                  idType:
+                                    type: string
+                                    example: Passport
+                                  name:
+                                    type: string
+                                    example: Tunde Adelaja
+                                  phoneNumber:
+                                    type: string
+                                    example: +234 805 332 1100
+                                  position:
+                                    type: string
+                                    example: Director
+                                  shares:
+                                    type: string
+                                    example: '15000'
+                                  status:
+                                    type: string
+                                    example: ACTIVE
+                            '0000000':
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  accreditationNumber:
+                                    type: string
+                                    example: CAC-ACC-1029384
+                                  address:
+                                    type: string
+                                    example: 17 Adebayo Crescent, Victoria Island, Lagos
+                                  city:
+                                    type: string
+                                    example: Lagos
+                                  dateOfBirth:
+                                    type: string
+                                    example: '1985-11-22'
+                                  email:
+                                    type: string
+                                    example: nkechi.udeh@fabrikamsolutions.ng
+                                  idNumber:
+                                    type: string
+                                    example: NIMC-0019283745
+                                  idType:
+                                    type: string
+                                    example: National ID
+                                  name:
+                                    type: string
+                                    example: Nkechi Udeh
+                                  phoneNumber:
+                                    type: string
+                                    example: +234 802 456 7890
+                                  position:
+                                    type: string
+                                    example: Managing Director
+                                  shares:
+                                    type: string
+                                    example: '20000'
+                                  status:
+                                    type: string
+                                    example: ACTIVE
+                - title: No Results Found
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: nigerianCacAffiliates.notFound
+                        message:
+                          type: string
+                          example: No results were found in the Nigerian CAC Affiliates database
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Invalid Params (companyIds not an array):
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"type\",\n            \"dataPath\": \"/companyIds\",\n            \"schemaPath\": \"#/properties/companyIds/type\",\n            \"params\": {\n                \"type\": \"array\"\n            },\n            \"message\": \"should be array\",\n            \"action\": \"govChecks.getNigerianCacAffiliates\"\n        }\n    ]\n}"
+                Invalid Params (empty companyIds):
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"minItems\",\n            \"dataPath\": \"/companyIds\",\n            \"schemaPath\": \"#/properties/companyIds/minItems\",\n            \"params\": {\n                \"limit\": 1\n            },\n            \"message\": \"should NOT have fewer than 1 items\",\n            \"nodeID\": \"safety-69d9b6955-wmz8s-1\",\n            \"action\": \"govChecks.getNigerianCacAffiliates\"\n        }\n    ]\n}"
+                Invalid Params (companyIds has no strings):
+                  value: "{\n    \"name\": \"ValidationError\",\n    \"message\": \"Parameters validation error!\",\n    \"code\": 422,\n    \"type\": \"VALIDATION_ERROR\",\n    \"data\": [\n        {\n            \"keyword\": \"type\",\n            \"dataPath\": \"/companyIds/0\",\n            \"schemaPath\": \"#/properties/companyIds/items/type\",\n            \"params\": {\n                \"type\": \"string\"\n            },\n            \"message\": \"should be string\",\n            \"action\": \"govChecks.getNigerianCacAffiliates\"\n        }\n    ]\n}"
+              schema:
+                oneOf:
+                - title: Invalid Params (companyIds not an array)
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: ValidationError
+                    message:
+                      type: string
+                      example: Parameters validation error!
+                    code:
+                      type: integer
+                      example: 422
+                      default: 0
+                    type:
+                      type: string
+                      example: VALIDATION_ERROR
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          keyword:
+                            type: string
+                            example: type
+                          dataPath:
+                            type: string
+                            example: /companyIds
+                          schemaPath:
+                            type: string
+                            example: '#/properties/companyIds/type'
+                          params:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: array
+                          message:
+                            type: string
+                            example: should be array
+                          action:
+                            type: string
+                            example: govChecks.getNigerianCacAffiliates
+                - title: Invalid Params (empty companyIds)
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: ValidationError
+                    message:
+                      type: string
+                      example: Parameters validation error!
+                    code:
+                      type: integer
+                      example: 422
+                      default: 0
+                    type:
+                      type: string
+                      example: VALIDATION_ERROR
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          keyword:
+                            type: string
+                            example: minItems
+                          dataPath:
+                            type: string
+                            example: /companyIds
+                          schemaPath:
+                            type: string
+                            example: '#/properties/companyIds/minItems'
+                          params:
+                            type: object
+                            properties:
+                              limit:
+                                type: integer
+                                example: 1
+                                default: 0
+                          message:
+                            type: string
+                            example: should NOT have fewer than 1 items
+                          nodeID:
+                            type: string
+                            example: safety-69d9b6955-wmz8s-1
+                          action:
+                            type: string
+                            example: govChecks.getNigerianCacAffiliates
+                - title: Invalid Params (companyIds has no strings)
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: ValidationError
+                    message:
+                      type: string
+                      example: Parameters validation error!
+                    code:
+                      type: integer
+                      example: 422
+                      default: 0
+                    type:
+                      type: string
+                      example: VALIDATION_ERROR
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          keyword:
+                            type: string
+                            example: type
+                          dataPath:
+                            type: string
+                            example: /companyIds/0
+                          schemaPath:
+                            type: string
+                            example: '#/properties/companyIds/items/type'
+                          params:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: string
+                          message:
+                            type: string
+                            example: should be string
+                          action:
+                            type: string
+                            example: govChecks.getNigerianCacAffiliates
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.prod.metamap.com/govchecks/v1/ng/cac-affiliates \\\n     --header 'accept: application/json' \\\n     --header 'authorization: Bearer dsfgsdfgsdfgsdfg' \\\n     --header 'content-type: application/json' \\\n     --data '\n{\n  \"companyIds\": [\n    \"0000000\",\n    \"1111111\"\n  ],\n  \"callbackUrl\": \"http://callback.url\"\n}\n'"
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/cac:
+    post:
+      summary: 'GovChecks: Nigeria CAC'
+      description: Verify that a company's Corporate Affairs Commission (CAC) number is valid.
+      operationId: govchecks-nigeria-cac
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - registrationNumber
+              properties:
+                registrationNumber:
+                  type: string
+                  description: Enter a registered company number. Alpha-numeric values only.
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Active Companies Found:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"id\": \"1234567\",\n    \"type\": \"BN\",\n    \"companyName\": \"ACME CORPORATION\",\n    \"cacNumber\": \"BN0000000\",\n    \"status\": \"ACTIVE\",\n    \"companyAddress\": \"123 MAIN STREET\",\n    \"companyEmail\": \"contact@acme.corp\",\n    \"registrationDate\": \"2001-01-01T11:30:34.848+00:00\",\n    \"companies\": [\n     \t{\n        \"id\": \"8901234\",\n        \"type\": \"BN\",\n        \"companyName\": \"LOREM IPSUM INDUSTRIES\",\n        \"cacNumber\": \"BN0000000\",\n        \"status\": \"ACTIVE\",\n        \"companyAddress\": \"123 MAIN STREET\",\n        \"companyEmail\": \"contact@lorem.industries\",\n        \"registrationDate\": \"2012-05-01T11:30:34.848+00:00\",\n     \t}, \n      ...\n    ]\n  }\n}"
+                No Companies Found:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"nigerianCac.notFound\",\n    \"message\": \"No results were found in the Nigerian CAC database\"\n  }\n}"
+                Company Invalid Status:
+                  value: "{\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"nigerianCac.invalidStatus\",\n    \"message\": \"At least one of the companies is inactive\"\n  },\n  \"data\": {\n    \"id\": \"8394118\",\n    \"type\": \"RC\",\n    \"companyName\": \"Fabrikam Solution\",\n    \"companyAddress\": \"17 Adebayo Crescent, Victoria Island, Lagos, Nigeria\",\n    \"companyEmail\": \"info@fabrikamsolutions.ng\",\n    \"cacNumber\": \"RC0000000\",\n    \"status\": \"INACTIVE\",\n    \"registrationDate\": \"2022-12-13T09:23:24.094+00:00\",\n    \"companies\": [\n      {\n        \"id\": \"7543982\",\n        \"type\": \"RC\",\n        \"companyName\": \"Contoso Engineering Ltd\",\n        \"companyAddress\": \"42 Olusegun Obasanjo Way, Abuja, FCT, Nigeria\",\n        \"companyEmail\": \"contact@contosoeng.ng\",\n        \"cacNumber\": \"RC000000\",\n        \"status\": \"ACTIVE\",\n        \"registrationDate\": \"2019-06-04T14:10:59.000+00:00\"\n  \t\t}\n    ]\n  }\n}"
+              schema:
+                oneOf:
+                - title: No Companies Found
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: nigerianCac.notFound
+                        message:
+                          type: string
+                          example: No results were found in the Nigerian CAC database
+                - title: Company Invalid Status
+                  type: object
+                  properties:
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: nigerianCac.invalidStatus
+                        message:
+                          type: string
+                          example: At least one of the companies is inactive
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: '8394118'
+                        type:
+                          type: string
+                          example: RC
+                        companyName:
+                          type: string
+                          example: Fabrikam Solution
+                        companyAddress:
+                          type: string
+                          example: 17 Adebayo Crescent, Victoria Island, Lagos, Nigeria
+                        companyEmail:
+                          type: string
+                          example: info@fabrikamsolutions.ng
+                        cacNumber:
+                          type: string
+                          example: RC0000000
+                        status:
+                          type: string
+                          example: INACTIVE
+                        registrationDate:
+                          type: string
+                          example: '2022-12-13T09:23:24.094+00:00'
+                        companies:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: '7543982'
+                              type:
+                                type: string
+                                example: RC
+                              companyName:
+                                type: string
+                                example: Contoso Engineering Ltd
+                              companyAddress:
+                                type: string
+                                example: 42 Olusegun Obasanjo Way, Abuja, FCT, Nigeria
+                              companyEmail:
+                                type: string
+                                example: contact@contosoeng.ng
+                              cacNumber:
+                                type: string
+                                example: RC000000
+                              status:
+                                type: string
+                                example: ACTIVE
+                              registrationDate:
+                                type: string
+                                example: '2019-06-04T14:10:59.000+00:00'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \n--location \n--request POST 'https://api.getmati.com/govchecks/v1/ng/cac' \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer {TOKEN}' \\ \n--data-raw '{\n\t\"registrationNumber\": \"BN0000000\", \\\n\t\"callbackUrl\": \"https://some.webhook.url\"\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/dl:
+    post:
+      summary: 'GovChecks: Nigeria Driver License'
+      description: Verify a user's driver license number
+      operationId: govchecks-nigeria-driver-license
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - firstName
+              - lastName
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Entry Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"nigerian-drivers-license-validation\",\n  \"error\": null,\n  \"data\": {\n    \"licenseNo\": \"XXX00000YY00\",\n    \"firstname\": \"JOHN\n    \"lastname\": \"DOE\",\n    \"issuedDate\": \"10-07-2019\",\n    \"expiryDate\": \"15-06-2024\",\n    \"stateOfIssue\": \"EDO\",\n    \"gender\": \"Male\",\n    \"birthdate\": \"15-06-1990\",\n    \"middlename\": \"\",\n    \"governmentFaceMatch\": {\n      \"photo\": \"{{BASE_64_IMAGE}}\",\n      \"matched\": true,\n      \"score\": 100\n    }\n  },\n  \"timestamp\": \"2021-01-08T12:48:01.819Z\"\n}"
+                No Entry Found:
+                  value: "{\n  \"status\": 200,\n  \"id\":  \"nigerian-drivers-license-validation\",\n  \"error\": {\n    \"code\": \"error.noResults\",\n    \"message\": \"Nothing was found in the NIN or VIN databases\"\n  },\n  \"data\": null,\n  \"timestamp\": \"2021-01-08T12:48:01.819Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                    default: 0
+                  id:
+                    type: string
+                    example: nigerian-drivers-license-validation
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: error.noResults
+                      message:
+                        type: string
+                        example: Nothing was found in the NIN or VIN databases
+                  data: {}
+                  timestamp:
+                    type: string
+                    example: '2021-01-08T12:48:01.819Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \n--location \n--request POST 'https://api.getmati.com/govchecks/v1/ng/dl' \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\"documentNumber\": \"XXX00000YY00\", \n\t\t\t\t\t\t \"firstName\": \"Test1\", \n             \"lastName\": \"Test2\", \n             \"callbackUrl\": \"{{webhookUrl}}\"\n            }'"
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/nin:
+    post:
+      summary: 'GovChecks: Nigeria NIN'
+      description: Verify a user's National Identity Number
+      operationId: govchecks-nigeria-nin-1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                documentNumber:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                dateOfBirth:
+                  type: string
+                phone:
+                  type: string
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"nigerian-nin-validation\",\n  \"error\": null,\n  \"data\": {\n    \"firstName\": string,\n    \"lastName\": string,\n    \"middleName\": string,\n    \"gender\": string,\n    \"phone\": string,\n    \"dateOfBirth\": string,\n    \"nationality\": string,\n    \"nin\": string,\n    \"photo\": string,\n    \"profession\": string,\n    \"stateOfOrigin\": string,\n    \"lgaOfOrigin\": string,\n    \"placeOfOrigin\": string,\n    \"title\": string,\n    \"height\": string,\n    \"email\": string,\n    \"birthState\": string,\n    \"birthCountry\": string,\n    \"nextOfKin\": {\n      \"firstName\": string,\n      \"lastName\": string,\n      \"middleName\": string,\n      \"address1\": string,\n      \"address2\": string,\n      \"lga\": string,\n      \"state\": string,\n      \"town\": string\n    },\n    \"nspokenlang\": string,\n    \"religion\": string,\n    \"signature\": string,\n    \"residence\": {\n      \"address1\": string,\n      \"lga\": string,\n      \"state\": string\n    },\n    \"fieldMatches\": {\n      \"lastName\": string\n    }\n  }"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl\n--location\n--request POST 'https://api.getmati.com/govchecks/v1/ng/nin' \\\n--header 'Authorization: Bearer '{{access_token}}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"documentNumber\": string,\n    \"firstName\": string,\n    \"lastName\": string,\n    \"dateOfBirth\": string,\n    \"phone\": string,\n    \"callbackUrl\": string\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/tin:
+    post:
+      summary: 'GovChecks: Nigeria TIN'
+      description: Verify a company's Tax Identification Number
+      operationId: govchecks-nigeria-tin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - taxNumber
+              - callbackUrl
+              properties:
+                taxNumber:
+                  type: string
+                  description: Either FIRS or JBT tax ID number.
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                All data confirmed:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"companyName\": \"ACME CORPORATION\",\n    \"FirsNumber\": \"00000000-0000\",\n    \"CacNumber\": \"RC0000000\",\n    \"JtbNumber\": \"0000000000\",\n    \"taxOffice\": \"MSTO VICTORIA ISLAND\",\n    \"companyPhone\": \"+0000000000000\",\n    \"companyEmail\": \"contact@acme.corp\"\n  }\n}"
+                'No data found: invalid parameters':
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"nigerianTin.notValidParams\",\n    \"message\": \"The data passed appears to be invalid\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: All data confirmed
+                  type: object
+                  properties:
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        companyName:
+                          type: string
+                          example: ACME CORPORATION
+                        FirsNumber:
+                          type: string
+                          example: 00000000-0000
+                        CacNumber:
+                          type: string
+                          example: RC0000000
+                        JtbNumber:
+                          type: string
+                          example: '0000000000'
+                        taxOffice:
+                          type: string
+                          example: MSTO VICTORIA ISLAND
+                        companyPhone:
+                          type: string
+                          example: '+0000000000000'
+                        companyEmail:
+                          type: string
+                          example: contact@acme.corp
+                - title: 'No data found: invalid parameters'
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: nigerianTin.notValidParams
+                        message:
+                          type: string
+                          example: The data passed appears to be invalid
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \n--location \n--request POST 'https://api.getmati.com/govchecks/v1/ng/tin' \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n\t\"taxNumber\": \"000000000-0000\", \\\n\t\"callbackUrl\": \"https://some.webhook.url\" \\\n}'"
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ng/vin:
+    post:
+      summary: 'GovChecks: Nigeria VIN'
+      description: Verify a user's Voting Identity Number
+      operationId: govchecks-nigeria-vin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - firstName
+              - lastName
+              - dateOfBirth
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                dateOfBirth:
+                  type: string
+                  format: date
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Entry Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"nigean-national-id-validation\",\n  \"error\": null,\n  \"data\": {\n      \"firstname\": \"JOHN\",\n      \"lastname\": \"DOE\",\n      \"middlename\": \"JOHN\",\n      \"gender\": \"m\",\n      \"occupation\": \"BANKING AND FINANCE\",\n      \"stateOfOrigin\": \"Abia\",\n      \"lgaOfOrigin\": \"Arochukwu\",\n      \"onspokenlang\": \"IGBO\",\n\t\t\t\"pollingUnit\": \"TAPA ST. BY HOUSE NO. 35 - I\"\n  },\n  \"timestamp\": \"2021-01-08T12:48:01.819Z\"\n}"
+                Entry Not Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"nigerian-national-id-validation\",\n  \"error\": {\n    \"code\": \"error.noResults\",\n    \"message\": \"Nothing was found in the NIN or VIN databases\"\n  },\n  \"data\": null,\n  \"timestamp\": \"2021-01-08T12:48:01.819Z\"\n}"
+              schema:
+                oneOf:
+                - title: Entry Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: nigean-national-id-validation
+                    error: {}
+                    data:
+                      type: object
+                      properties:
+                        firstname:
+                          type: string
+                          example: JOHN
+                        lastname:
+                          type: string
+                          example: DOE
+                        middlename:
+                          type: string
+                          example: JOHN
+                        gender:
+                          type: string
+                          example: m
+                        occupation:
+                          type: string
+                          example: BANKING AND FINANCE
+                        stateOfOrigin:
+                          type: string
+                          example: Abia
+                        lgaOfOrigin:
+                          type: string
+                          example: Arochukwu
+                        onspokenlang:
+                          type: string
+                          example: IGBO
+                        pollingUnit:
+                          type: string
+                          example: TAPA ST. BY HOUSE NO. 35 - I
+                    timestamp:
+                      type: string
+                      example: '2021-01-08T12:48:01.819Z'
+                - title: Entry Not Found
+                  type: object
+                  properties:
+                    status:
+                      type: integer
+                      example: 200
+                      default: 0
+                    id:
+                      type: string
+                      example: nigerian-national-id-validation
+                    error:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: error.noResults
+                        message:
+                          type: string
+                          example: Nothing was found in the NIN or VIN databases
+                    data: {}
+                    timestamp:
+                      type: string
+                      example: '2021-01-08T12:48:01.819Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl \n--location \n--request POST 'https://api.getmati.com/govchecks/v1/ng/vin \\\n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\"documentNumber\": \"00000000\", \n             \"firstName\": \"Test1\", \n             \"lastName\": \"Test2\", \n             \"dateOfBirth\": \"2000-10-10\", \n             \"callbackUrl\": \"{{webhookUrl}}\"\n            }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/pa/tse-facematch:
+    post:
+      summary: 'GovChecks: Panama TSE Facematch'
+      description: Validates national identity information and performs biometric face verification against the government’s biometric database.
+      operationId: govchecks-panama-tse-facematch
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - selfie
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                selfie:
+                  type: string
+                  description: Image in Base64
+                callbackUrl:
+                  type: string
+                metadata:
+                  type: string
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - GovChecks
+  /govchecks/v1/pa/tse:
+    post:
+      summary: 'GovChecks: Panama TSE'
+      description: Verify a user's DNI against the Panamanian TSE database via document number and a selfie photo
+      operationId: govchecks-panama-tse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - selfie
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                  description: 'DNI number from the national ID. E.g: "0-000-0000"'
+                selfie:
+                  type: string
+                  description: 'Selfie photo from the document owner (file size limit: 2mb)'
+                  format: binary
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"data\": {\n    \"searchId\": 000000,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": true\n  },\n  \"error\": null\n}"
+                Person Underage:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.personUnderaged\",\n    \"message\": \"Person is under 12 years old\"\n  }\n}"
+                Person Deceased:
+                  value: "{\n  \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.personDeceased\",\n    \"message\": \"Person is deceased\"\n  }\n}"
+                Invalid Registration:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.personInvalidRegistration\",\n    \"message\": \"Person has invalid registration\"\n  }\n}"
+                Person Unrecognized:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.personUnrecognized\",\n    \"message\": \"Person image is not unrecognized\"\n  }\n}"
+                User Not Found:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.userNotFound\",\n    \"message\": \"User is not found\"\n  }\n}"
+                Invalid Input:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.invalidInput\",\n    \"message\": \"Provided input data is not valid\"\n  }\n}"
+                Image is too big:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"panamanianTse.tooBigImage\",\n    \"message\": \"Person image is too big\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: Person Underage
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.personUnderaged
+                        message:
+                          type: string
+                          example: Person is under 12 years old
+                - title: Person Deceased
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.personDeceased
+                        message:
+                          type: string
+                          example: Person is deceased
+                - title: Invalid Registration
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.personInvalidRegistration
+                        message:
+                          type: string
+                          example: Person has invalid registration
+                - title: Person Unrecognized
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.personUnrecognized
+                        message:
+                          type: string
+                          example: Person image is not unrecognized
+                - title: User Not Found
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.userNotFound
+                        message:
+                          type: string
+                          example: User is not found
+                - title: Invalid Input
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.invalidInput
+                        message:
+                          type: string
+                          example: Provided input data is not valid
+                - title: Image is too big
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: govCheckError
+                        code:
+                          type: string
+                          example: panamanianTse.tooBigImage
+                        message:
+                          type: string
+                          example: Person image is too big
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Service Unavailable:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"systemError\",\n    \"code\": \"panamanianTse.serviceUnavailable\",\n    \"message\": \"Panama TSE service is unavailable\"\n  }\n}"
+                Internal Error:
+                  value: "{\n    \"data\": {\n    \"searchId\": 123456,\n    \"documentNumber\": \"1-234-567\",\n    \"valid\": false\n  },\n  \"error\": {\n    \"type\": \"systemError\",\n    \"code\": \"system.internalError\",\n    \"message\": \"Internal error has occurred\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: Service Unavailable
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: systemError
+                        code:
+                          type: string
+                          example: panamanianTse.serviceUnavailable
+                        message:
+                          type: string
+                          example: Panama TSE service is unavailable
+                - title: Internal Error
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        searchId:
+                          type: integer
+                          example: 123456
+                          default: 0
+                        documentNumber:
+                          type: string
+                          example: 1-234-567
+                        valid:
+                          type: boolean
+                          example: false
+                          default: true
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: systemError
+                        code:
+                          type: string
+                          example: system.internalError
+                        message:
+                          type: string
+                          example: Internal error has occurred
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location ''https://api.getmati.com/govchecks/v1/pa/tse'' \
+
+            --header ''Authorization: Bearer {{TOKEN}}'' \
+
+            --form ''documentNumber="0-000-0000"'' \
+
+            --form ''callbackUrl="https://some.webhook.url"'' \
+
+            --form ''selfie=@"/filepath/selfie.jpg"'''
+          name: Example Request
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/pe/govcheck:
+    post:
+      summary: 'GovChecks: Peru Govcheck'
+      description: Verify a user's DNI and identity
+      operationId: govchecks-peru-govcheck
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                User Found:
+                  value: "{\n        \"error\": null,\n        \"data\": {\n            \"firstName\": \"MARIA\",\n            \"middleName\": \"ANTONELLA\",\n            \"surname\": \"MONDRAGON\",\n            \"secondSurname\": \"ALBURQUEQUE\",\n            \"dniNumber\": \"75870597\"\n        }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                        example: MARIA
+                      middleName:
+                        type: string
+                        example: ANTONELLA
+                      surname:
+                        type: string
+                        example: MONDRAGON
+                      secondSurname:
+                        type: string
+                        example: ALBURQUEQUE
+                      dniNumber:
+                        type: string
+                        example: '75870597'
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                DNI Number Not Found:
+                  value: "{\n    \"error\": {\n      \"type\": \"StepError\",\n      \"code\": \"peruvianGovcheck.noResults\",\n      \"message\": \"The DNI number was not found in the database\"\n    }\n   \"data\" :null\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Bad DNI Number:
+                  value: "{\n    \"error\": {\n      \"type\": \"StepError\",\n      \"code\": \"peruvianGovcheckc.notValidParams\",\n      \"message\": \"DNI is not defined\"\n    }\n   \"data\" :null\n}"
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"error\": {\n            \"type\": \"systemError\",\n            \"code\": \"system.serviceUnavailable\",\n            \"message\": \"The service is unavailable\"\n        },\n    \"data\": null\n  }\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/govchecks/v1/pe/reniec \\\n     --header 'Accept: application/json'\n     --data-raw '{\n          \"callbackUrl\": \"{{callback_URL}}\",\n          \"documentNumber\": \"123456789\"\n       }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/pe/migration-institute:
+    post:
+      summary: 'GovChecks: Peru Migration Institute'
+      description: Verify that a user has a valid immigration status in Peru
+      operationId: govchecks-peru-migration-institute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - dateOfBirth
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                dateOfBirth:
+                  type: string
+                  format: date
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                User Found:
+                  value: "{\n  \"status\": 200,\n  \"id\": \"peruvian-national-migration-institute\",\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"DOE, JOHN\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"nationality\": \"VENEZOLANA\",\n    \"immigrationStatus\": \"ESPECIAL\",\n    \"residentUntil\": \"2022-02-19\",\n    \"dateOfExpiry\": \"2024-02-19\",\n    \"dateOfIssue\": \"2021-02-19\"\n  }\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+                User Not Found:
+                  value: "{\n \"status\": 200,\n  \"id\": \"peruvian-national-migration-institute\",\n  \"error\": {\n    \"type\": \"stepError\",\n    \"code\": \"peruvianNationalMigrationInstitute.noResults\",\n    \"message\": \"The user was not found in the foreign immigration database\"\n  },\n  \"data\": null,\n  \"timestamp\": \"2020-11-17T18:36:57.198Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                    default: 0
+                  id:
+                    type: string
+                    example: peruvian-national-migration-institute
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: stepError
+                      code:
+                        type: string
+                        example: peruvianNationalMigrationInstitute.noResults
+                      message:
+                        type: string
+                        example: The user was not found in the foreign immigration database
+                  data: {}
+                  timestamp:
+                    type: string
+                    example: '2020-11-17T18:36:57.198Z'
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/pe/migration-institute \\ \n--header 'Content-Type: application/json' \\ \n--header 'Authorization: Bearer token' \\ \n--data-raw '{\n\t\"documentNumber\": \"00000000\",\n\t\"dateOfBirth\": \"1990-01-01\",\n\t\"callbackUrl\":\"{{callback URL}}\"\n  }'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/pe/sunat:
+    post:
+      summary: 'GovChecks: Peru SUNAT'
+      description: Verify that a user has valid Peruvian tax status
+      operationId: govchecks-peru-sunat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                callbackUrl:
+                  type: string
+                  description: Webhook URL
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                User Found:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"fullName\": \"DOE JOHN\",\n    \"documentNumber\": \"00000000 \",\n    \"RUC\": \"00000000000\",\n    \"province\": \"ORIV. CONST. DEL CALLAO\",\n    \"taxStatus\": \"ACTIVO\",\n    \"taxPayerType\": \"PERSONA NATURAL SIN NEGOCIO\",\n    \"dateOfregistration\": \"01/01/2010\",\n    \"taxCondition\": \"HABIDO\",\n    \"economicActivities\": [\n      \"Principal - 9609 - OTRAS ACTIVIDADES DE SERVICIOS PERSONALES N.C.P.\"\n    ]\n  }\n}"
+                User Not Found:
+                  value: "{\n    \"error\": {\n\t   \"type\": \"stepError\",\n\t   \"code\": \"peruvianSunat.notFound\",\n\t   \"message\": \"No results were found in the SUNAT database\"\n\t},\n    \"data\": null,\n  }\n}"
+                Service Unavailable:
+                  value: "{\n    \"error\": {\n            \"type\": \"systemError\",\n            \"code\": \"system.serviceUnavailable\",\n            \"message\": \"The SUNAT service is unavailable\"\n        },\n    \"data\": null\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      fullName:
+                        type: string
+                        example: DOE JOHN
+                      documentNumber:
+                        type: string
+                        example: '00000000 '
+                      RUC:
+                        type: string
+                        example: '00000000000'
+                      province:
+                        type: string
+                        example: ORIV. CONST. DEL CALLAO
+                      taxStatus:
+                        type: string
+                        example: ACTIVO
+                      taxPayerType:
+                        type: string
+                        example: PERSONA NATURAL SIN NEGOCIO
+                      dateOfregistration:
+                        type: string
+                        example: 01/01/2010
+                      taxCondition:
+                        type: string
+                        example: HABIDO
+                      economicActivities:
+                        type: array
+                        items:
+                          type: string
+                          example: Principal - 9609 - OTRAS ACTIVIDADES DE SERVICIOS PERSONALES N.C.P.
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/pe/sunat\n  --header 'Content-Type: application/json' \\\n  --header 'Authorization: Bearer token' \\ \n  --data-raw '{\n    \"documentNumber\": \"00000000\",\n    \"callbackUrl\":\"https://some.callback.url\"}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/ph/umid-ssn:
+    post:
+      summary: 'GovChecks: Philippines UMID/SSN'
+      description: Verify a user's UMID/SSN against the Philippine UMID/SSN database via document number
+      operationId: govchecks-philippines-umid-ssn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                  description: 'Document number from the UMID. e.g: "0123-4567890-1"'
+                callbackUrl:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"data\": {\n    \"valid\": true,\n    \"documentNumber\": \"0123-4567890-1\"\n  },\n  \"error\": null\n}"
+                Invalid Data:
+                  value: "  \"data\": null,\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"philippineUmidSsn.notValidParams\",\n    \"message\": \"The data passed appears to be invalid\"\n  }"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      valid:
+                        type: boolean
+                        example: true
+                        default: true
+                      documentNumber:
+                        type: string
+                        example: 0123-4567890-1
+                  error: {}
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Service Unavailable:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"systemError\",\n    \"code\": \"philippineUmidSsn.serviceUnavailable\",\n    \"message\": \"Service is unavailable\"\n  }\n}"
+                Internal Error:
+                  value: "{\n  \"data\": null,\n  \"error\": {\n    \"type\": \"systemError\",\n    \"code\": \"system.internalError\",\n    \"message\": \"Internal error has occurred\"\n  }\n}"
+              schema:
+                oneOf:
+                - title: Service Unavailable
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: systemError
+                        code:
+                          type: string
+                          example: philippineUmidSsn.serviceUnavailable
+                        message:
+                          type: string
+                          example: Service is unavailable
+                - title: Internal Error
+                  type: object
+                  properties:
+                    data: {}
+                    error:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: systemError
+                        code:
+                          type: string
+                          example: system.internalError
+                        message:
+                          type: string
+                          example: Internal error has occurred
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location 'https://api.prod.metamap.com/govchecks/v1/ph/umid-ssn' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer {{TOKEN}}' \\\n--data '{\n   \"documentNumber\": \"0123-4567890-1\",\n   \"callbackUrl\": \"https://some.webhook.url\"\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+  /govchecks/v1/uy/registro-civil:
+    post:
+      summary: 'GovChecks: Uruguay Registro Civil'
+      description: Verify a user's national ID against the Uruguay DGREC database
+      operationId: govchecks-uruguay-registro-civil
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - documentNumber
+              - callbackUrl
+              properties:
+                documentNumber:
+                  type: string
+                  description: Document number for a National ID
+                callbackUrl:
+                  type: string
+                metadata:
+                  type: string
+                  description: Use `metadata` to add internal references for your outputs/webhooks.
+                  default: '{         "user-defined-1": "string",         "user-defined-2": "string"     }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Document Verified:
+                  value: "{\n  \"data\": {\n    \"firstName\": \"JOHN\",\n    \"lastName\": \"DOE\",\n    \"dateOfBirth\": \"2001-01-01\",\n    \"district\": \"Cerro Largo 1\",\n    \"certificateNumber\": \"111\"\n  },\n  \"error\": null,\n  \"metadata\": {\n    \"user-defined-1\": \"string\",\n    \"user-defined-2\": \"string\"\n  }\n}"
+                Full Name Mismatch:
+                  value: "{\n    \"error\": {\n      \"type\": \"StepError\",\n      \"code\": \"uruguayRegistroCivil.fullNameMismatch\",\n      \"message\": \"The name doesn't match to the name from the provider\"\n    },\n    \"data\": {\n      \"firstName\": \"JOHN\",\n      \"lastName\": \"DOE\",\n      \"dateOfBirth\": \"2001-01-01\",\n      \"district\": \"Cerro Largo 1\",\n      \"certificateNumber\": \"111\"\n    }\n    \"metadata\": {\n      \"user-defined-1\": \"string\",\n      \"user-defined-2\": \"string\"\n    }  \n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                        example: JOHN
+                      lastName:
+                        type: string
+                        example: DOE
+                      dateOfBirth:
+                        type: string
+                        example: '2001-01-01'
+                      district:
+                        type: string
+                        example: Cerro Largo 1
+                      certificateNumber:
+                        type: string
+                        example: '111'
+                  error: {}
+                  metadata:
+                    type: object
+                    properties:
+                      user-defined-1:
+                        type: string
+                        example: string
+                      user-defined-2:
+                        type: string
+                        example: string
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Not Valid Params:
+                  value: "{\n    \"error\": {\n      \"type\": \"StepError\",\n      \"code\": \"uruguayRegistroCivil.notValidParams\",\n      \"message\": \"Invalid params\"\n    }\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: StepError
+                      code:
+                        type: string
+                        example: uruguayRegistroCivil.notValidParams
+                      message:
+                        type: string
+                        example: Invalid params
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Service Unavailable:
+                  value: "{\n  \"error\": {\n    \"type\": \"govCheckError\",\n    \"code\": \"argentinianRenaperPremium.serviceUnavailable\",\n    \"message\": \"Uruguay Registro Civil service is unavailable\" \n  },\n  \"data\": null\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: govCheckError
+                      code:
+                        type: string
+                        example: argentinianRenaperPremium.serviceUnavailable
+                      message:
+                        type: string
+                        example: Uruguay Registro Civil service is unavailable
+                  data: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/govchecks/v1/uy/registro-civil' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer token' \\\n--data-raw '{\n\t\t\"documentNumber\": \"12345678\",\n    \"callbackUrl\":\"{{callbackUrl}}\"\n    \"metadata\": {\n      \"user-defined-1\": \"string\",\n      \"user-defined-2\": \"string\"\n    }    \n  }'  "
+        samples-languages:
+        - curl
+      tags:
+      - GovChecks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

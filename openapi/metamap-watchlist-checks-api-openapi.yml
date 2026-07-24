@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication Watchlist Checks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Watchlist Checks
+paths:
+  /safety/v1/checks/comply-advantage:
+    post:
+      summary: Comply Advantage
+      description: Use this check to verify whether a user or company is listed on international watchlists.
+      operationId: comply-advantage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                entityType:
+                  type: string
+                  description: Choose between `person` or `company`.
+                  default: person
+                name:
+                  type: string
+                  description: User's full name or company's name
+                birthYear:
+                  type: integer
+                  description: Applicable to 'person', only. User's year of birth.
+                  format: int32
+                monitor:
+                  type: boolean
+                  description: Set to true if you want the search to be monitored regularly.
+                  default: false
+                callbackUrl:
+                  type: string
+                  description: Callback URL for monitoring updates through webhooks. Mandatory if monitor = true.
+                countryCodes:
+                  type: array
+                  description: An array of 2-letter country codes as per [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+                  items:
+                    type: string
+                exactMatch:
+                  type: boolean
+                  description: Specify that results must match all specified parameters.
+                  default: false
+                fuzzinessThreshold:
+                  type: integer
+                  description: Integer in range of 0-100 specifying how closely matched results must be to the specified parameters.
+                  default: 50
+                  format: int32
+                metadata:
+                  type: string
+                  description: Use the `metadata` parameter to add internal references.
+                  default: '{ "user-defined-1" : "abcde", "user-defined-2" : "12345" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Person Not Found:
+                  value: "{\n  \"data\": {\n    \"searchedOn\": \"2020-05-13 09:26:50\",\n    \"nameSearched\": \"JOHN DOE\",\n    \"profileUrl\": \"https://public.url\",\n    \"error\": null\n  }\n}"
+                Person Found on Watchlist:
+                  value: "{\n    \"searchedOn\": \"2022-03-01 00:00:00\",\n    \"nameSearched\": \"JOHN DOE\",\n    \"profileUrl\": \"https://app.complyadvantage.com/public/search/1234567890-abcdef1g/123456789012\",\n    \"searchId\": 000000000,\n    \"error\": {\n        \"type\": \"SafetyCheckError\",\n        \"code\": \"premiumAmlWatchlists.matchFound\",\n        \"details\": {\n            \"matchStatus\": \"potential_match\",\n            \"riskLevel\": \"unknown\"\n        }\n    }"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      searchedOn:
+                        type: string
+                        example: '2020-05-13 09:26:50'
+                      nameSearched:
+                        type: string
+                        example: JOHN DOE
+                      profileUrl:
+                        type: string
+                        example: https://public.url
+                      error: {}
+            text/plain:
+              examples:
+                Company Not Found:
+                  value: "{\n    \"searchedOn\": \"2022-03-01 00:00:00\",\n    \"nameSearched\": \"ACME INC\",\n    \"profileUrl\": \"https://app.complyadvantage.com/public/search/1234567890-abcdef1g/123456789012\",\n    \"searchId\": 000000000\n}"
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"entityType\": \"person\",\n    \"name\": \"JOHN DOE\",\n    \"birthYear\": 1970,\n    \"countryCodes\": ['US', 'FR', 'DE'],\n    \"metadata\": {\n      \"user-defined-1\" : \"abcde\", \n      \"user-defined-2\" : \"12345\" \n    }\n}'"
+          name: Person Search Without Monitoring
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"entityType\": \"person\",\n    \"name\": \"JOHN DOE\",\n    \"birthYear\": 1970,\n    \"monitor\": true,   \n    \"callbackUrl\": \"https://some.webhook.url\"\n}'"
+          name: Person Search With Monitoring
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"entityType\": \"company\",\n    \"name\": \"ACME INC\",\n    \"countryCodes\": ['US', 'AR', 'BR']\n}'"
+          name: Company Search Without Monitoring
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw {\n  \"entityType\": \"company\", \n  \"name\": \"ACME INC\",\n  \"monitor\": \"true\",\n  \"callbackUrl\": \"https://some.webhook.url\"\n}"
+          name: Company Search With Monitoring
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"name\": \"JOHN DOE\",\n    \"fuzzinessThreshold\": 50\n}'"
+          name: Person Search with Fuzziness Threshold = 50
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/comply-advantage' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"name\": \"JOHN DOE\",\n    \"exactMatch\": true\n}'"
+          name: Person Search with Exact Match = true
+        samples-languages:
+        - curl
+      tags:
+      - Watchlist Checks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

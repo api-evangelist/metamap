@@ -1,0 +1,255 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Authentication
+paths:
+  /oauth/token:
+    post:
+      summary: Authentication Token
+      description: Use this API to get your access token for the Skip Verification Upload Wait Time API
+      operationId: authentication-token
+      parameters:
+      - name: x-mati-app
+        in: header
+        description: platform=web_desktop; version=22.2.10
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - scope
+              properties:
+                grant_type:
+                  type: string
+                  default: client_credentials
+                application_key:
+                  type: string
+                  description: client ID
+                scope:
+                  type: string
+                  default: verification_flow
+                flow_id:
+                  type: string
+                  description: Your metamap (flow) ID
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Mati Access Token:
+                  value: "{\n  \"access_token\": \"<access_token>\",\n  \"expires_in\": 3600,\n  \"scope\": \"verification_flow\",\n  \"token_type\": \"bearer\"\n}"
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: <access_token>
+                  expires_in:
+                    type: integer
+                    example: 3600
+                    default: 0
+                  scope:
+                    type: string
+                    example: verification_flow
+                  token_type:
+                    type: string
+                    example: bearer
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Invalid Client:
+                  value: "{\n  \"code\": 400,\n  \"message\": \"Invalid client: cannot retrieve client credentials\",\n  \"name\": \"invalid_client\",\n  \"status\": 400,\n  \"statusCode\": 400\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                    default: 0
+                  message:
+                    type: string
+                    example: 'Invalid client: cannot retrieve client credentials'
+                  name:
+                    type: string
+                    example: invalid_client
+                  status:
+                    type: integer
+                    example: 400
+                    default: 0
+                  statusCode:
+                    type: integer
+                    example: 400
+                    default: 0
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"code\":401,\n  \"message\":\"Invalid client: client is invalid\",\n  \"name\":\"invalid_client\",\n  \"status\":401,\n  \"statusCode\":401\n}\n"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 401
+                    default: 0
+                  message:
+                    type: string
+                    example: 'Invalid client: client is invalid'
+                  name:
+                    type: string
+                    example: invalid_client
+                  status:
+                    type: integer
+                    example: 401
+                    default: 0
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/oauth/token' \\\n-H 'x-mati-app: platform=web_desktop; version=22.2.10' \\\n-H \"Authorization: Basic \\\n$(echo -en '<client_id>:<client_secret>' | base64)\" \\\n-d '{\n    \"grant_type\": \"application_key\",\n    \"application_key\": \"<client_id>\",\n    \"scope\": \"verification_flow\",\n    \"flow_id\": \"<flow_id>\"\n    }'"
+          name: Sample Authentication Request
+        samples-languages:
+        - curl
+      tags:
+      - Authentication
+  /oauth:
+    post:
+      summary: Authentication
+      description: Use your `client_id` and `client_secret` as your username and password to get your access token.
+      operationId: authentication
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  default: client_credentials
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Mati Access Token:
+                  value: "{\n  \"access_token\": \"YOUR_MATI_ACCESS_TOKEN\",\n  \"expiresIn\": 3600,\n  \"payload\": {\n    \"user\": {\n      \"_id\": \"<access token>\"\n    }\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: YOUR_MATI_ACCESS_TOKEN
+                  expiresIn:
+                    type: integer
+                    example: 3600
+                    default: 0
+                  payload:
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          _id:
+                            type: string
+                            example: <access token>
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Invalid Client:
+                  value: "{\n  \"code\": 400,\n  \"message\": \"Invalid client: cannot retrieve client credentials\",\n  \"name\": \"invalid_client\",\n  \"status\": 400,\n  \"statusCode\": 400\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 400
+                    default: 0
+                  message:
+                    type: string
+                    example: 'Invalid client: cannot retrieve client credentials'
+                  name:
+                    type: string
+                    example: invalid_client
+                  status:
+                    type: integer
+                    example: 400
+                    default: 0
+                  statusCode:
+                    type: integer
+                    example: 400
+                    default: 0
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"code\":401,\n  \"message\":\"Invalid client: client is invalid\",\n  \"name\":\"invalid_client\",\n  \"status\":401,\n  \"statusCode\":401\n}\n"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                    example: 401
+                    default: 0
+                  message:
+                    type: string
+                    example: 'Invalid client: client is invalid'
+                  name:
+                    type: string
+                    example: invalid_client
+                  status:
+                    type: integer
+                    example: 401
+                    default: 0
+                  statusCode:
+                    type: integer
+                    example: 401
+                    default: 0
+      deprecated: false
+      tags:
+      - Authentication
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

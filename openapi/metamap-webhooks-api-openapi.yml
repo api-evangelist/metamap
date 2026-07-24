@@ -1,0 +1,295 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication Webhooks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+paths:
+  /v2/verifications/{id}:
+    get:
+      summary: Retrieve Webhook Resource Data
+      description: Use this API to retrieve Webhook Resource Data
+      operationId: retrieve-webhook-resource-data-1
+      parameters:
+      - name: id
+        in: path
+        description: The `id` is in the successful response to a [Verification Creation](https://docs.metamap.com/reference/verification-creation) request
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Successful Webhook response:
+                  value: "{\n  \"expired\": false,\n  \"deviceFingerprint\": {\n    \"ua\": \"Mozilla/5.0 (Linux; Android 10; SM-M305M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.116 Mobile Safari/537.36\",\n    \"browser\": {\n      \"name\": \"Chrome\",\n      \"version\": \"79.0.3945.116\",\n      \"major\": \"79\"\n    },\n    \"engine\": {\n      \"name\": \"WebKit\",\n      \"version\": \"537.36\"\n    },\n    \"os\": {\n      \"name\": \"Android\",\n      \"version\": \"10\"\n    },\n    \"device\": {\n      \"vendor\": \"Samsung\",\n      \"model\": \"SM-M305M\",\n      \"type\": \"mobile\"\n    }\n  },\n  \"identity\": {\n    \"status\": \"reviewNeeded\"\n  },\n  \"steps\": [\n    {\n      \"status\": 200,\n      \"id\": \"selfie\",\n      \"data\": {\n        \"selfiePhotoUrl\": \"https://media.getmati.com/media/eyJhbGciOiJIUzI1NiIsInR5cC...\"\n      },\n      \"error\": null\n    }, {\n        \"status\": 200,\n        \"id\": \"ip-validation\",\n        \"data\": {\n            \"country\": \"Mexico\",\n            \"countryCode\": \"MX\",\n            \"region\": \"Chihuahua\",\n            \"regionCode\": \"CHH\",\n            \"city\": \"Ciudad Juárez\",\n            \"zip\": 32472,\n            \"latitude\": 1.713,\n            \"longitude\": 106.39,\n            \"safe\": false\n        }\n    }\n  ],\n  \"documents\": [\n    {\n      \"country\": \"MX\",\n      \"type\": \"national-id\",\n      \"steps\": [\n        {\n          \"status\": 200,\n          \"id\": \"mexican-curp-validation\",\n          \"error\": {\n            \"type\": \"StepError\",\n            \"code\": \"curp.invalid\",\n            \"message\": \"CURP number is invalid\"\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"mexican-ine-validation\",\n          \"error\": {\n            \"type\": \"StepError\",\n            \"code\": \"ine.notEnoughParams\",\n            \"message\": \"Not enough params to get ine data\"\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"template-matching\",\n          \"error\": {\n            \"type\": \"StepError\",\n            \"code\": \"templateMatching.noMatchFound\",\n            \"message\": \"Document did not match any valid template\"\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"facematch\",\n          \"error\": {\n            \"type\": \"LegacyError\",\n            \"code\": \"legacy.error\",\n            \"message\": \"The face did not match the document\"\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"document-reading\",\n          \"error\": null,\n          \"data\": {\n            \"fullName\": {\n              \"value\": null,\n              \"label\": \"Name\"\n            },\n            \"address\": {\n              \"value\": null,\n              \"label\": \"Address\"\n            },\n            \"documentNumber\": {\n              \"value\": null,\n              \"label\": \"Document Number\"\n            },\n            \"dateOfBirth\": {\n              \"value\": null,\n              \"label\": \"Day of Birth\",\n              \"format\": \"date\"\n            },\n            \"expirationDate\": {\n              \"value\": null,\n              \"label\": \"Date of Expiration\",\n              \"format\": \"date\"\n            },\n            \"cde\": {\n              \"value\": null,\n              \"label\": \"Elector Key\"\n            },\n            \"curp\": {\n              \"value\": null,\n              \"label\": \"CURP\"\n            },\n            \"ne\": {\n              \"value\": null,\n              \"label\": \"Emission Number\"\n            },\n            \"ocrNumber\": {\n              \"value\": null,\n              \"label\": \"OCR Number\"\n            }\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"alteration-detection\",\n          \"error\": {\n            \"type\": \"LegacyError\",\n            \"code\": \"legacy.error\",\n            \"message\": \"Document is considered tempered\"\n          }\n        },\n        {\n          \"status\": 200,\n          \"id\": \"watchlists\",\n          \"error\": {\n            \"type\": \"LegacyError\",\n            \"code\": \"legacy.error\",\n            \"message\": \"No data to extract information\"\n          }\n        }\n      ],\n      \"fields\": {\n        \"fullName\": {\n          \"value\": null,\n          \"label\": \"Name\"\n        },\n        \"address\": {\n          \"value\": null,\n          \"label\": \"Address\"\n        },\n        \"documentNumber\": {\n          \"value\": null,\n          \"label\": \"Document Number\"\n        },\n        \"dateOfBirth\": {\n          \"value\": null,\n          \"label\": \"Day of Birth\",\n          \"format\": \"date\"\n        },\n        \"expirationDate\": {\n          \"value\": null,\n          \"label\": \"Date of Expiration\",\n          \"format\": \"date\"\n        },\n        \"cde\": {\n          \"value\": null,\n          \"label\": \"Elector Key\"\n        },\n        \"curp\": {\n          \"value\": null,\n          \"label\": \"CURP\"\n        },\n        \"ne\": {\n          \"value\": null,\n          \"label\": \"Emission Number\"\n        },\n        \"ocrNumber\": {\n          \"value\": null,\n          \"label\": \"OCR Number\"\n        }\n      },\n      \"photos\": [\n        \"https://media.getmati.com/media/eyJhbGciOiJIUzI1NiIs...\",\n        \"https://media.getmati.com/media/eyJhbGciOiJIUzI1NiIs...\"\n      ]\n    }\n  ],\n  \"hasProblem\": true,\n  \"computed\": {\n    \"age\" : {\n      \"data\" : 33\n    },\n    \"isDocumentExpired\" : {\n      \"data\" : {\n        \"national-id\" : false,\n        \"passport\": true,\n        \"proof-of-residency\": null\n       }\n    }\n  },\n  \"id\": \"{{_id}}\"\n}"
+              schema:
+                type: object
+                properties:
+                  expired:
+                    type: boolean
+                    example: false
+                    default: true
+                  deviceFingerprint:
+                    type: object
+                    properties:
+                      ua:
+                        type: string
+                        example: Mozilla/5.0 (Linux; Android 10; SM-M305M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.116 Mobile Safari/537.36
+                      browser:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Chrome
+                          version:
+                            type: string
+                            example: 79.0.3945.116
+                          major:
+                            type: string
+                            example: '79'
+                      engine:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: WebKit
+                          version:
+                            type: string
+                            example: '537.36'
+                      os:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Android
+                          version:
+                            type: string
+                            example: '10'
+                      device:
+                        type: object
+                        properties:
+                          vendor:
+                            type: string
+                            example: Samsung
+                          model:
+                            type: string
+                            example: SM-M305M
+                          type:
+                            type: string
+                            example: mobile
+                  identity:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: reviewNeeded
+                  steps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: integer
+                          example: 200
+                          default: 0
+                        id:
+                          type: string
+                          example: selfie
+                        data:
+                          type: object
+                          properties:
+                            selfiePhotoUrl:
+                              type: string
+                              example: https://media.getmati.com/media/eyJhbGciOiJIUzI1NiIsInR5cC...
+                        error: {}
+                  documents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        country:
+                          type: string
+                          example: MX
+                        type:
+                          type: string
+                          example: national-id
+                        steps:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              status:
+                                type: integer
+                                example: 200
+                                default: 0
+                              id:
+                                type: string
+                                example: mexican-curp-validation
+                              error:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    example: StepError
+                                  code:
+                                    type: string
+                                    example: curp.invalid
+                                  message:
+                                    type: string
+                                    example: CURP number is invalid
+                        fields:
+                          type: object
+                          properties:
+                            fullName:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Name
+                            address:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Address
+                            documentNumber:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Document Number
+                            dateOfBirth:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Day of Birth
+                                format:
+                                  type: string
+                                  example: date
+                            expirationDate:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Date of Expiration
+                                format:
+                                  type: string
+                                  example: date
+                            cde:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Elector Key
+                            curp:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: CURP
+                            ne:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: Emission Number
+                            ocrNumber:
+                              type: object
+                              properties:
+                                value: {}
+                                label:
+                                  type: string
+                                  example: OCR Number
+                        photos:
+                          type: array
+                          items:
+                            type: string
+                            example: https://media.getmati.com/media/eyJhbGciOiJIUzI1NiIs...
+                  hasProblem:
+                    type: boolean
+                    example: true
+                    default: true
+                  computed:
+                    type: object
+                    properties:
+                      age:
+                        type: object
+                        properties:
+                          data:
+                            type: integer
+                            example: 33
+                            default: 0
+                      isDocumentExpired:
+                        type: object
+                        properties:
+                          data:
+                            type: object
+                            properties:
+                              national-id:
+                                type: boolean
+                                example: false
+                                default: true
+                              passport:
+                                type: boolean
+                                example: true
+                                default: true
+                              proof-of-residency: {}
+                  id:
+                    type: string
+                    example: '{{_id}}'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://api.getmati.com/v2/verifications/<id>'' \
+
+            --header ''Authorization: Bearer <access_token>'''
+        samples-languages:
+        - curl
+      tags:
+      - Webhooks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

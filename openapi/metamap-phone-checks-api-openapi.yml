@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication Phone Checks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Phone Checks
+paths:
+  /safety/v1/checks/phone/otp:
+    post:
+      summary: Phone Ownership
+      description: This API sends an OTP through SMS to verify ownership
+      operationId: phone-ownership
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - callbackUrl
+              - locale
+              - recipient
+              - senderName
+              properties:
+                callbackUrl:
+                  type: string
+                  description: Callback URL to receive webhooks.
+                locale:
+                  type: string
+                  description: 'Location of search. Currently allows one of the following values: `"en_US"`, `"es_MX"`, `""`, and `null`.'
+                recipient:
+                  type: string
+                  description: Country code and phone number. Must be entered as a single number with no delimiters, such as "-" or "." or spaces.
+                senderName:
+                  type: string
+                  description: User name associated with the SMS number.
+                metadata:
+                  type: string
+                  description: Metadata to be sent to a webhook (`callbackUrl`)
+                  default: '{ "user-defined-1" : "abcde", "user-defined-2" : "12345" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"confirmationCode\": \"8844\"\n  },\n  \"metadata\": {\n  \t\"user_defined\": \"id00000\"\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      confirmationCode:
+                        type: string
+                        example: '8844'
+                  metadata:
+                    type: object
+                    properties:
+                      user_defined:
+                        type: string
+                        example: id00000
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "POST https://api.getmati.com/safety/v1/checks/phone/otp \n-H 'Content-Type: application/json' \\\n-H \"Authorization: Bearer <access_token>\" \\\n{\n   \"recipient\": \"000000000000\",\n   \"callbackUrl\": \"https://some.webhook.url\",\n   \"locale\": \"es_MX\",\n   \"senderName\": \"Acme Corporation\",\n \t \"metadata\": { \n    \t\"user_defined\": \"id00000\"\n  \t}\n}"
+        samples-languages:
+        - curl
+      tags:
+      - Phone Checks
+  /safety/v1/checks/phone/risk:
+    post:
+      summary: Phone Risk
+      description: Use this API to assess a user's behavioral risk through their phone number
+      operationId: phone-risk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - recipient
+              - callbackUrl
+              properties:
+                recipient:
+                  type: string
+                  description: User's phone number. Enter the phone number as a numerical string with no delimiters, such as ".", "(", ")", or "-".
+                callbackUrl:
+                  type: string
+                  description: Callback URL to receive the risk assessment score.
+                metadata:
+                  type: string
+                  description: Metadata to be sent to a webhook (`callbackUrl`)
+                  default: '{ "user-defined-1" : "abcde", "user-defined-2" : "12345" }'
+                  format: json
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Very High Risk:
+                  value: "{\n  \"error\": null,\n  \"data\": {\n    \"phoneNumber\": \"00000000000\",\n    \"countryCode\": \"7\",\n    \"phoneType\": \"Mobile\",\n    \"phoneTypeStatus\": \"Allowed\",\n    \"riskLevel\": \"very-high\",\n    \"riskInsights\": [\n      {\n        \"name\": \"high-risk irregular activity\",\n        \"description\": \"Highest-risk category, based on past behavior.\",\n        \"impact\": \"Negative\",\n        \"type\": \"Category\"\n      },\n      {\n        \"name\": \"no range activity\",\n        \"description\": \"Very little activity, or none at all, for a risky range that this number belongs to over the past 90 days. Also returned if the number does not belong to a risky range.\",\n        \"impact\": \"Positive\",\n        \"type\": \"Automation to human activity\"\n      },\n      {\n        \"name\": \"no activity\",\n        \"description\": \"Very little activity, or none at all, was ever observed on this number. Very short tenure. Cannot classify.\",\n        \"impact\": \"Neutral\",\n        \"type\": \"Human to human activity\"\n      }\n    ],\n    \"riskScore\": 80,\n    \"maxPossibleRiskScore\": 100,\n    \"recommendation\": \"block\",\n    \"timezone\": \"+2\",\n    \"lineType\": \"MOBILE\",\n    \"carrier\": \"Vimpel Communications\",\n    \"location\": {\n      \"city\": \"Moscow\",\n      \"state\": null,\n      \"zip\": null,\n      \"metroCode\": null,\n      \"county\": null,\n      \"country\": \"Russia\"\n    }\n  },\n  \"metadata\": { \n  \t\"user_defined\": \"id00000\"\n  } \n}"
+              schema:
+                type: object
+                properties:
+                  error: {}
+                  data:
+                    type: object
+                    properties:
+                      phoneNumber:
+                        type: string
+                        example: '00000000000'
+                      countryCode:
+                        type: string
+                        example: '7'
+                      phoneType:
+                        type: string
+                        example: Mobile
+                      phoneTypeStatus:
+                        type: string
+                        example: Allowed
+                      riskLevel:
+                        type: string
+                        example: very-high
+                      riskInsights:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: high-risk irregular activity
+                            description:
+                              type: string
+                              example: Highest-risk category, based on past behavior.
+                            impact:
+                              type: string
+                              example: Negative
+                            type:
+                              type: string
+                              example: Category
+                      riskScore:
+                        type: integer
+                        example: 80
+                        default: 0
+                      maxPossibleRiskScore:
+                        type: integer
+                        example: 100
+                        default: 0
+                      recommendation:
+                        type: string
+                        example: block
+                      timezone:
+                        type: string
+                        example: '+2'
+                      lineType:
+                        type: string
+                        example: MOBILE
+                      carrier:
+                        type: string
+                        example: Vimpel Communications
+                      location:
+                        type: object
+                        properties:
+                          city:
+                            type: string
+                            example: Moscow
+                          state: {}
+                          zip: {}
+                          metroCode: {}
+                          county: {}
+                          country:
+                            type: string
+                            example: Russia
+                  metadata:
+                    type: object
+                    properties:
+                      user_defined:
+                        type: string
+                        example: id00000
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://api.getmati.com/safety/v1/checks/phone/risk' \\\n--header 'Authorization: Bearer <access_token>' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\"recipient\": \"000000000000\",\n\"callbackUrl\": \"https://some.webhook.url\",\n\"metadata\": {\t\"user_defined\": \"id00000\" }\n}'"
+        samples-languages:
+        - curl
+      tags:
+      - Phone Checks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.

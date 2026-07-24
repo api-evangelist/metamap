@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: MetaMap Authentication Credit Checks API
+  version: '1.4'
+  description: MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.
+  contact:
+    name: MetaMap
+    url: https://metamap.com
+  license:
+    name: MetaMap Terms of Service
+    url: https://metamap.com/legal/terms-of-service
+servers:
+- url: https://api.prod.metamap.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Credit Checks
+paths:
+  /creditchecks/v1/br/credit-serasa:
+    post:
+      summary: Brazil Credit Check
+      description: Review a user's credit score against Brazil's Serasa
+      operationId: brazil-credit-check
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        schema:
+          type: string
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": 0,\n  \"type\": \"<string>\"\n}"
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: <string>
+                  message:
+                    type: string
+                    example: <string>
+                  code:
+                    type: integer
+                    example: 0
+                    default: 0
+                  type:
+                    type: string
+                    example: <string>
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n     --url https://api.getmati.com/creditchecks/v1/ar/credit-fidelitas \\\n     --header 'accept: application/json' \\\n     --header 'content-type: application/json'"
+          name: cURL REQUEST
+        samples-languages:
+        - curl
+      tags:
+      - Credit Checks
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT obtained via POST /oauth using client_id / client_secret as HTTP Basic.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Used only on POST /oauth for the initial token exchange.
