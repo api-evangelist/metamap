@@ -1,38 +1,226 @@
 aid: metamap
 url: https://raw.githubusercontent.com/api-evangelist/metamap/refs/heads/main/apis.yml
 apis:
-- aid: metamap:metamap-api
-  name: MetaMap API
-  tags:
-  - Identity Verification
-  - KYC
-  - AML
-  - Compliance
-  - Authentication
-  - Verifications
+- aid: metamap:metamap-authentication-api
+  name: MetaMap Authentication API
+  description: The Authentication API from MetaMap — 2 operation(s) for authentication.
   humanURL: https://docs.metamap.com/reference/authentication
   baseURL: https://api.prod.metamap.com
+  tags:
+  - Authentication
   properties:
-  - url: https://docs.metamap.com/docs/api-guide
-    type: Documentation
-  - url: https://docs.metamap.com/reference/authentication
-    type: Documentation
-  - url: openapi/metamap-openapi.yml
-    type: OpenAPI
-  - url: https://docs.metamap.com/llms.txt
-    type: Documentation
-  - url: https://docs.metamap.com/docs/webhook-specifications
-    type: Webhooks
-  - url: https://docs.metamap.com/docs/configure-your-webhook-url
-    type: Webhooks
-  - url: https://docs.metamap.com/docs/errors
-    type: ErrorCodes
-  description: MetaMap's identity verification REST API. Start and manage user verifications, send document
-    photos/selfies/videos, run watchlist screening (Comply Advantage and custom watchlists), email and phone
-    ownership/risk checks, credit checks, court-record background checks, and 40+ government database checks
-    across Latin America (Brazil, Mexico, Colombia, Chile, Costa Rica, Dominican Republic, Panama, Paraguay,
-    Peru, Uruguay), Africa (Ghana, Kenya, Nigeria), and Asia (Philippines). OAuth 2.0 client-credentials flow
-    yields a 1-hour JWT bearer token; results are delivered via configurable webhooks.
+  - type: OpenAPI
+    url: openapi/metamap-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-background-checks-api
+  name: MetaMap Background Checks API
+  description: The Background Checks API from MetaMap — 2 operation(s) for background checks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Background Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-background-checks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-credit-checks-api
+  name: MetaMap Credit Checks API
+  description: The Credit Checks API from MetaMap — 1 operation(s) for credit checks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Credit Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-credit-checks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-custom-watchlists-api
+  name: MetaMap Custom Watchlists API
+  description: The Custom Watchlists API from MetaMap — 1 operation(s) for custom watchlists.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Custom Watchlists
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-custom-watchlists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-email-checks-api
+  name: MetaMap Email Checks API
+  description: The Email Checks API from MetaMap — 2 operation(s) for email checks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Email Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-email-checks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-govchecks-api
+  name: MetaMap GovChecks API
+  description: The GovChecks API from MetaMap — 34 operation(s) for govchecks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - GovChecks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-govchecks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-phone-checks-api
+  name: MetaMap Phone Checks API
+  description: The Phone Checks API from MetaMap — 2 operation(s) for phone checks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Phone Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-phone-checks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-verifications-api
+  name: MetaMap Verifications API
+  description: The Verifications API from MetaMap — 7 operation(s) for verifications.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Verifications
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-verifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-watchlist-checks-api
+  name: MetaMap Watchlist Checks API
+  description: The Watchlist Checks API from MetaMap — 1 operation(s) for watchlist checks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Watchlist Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-watchlist-checks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
+- aid: metamap:metamap-webhooks-api
+  name: MetaMap Webhooks API
+  description: The Webhooks API from MetaMap — 1 operation(s) for webhooks.
+  humanURL: https://docs.metamap.com/reference/authentication
+  baseURL: https://api.prod.metamap.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/metamap-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.metamap.com/docs/api-guide
+  - type: Documentation
+    url: https://docs.metamap.com/reference/authentication
+  - type: Documentation
+    url: https://docs.metamap.com/llms.txt
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/webhook-specifications
+  - type: Webhooks
+    url: https://docs.metamap.com/docs/configure-your-webhook-url
+  - type: ErrorCodes
+    url: https://docs.metamap.com/docs/errors
 name: MetaMap
 tags:
 - Identity Verification
@@ -55,9 +243,24 @@ tags:
 - Africa
 - Mobile SDK
 kind: contract
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://files.readme.io/8daff99-MetaMap_logo.svg
 access: 3rd-Party
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/metamap/overview
 - type: AgenticAccess
   url: agentic-access/metamap-agentic-access.yml
 - type: DomainSecurity
