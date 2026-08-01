@@ -1,0 +1,422 @@
+{
+  "info": {
+    "_postman_id": "6fcb2930-5739-4c6b-ad69-3cc66f7547d3",
+    "name": "MetaMap Authentication Phone Checks API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:32.000Z",
+    "updatedAt": "2026-07-28T02:09:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6fcb2930-5739-4c6b-ad69-3cc66f7547d3"
+  },
+  "item": [
+    {
+      "name": "safety",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "checks",
+              "item": [
+                {
+                  "name": "phone",
+                  "item": [
+                    {
+                      "name": "otp",
+                      "item": [
+                        {
+                          "name": "Phone Ownership",
+                          "id": "3889e31d-b256-4cee-85c4-bcac12a6b332",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/checks/phone/otp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "checks",
+                                "phone",
+                                "otp"
+                              ]
+                            },
+                            "description": "This API sends an OTP through SMS to verify ownership"
+                          },
+                          "response": [
+                            {
+                              "id": "24073bdf-8840-490c-af75-c1d486ed6db9",
+                              "name": "200",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/plain"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/phone/otp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "phone",
+                                    "otp"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/plain"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {},\n  \"data\": {\n    \"confirmationCode\": \"<string>\"\n  },\n  \"metadata\": {\n    \"user_defined\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:09:32.000Z",
+                              "updatedAt": "2026-07-28T02:09:32.000Z",
+                              "uid": "35240-24073bdf-8840-490c-af75-c1d486ed6db9"
+                            },
+                            {
+                              "id": "f356da8f-3208-4c8e-a15f-f6bc7ba83f56",
+                              "name": "400",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/phone/otp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "phone",
+                                    "otp"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:09:32.000Z",
+                              "updatedAt": "2026-07-28T02:09:32.000Z",
+                              "uid": "35240-f356da8f-3208-4c8e-a15f-f6bc7ba83f56"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:09:32.000Z",
+                          "updatedAt": "2026-07-28T02:09:32.000Z",
+                          "uid": "35240-3889e31d-b256-4cee-85c4-bcac12a6b332"
+                        }
+                      ],
+                      "id": "ca147253-50bb-4fb8-916c-4378796b038d",
+                      "createdAt": "2026-07-28T02:09:32.000Z",
+                      "updatedAt": "2026-07-28T02:09:32.000Z",
+                      "uid": "35240-ca147253-50bb-4fb8-916c-4378796b038d"
+                    },
+                    {
+                      "name": "risk",
+                      "item": [
+                        {
+                          "name": "Phone Risk",
+                          "id": "01899e33-0962-4bc0-931a-19164bb7ba9b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/checks/phone/risk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "checks",
+                                "phone",
+                                "risk"
+                              ]
+                            },
+                            "description": "Use this API to assess a user's behavioral risk through their phone number"
+                          },
+                          "response": [
+                            {
+                              "id": "7736b1c2-3c78-4e96-b9a8-d9a18ebca863",
+                              "name": "200",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/phone/risk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "phone",
+                                    "risk"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {},\n  \"data\": {\n    \"phoneNumber\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"phoneType\": \"<string>\",\n    \"phoneTypeStatus\": \"<string>\",\n    \"riskLevel\": \"<string>\",\n    \"riskInsights\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"impact\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"impact\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"riskScore\": 0,\n    \"maxPossibleRiskScore\": 0,\n    \"recommendation\": \"<string>\",\n    \"timezone\": \"<string>\",\n    \"lineType\": \"<string>\",\n    \"carrier\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"state\": {},\n      \"zip\": {},\n      \"metroCode\": {},\n      \"county\": {},\n      \"country\": \"<string>\"\n    }\n  },\n  \"metadata\": {\n    \"user_defined\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:09:32.000Z",
+                              "updatedAt": "2026-07-28T02:09:32.000Z",
+                              "uid": "35240-7736b1c2-3c78-4e96-b9a8-d9a18ebca863"
+                            },
+                            {
+                              "id": "9d77bbe8-a695-4544-9588-e4d65ca07598",
+                              "name": "400",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/phone/risk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "phone",
+                                    "risk"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:09:32.000Z",
+                              "updatedAt": "2026-07-28T02:09:32.000Z",
+                              "uid": "35240-9d77bbe8-a695-4544-9588-e4d65ca07598"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:09:32.000Z",
+                          "updatedAt": "2026-07-28T02:09:32.000Z",
+                          "uid": "35240-01899e33-0962-4bc0-931a-19164bb7ba9b"
+                        }
+                      ],
+                      "id": "a60995eb-45b2-4bc4-9c01-860ba57ef263",
+                      "createdAt": "2026-07-28T02:09:32.000Z",
+                      "updatedAt": "2026-07-28T02:09:32.000Z",
+                      "uid": "35240-a60995eb-45b2-4bc4-9c01-860ba57ef263"
+                    }
+                  ],
+                  "id": "63be8137-34c2-483f-b79b-e1ca3e4e7f23",
+                  "createdAt": "2026-07-28T02:09:32.000Z",
+                  "updatedAt": "2026-07-28T02:09:32.000Z",
+                  "uid": "35240-63be8137-34c2-483f-b79b-e1ca3e4e7f23"
+                }
+              ],
+              "id": "f082aeb2-797b-4143-8a4f-baa4e1fe51b5",
+              "createdAt": "2026-07-28T02:09:32.000Z",
+              "updatedAt": "2026-07-28T02:09:32.000Z",
+              "uid": "35240-f082aeb2-797b-4143-8a4f-baa4e1fe51b5"
+            }
+          ],
+          "id": "94d30804-60ba-43c3-aa92-aff644ce077c",
+          "createdAt": "2026-07-28T02:09:32.000Z",
+          "updatedAt": "2026-07-28T02:09:32.000Z",
+          "uid": "35240-94d30804-60ba-43c3-aa92-aff644ce077c"
+        }
+      ],
+      "id": "eff0643e-0eb9-441d-90b8-507f400fad18",
+      "createdAt": "2026-07-28T02:09:32.000Z",
+      "updatedAt": "2026-07-28T02:09:32.000Z",
+      "uid": "35240-eff0643e-0eb9-441d-90b8-507f400fad18"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

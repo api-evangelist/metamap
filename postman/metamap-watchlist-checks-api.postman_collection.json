@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "4ea6c33e-2eda-456d-8b12-0a12f8ee222e",
+    "name": "MetaMap Authentication Watchlist Checks API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:38.000Z",
+    "updatedAt": "2026-07-28T02:09:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4ea6c33e-2eda-456d-8b12-0a12f8ee222e"
+  },
+  "item": [
+    {
+      "name": "safety",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "checks",
+              "item": [
+                {
+                  "name": "comply-advantage",
+                  "item": [
+                    {
+                      "name": "Comply Advantage",
+                      "id": "2cafdd3f-8210-4907-8933-5c25c82de4d8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"entityType\": \"person\",\n  \"birthYear\": \"<integer>\",\n  \"monitor\": false,\n  \"callbackUrl\": \"<string>\",\n  \"countryCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exactMatch\": false,\n  \"fuzzinessThreshold\": 50,\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/safety/v1/checks/comply-advantage",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "safety",
+                            "v1",
+                            "checks",
+                            "comply-advantage"
+                          ]
+                        },
+                        "description": "Use this check to verify whether a user or company is listed on international watchlists."
+                      },
+                      "response": [
+                        {
+                          "id": "1c757356-7f61-4d89-9c19-a6557a956194",
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"entityType\": \"person\",\n  \"birthYear\": \"<integer>\",\n  \"monitor\": false,\n  \"callbackUrl\": \"<string>\",\n  \"countryCodes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exactMatch\": false,\n  \"fuzzinessThreshold\": 50,\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/checks/comply-advantage",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "checks",
+                                "comply-advantage"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"searchedOn\": \"<string>\",\n    \"nameSearched\": \"<string>\",\n    \"profileUrl\": \"<string>\",\n    \"error\": {}\n  }\n}",
+                          "createdAt": "2026-07-28T02:09:38.000Z",
+                          "updatedAt": "2026-07-28T02:09:38.000Z",
+                          "uid": "35240-1c757356-7f61-4d89-9c19-a6557a956194"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:09:38.000Z",
+                      "updatedAt": "2026-07-28T02:09:38.000Z",
+                      "uid": "35240-2cafdd3f-8210-4907-8933-5c25c82de4d8"
+                    }
+                  ],
+                  "id": "9ae2fb94-54d1-4ff5-91a9-5a8de521b2b0",
+                  "createdAt": "2026-07-28T02:09:38.000Z",
+                  "updatedAt": "2026-07-28T02:09:38.000Z",
+                  "uid": "35240-9ae2fb94-54d1-4ff5-91a9-5a8de521b2b0"
+                }
+              ],
+              "id": "4f5cf74d-c73e-4b60-a99c-46eb1eb89f13",
+              "createdAt": "2026-07-28T02:09:38.000Z",
+              "updatedAt": "2026-07-28T02:09:38.000Z",
+              "uid": "35240-4f5cf74d-c73e-4b60-a99c-46eb1eb89f13"
+            }
+          ],
+          "id": "7fdeef5a-73d6-4949-868d-dab4519a2324",
+          "createdAt": "2026-07-28T02:09:38.000Z",
+          "updatedAt": "2026-07-28T02:09:38.000Z",
+          "uid": "35240-7fdeef5a-73d6-4949-868d-dab4519a2324"
+        }
+      ],
+      "id": "18ab8570-e82d-4a82-bf6a-f10f3987c4ed",
+      "createdAt": "2026-07-28T02:09:38.000Z",
+      "updatedAt": "2026-07-28T02:09:38.000Z",
+      "uid": "35240-18ab8570-e82d-4a82-bf6a-f10f3987c4ed"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

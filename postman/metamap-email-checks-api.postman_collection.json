@@ -1,0 +1,422 @@
+{
+  "info": {
+    "_postman_id": "f9f71681-7cc2-4c5e-8093-f0706f89063d",
+    "name": "MetaMap Authentication Email Checks API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:26.000Z",
+    "updatedAt": "2026-07-28T02:09:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9f71681-7cc2-4c5e-8093-f0706f89063d"
+  },
+  "item": [
+    {
+      "name": "safety",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "checks",
+              "item": [
+                {
+                  "name": "email",
+                  "item": [
+                    {
+                      "name": "otp",
+                      "item": [
+                        {
+                          "name": "Email Ownership",
+                          "id": "795dec0e-c632-48b0-834b-c0028b720487",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/checks/email/otp",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "checks",
+                                "email",
+                                "otp"
+                              ]
+                            },
+                            "description": "This API sends an OTP to the email address to verify user ownership"
+                          },
+                          "response": [
+                            {
+                              "id": "a70ec02b-17e7-4e99-be93-9da7b5fa38de",
+                              "name": "200",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/email/otp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "email",
+                                    "otp"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {},\n  \"data\": {\n    \"confirmationCode\": \"<string>\"\n  },\n  \"metadata\": {\n    \"user_defined\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:09:27.000Z",
+                              "updatedAt": "2026-07-28T02:09:27.000Z",
+                              "uid": "35240-a70ec02b-17e7-4e99-be93-9da7b5fa38de"
+                            },
+                            {
+                              "id": "5cb9ece0-d163-4bc2-88cf-681997ad93d0",
+                              "name": "400",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/email/otp",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "email",
+                                    "otp"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:09:27.000Z",
+                              "updatedAt": "2026-07-28T02:09:27.000Z",
+                              "uid": "35240-5cb9ece0-d163-4bc2-88cf-681997ad93d0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:09:27.000Z",
+                          "updatedAt": "2026-07-28T02:09:27.000Z",
+                          "uid": "35240-795dec0e-c632-48b0-834b-c0028b720487"
+                        }
+                      ],
+                      "id": "c82d2899-fe92-4fc4-95fa-d7ce6c147b04",
+                      "createdAt": "2026-07-28T02:09:27.000Z",
+                      "updatedAt": "2026-07-28T02:09:27.000Z",
+                      "uid": "35240-c82d2899-fe92-4fc4-95fa-d7ce6c147b04"
+                    },
+                    {
+                      "name": "risk",
+                      "item": [
+                        {
+                          "name": "Email Risk",
+                          "id": "2f05c837-3975-434a-b9aa-8e4b7669a053",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/checks/email/risk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "checks",
+                                "email",
+                                "risk"
+                              ]
+                            },
+                            "description": "This API provides a behavioral risk assessment based on email address"
+                          },
+                          "response": [
+                            {
+                              "id": "a38da9fc-0ef6-4dd3-aad9-671ecf0576da",
+                              "name": "200",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/email/risk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "email",
+                                    "risk"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {},\n  \"data\": {\n    \"email\": \"<string>\",\n    \"riskScore\": 0,\n    \"message\": \"<string>\",\n    \"success\": true,\n    \"valid\": true,\n    \"disposable\": true,\n    \"smtp_score\": 0,\n    \"overall_score\": 0,\n    \"first_name\": \"<string>\",\n    \"generic\": true,\n    \"common\": true,\n    \"dns_valid\": true,\n    \"honeypot\": true,\n    \"deliverability\": \"<string>\",\n    \"frequent_complainer\": true,\n    \"spam_trap_score\": \"<string>\",\n    \"catch_all\": true,\n    \"timed_out\": true,\n    \"suspect\": true,\n    \"recent_abuse\": true,\n    \"suggested_domain\": \"<string>\",\n    \"leaked\": true,\n    \"domain_age\": {\n      \"human\": \"<string>\",\n      \"timestamp\": 0,\n      \"iso\": \"<string>\"\n    },\n    \"first_seen\": {\n      \"human\": \"<string>\",\n      \"timestamp\": 0,\n      \"iso\": \"<string>\"\n    },\n    \"sanitized_email\": \"<string>\",\n    \"domain_velocity\": \"<string>\",\n    \"user_activity\": \"<string>\",\n    \"request_id\": \"<string>\"\n  },\n  \"metadata\": {\n    \"user_defined\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-07-28T02:09:27.000Z",
+                              "updatedAt": "2026-07-28T02:09:27.000Z",
+                              "uid": "35240-a38da9fc-0ef6-4dd3-aad9-671ecf0576da"
+                            },
+                            {
+                              "id": "1da6e5e0-b8b5-4dd0-8131-023b3cf63101",
+                              "name": "400",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/checks/email/risk",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "checks",
+                                    "email",
+                                    "risk"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:09:27.000Z",
+                              "updatedAt": "2026-07-28T02:09:27.000Z",
+                              "uid": "35240-1da6e5e0-b8b5-4dd0-8131-023b3cf63101"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:09:27.000Z",
+                          "updatedAt": "2026-07-28T02:09:27.000Z",
+                          "uid": "35240-2f05c837-3975-434a-b9aa-8e4b7669a053"
+                        }
+                      ],
+                      "id": "0b3e4aec-101d-4a2f-a2ac-e75256945149",
+                      "createdAt": "2026-07-28T02:09:27.000Z",
+                      "updatedAt": "2026-07-28T02:09:27.000Z",
+                      "uid": "35240-0b3e4aec-101d-4a2f-a2ac-e75256945149"
+                    }
+                  ],
+                  "id": "916b28d7-c4e8-4ada-82a2-e9ab450e2f42",
+                  "createdAt": "2026-07-28T02:09:27.000Z",
+                  "updatedAt": "2026-07-28T02:09:27.000Z",
+                  "uid": "35240-916b28d7-c4e8-4ada-82a2-e9ab450e2f42"
+                }
+              ],
+              "id": "e3b0cbc6-3baf-4cf5-879d-b9766d9a9897",
+              "createdAt": "2026-07-28T02:09:27.000Z",
+              "updatedAt": "2026-07-28T02:09:27.000Z",
+              "uid": "35240-e3b0cbc6-3baf-4cf5-879d-b9766d9a9897"
+            }
+          ],
+          "id": "83fac7c6-632d-4027-a487-a7fc05297161",
+          "createdAt": "2026-07-28T02:09:27.000Z",
+          "updatedAt": "2026-07-28T02:09:27.000Z",
+          "uid": "35240-83fac7c6-632d-4027-a487-a7fc05297161"
+        }
+      ],
+      "id": "f0a9faf3-8430-4489-8725-3058f1f9ed44",
+      "createdAt": "2026-07-28T02:09:27.000Z",
+      "updatedAt": "2026-07-28T02:09:27.000Z",
+      "uid": "35240-f0a9faf3-8430-4489-8725-3058f1f9ed44"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "provider": "metamap",
+  "sources": [
+    "metamap-authentication-api-openapi.yml",
+    "metamap-background-checks-api-openapi.yml",
+    "metamap-credit-checks-api-openapi.yml",
+    "metamap-custom-watchlists-api-openapi.yml",
+    "metamap-email-checks-api-openapi.yml",
+    "metamap-govchecks-api-openapi.yml",
+    "metamap-phone-checks-api-openapi.yml",
+    "metamap-verifications-api-openapi.yml",
+    "metamap-watchlist-checks-api-openapi.yml",
+    "metamap-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "metamap-authentication-api-openapi.yml",
+    "metamap-background-checks-api-openapi.yml",
+    "metamap-credit-checks-api-openapi.yml",
+    "metamap-custom-watchlists-api-openapi.yml",
+    "metamap-email-checks-api-openapi.yml",
+    "metamap-govchecks-api-openapi.yml",
+    "metamap-phone-checks-api-openapi.yml",
+    "metamap-verifications-api-openapi.yml",
+    "metamap-watchlist-checks-api-openapi.yml",
+    "metamap-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

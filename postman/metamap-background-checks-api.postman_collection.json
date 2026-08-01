@@ -1,0 +1,416 @@
+{
+  "info": {
+    "_postman_id": "913a9817-f722-44d5-95b2-134dc3f2d7b8",
+    "name": "MetaMap Authentication Background Checks API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:11.000Z",
+    "updatedAt": "2026-07-28T02:09:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-913a9817-f722-44d5-95b2-134dc3f2d7b8"
+  },
+  "item": [
+    {
+      "name": "backgroundchecks",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "br",
+              "item": [
+                {
+                  "name": "background",
+                  "item": [
+                    {
+                      "name": "Brazil: Court Records",
+                      "id": "f65e8db4-2c53-48c3-9f3b-76eec4d6d155",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backgroundchecks/v1/br/background",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backgroundchecks",
+                            "v1",
+                            "br",
+                            "background"
+                          ]
+                        },
+                        "description": "Use this API to check for users for court records in Brazil"
+                      },
+                      "response": [
+                        {
+                          "id": "99bbf0ca-808b-41a0-b719-f2b57a887356",
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/backgroundchecks/v1/br/background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "backgroundchecks",
+                                "v1",
+                                "br",
+                                "background"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {},\n  \"data\": {\n    \"fullName\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"status\": \"<string>\",\n    \"fullBackgroundCheck\": {\n      \"search\": {\n        \"id\": \"<string>\",\n        \"tags\": {\n          \"identityId\": \"<string>\"\n        },\n        \"BranchId\": 0,\n        \"isStatusTemporary\": true,\n        \"status\": \"<string>\",\n        \"createdAt\": \"<string>\",\n        \"receivedNotifiableStatusAt\": \"<string>\",\n        \"finishedProcessingAt\": {},\n        \"priorityFinishedProcessingAt\": \"<string>\",\n        \"exceptionListStatus\": {},\n        \"notifiedWebhookAt\": {},\n        \"officialNameStatus\": \"<string>\",\n        \"candidate\": {\n          \"officialName\": \"<string>\",\n          \"name\": \"<string>\",\n          \"cpf\": \"<string>\",\n          \"birthday\": \"<string>\"\n        },\n        \"receivedFinalStatusAt\": \"<string>\",\n        \"results\": [\n          {\n            \"id\": 0,\n            \"crawler\": \"<string>\",\n            \"crawlerFullName\": \"<string>\",\n            \"isCertificate\": true,\n            \"status\": \"<string>\",\n            \"linkEvidence\": {},\n            \"finishedProcessingAt\": \"<string>\",\n            \"ignored\": true,\n            \"review\": {},\n            \"certificate\": {}\n          },\n          {\n            \"id\": 0,\n            \"crawler\": \"<string>\",\n            \"crawlerFullName\": \"<string>\",\n            \"isCertificate\": true,\n            \"status\": \"<string>\",\n            \"linkEvidence\": {},\n            \"finishedProcessingAt\": \"<string>\",\n            \"ignored\": true,\n            \"review\": {},\n            \"certificate\": {}\n          }\n        ]\n      }\n    }\n  },\n  \"timestamp\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:09:11.000Z",
+                          "updatedAt": "2026-07-28T02:09:11.000Z",
+                          "uid": "35240-99bbf0ca-808b-41a0-b719-f2b57a887356"
+                        },
+                        {
+                          "id": "1f5671a9-a073-44c7-84f2-d362d41e1ab1",
+                          "name": "503",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/backgroundchecks/v1/br/background",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "backgroundchecks",
+                                "v1",
+                                "br",
+                                "background"
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  \"data\": {},\n  \"timestamp\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:09:11.000Z",
+                          "updatedAt": "2026-07-28T02:09:11.000Z",
+                          "uid": "35240-1f5671a9-a073-44c7-84f2-d362d41e1ab1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:09:11.000Z",
+                      "updatedAt": "2026-07-28T02:09:11.000Z",
+                      "uid": "35240-f65e8db4-2c53-48c3-9f3b-76eec4d6d155"
+                    }
+                  ],
+                  "id": "4a37b029-6f2a-4c7b-8326-e24a3364875a",
+                  "createdAt": "2026-07-28T02:09:11.000Z",
+                  "updatedAt": "2026-07-28T02:09:11.000Z",
+                  "uid": "35240-4a37b029-6f2a-4c7b-8326-e24a3364875a"
+                }
+              ],
+              "id": "323e6f5f-28c7-4ac8-8373-8135b0f037d9",
+              "createdAt": "2026-07-28T02:09:11.000Z",
+              "updatedAt": "2026-07-28T02:09:11.000Z",
+              "uid": "35240-323e6f5f-28c7-4ac8-8373-8135b0f037d9"
+            },
+            {
+              "name": "mx",
+              "item": [
+                {
+                  "name": "background-buholegal",
+                  "item": [
+                    {
+                      "name": "Mexico: Court Records",
+                      "id": "d9712cdb-1f91-4d59-9e3a-ca15ef62c66a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backgroundchecks/v1/mx/background-buholegal",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backgroundchecks",
+                            "v1",
+                            "mx",
+                            "background-buholegal"
+                          ]
+                        },
+                        "description": "Use this API to check for users for court records in Mexico."
+                      },
+                      "response": [
+                        {
+                          "id": "ecc57f68-8fde-4bbf-a101-5f178a64bd4c",
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/backgroundchecks/v1/mx/background-buholegal",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "backgroundchecks",
+                                "v1",
+                                "mx",
+                                "background-buholegal"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"firstName\": \"<string>\",\n    \"firstSurname\": \"<string>\",\n    \"lastSurname\": \"<string>\",\n    \"secondSurname\": \"<string>\",\n    \"curp\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"age\": 0,\n    \"gender\": \"<string>\",\n    \"status\": \"<string>\",\n    \"resource\": {},\n    \"timestamp\": {},\n    \"stepExtra\": [\n      {\n        \"query\": {\n          \"nombre\": \"<string>\",\n          \"paterno\": \"<string>\",\n          \"materno\": \"<string>\",\n          \"persona\": \"<string>\",\n          \"curp\": \"<string>\",\n          \"estado\": \"<string>\",\n          \"fecha_inicio\": {},\n          \"fecha_fin\": {},\n          \"detalle\": true\n        },\n        \"numero_resultados\": 0,\n        \"homonimia\": \"<string>\",\n        \"validacion_curp\": {\n          \"nombre\": \"<string>\",\n          \"paterno\": \"<string>\",\n          \"materno\": \"<string>\",\n          \"fecha_nacimiento\": \"<string>\",\n          \"sexo\": \"<string>\",\n          \"entidad_nacimiento\": \"<string>\",\n          \"curp\": \"<string>\"\n        }\n      },\n      {\n        \"query\": {\n          \"nombre\": \"<string>\",\n          \"paterno\": \"<string>\",\n          \"materno\": \"<string>\",\n          \"persona\": \"<string>\",\n          \"curp\": \"<string>\",\n          \"estado\": \"<string>\",\n          \"fecha_inicio\": {},\n          \"fecha_fin\": {},\n          \"detalle\": true\n        },\n        \"numero_resultados\": 0,\n        \"homonimia\": \"<string>\",\n        \"validacion_curp\": {\n          \"nombre\": \"<string>\",\n          \"paterno\": \"<string>\",\n          \"materno\": \"<string>\",\n          \"fecha_nacimiento\": \"<string>\",\n          \"sexo\": \"<string>\",\n          \"entidad_nacimiento\": \"<string>\",\n          \"curp\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"error\": {}\n}",
+                          "createdAt": "2026-07-28T02:09:11.000Z",
+                          "updatedAt": "2026-07-28T02:09:11.000Z",
+                          "uid": "35240-ecc57f68-8fde-4bbf-a101-5f178a64bd4c"
+                        },
+                        {
+                          "id": "89046ace-9e74-4acc-933c-33c75a4f2a93",
+                          "name": "503",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/backgroundchecks/v1/mx/background-buholegal",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "backgroundchecks",
+                                "v1",
+                                "mx",
+                                "background-buholegal"
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  \"data\": {},\n  \"timestamp\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:09:11.000Z",
+                          "updatedAt": "2026-07-28T02:09:11.000Z",
+                          "uid": "35240-89046ace-9e74-4acc-933c-33c75a4f2a93"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:09:11.000Z",
+                      "updatedAt": "2026-07-28T02:09:11.000Z",
+                      "uid": "35240-d9712cdb-1f91-4d59-9e3a-ca15ef62c66a"
+                    }
+                  ],
+                  "id": "71c265d6-b441-4f43-a81d-7b59822f5e43",
+                  "createdAt": "2026-07-28T02:09:11.000Z",
+                  "updatedAt": "2026-07-28T02:09:11.000Z",
+                  "uid": "35240-71c265d6-b441-4f43-a81d-7b59822f5e43"
+                }
+              ],
+              "id": "87d39a33-2fec-4b70-86bd-91278642907d",
+              "createdAt": "2026-07-28T02:09:11.000Z",
+              "updatedAt": "2026-07-28T02:09:11.000Z",
+              "uid": "35240-87d39a33-2fec-4b70-86bd-91278642907d"
+            }
+          ],
+          "id": "867596bd-2aa4-433f-8474-6487764fe006",
+          "createdAt": "2026-07-28T02:09:11.000Z",
+          "updatedAt": "2026-07-28T02:09:11.000Z",
+          "uid": "35240-867596bd-2aa4-433f-8474-6487764fe006"
+        }
+      ],
+      "id": "fc0dcb22-57bf-43d3-bb96-b21f409ec270",
+      "createdAt": "2026-07-28T02:09:11.000Z",
+      "updatedAt": "2026-07-28T02:09:11.000Z",
+      "uid": "35240-fc0dcb22-57bf-43d3-bb96-b21f409ec270"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

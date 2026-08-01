@@ -1,0 +1,196 @@
+{
+  "info": {
+    "_postman_id": "a23745b4-37c4-40ef-b9a0-0122f6146664",
+    "name": "MetaMap Authentication Webhooks API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:39.000Z",
+    "updatedAt": "2026-07-28T02:09:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a23745b4-37c4-40ef-b9a0-0122f6146664"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "verifications",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve Webhook Resource Data",
+                  "id": "88e3e62b-2cb8-45c4-8b8e-b155f27d0fe3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/verifications/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "verifications",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4b0eba7a-12f2-4dcd-85f5-a31ce01ac7cb",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The `id` is in the successful response to a [Verification Creation](https://docs.metamap.com/reference/verification-creation) request"
+                        }
+                      ]
+                    },
+                    "description": "Use this API to retrieve Webhook Resource Data"
+                  },
+                  "response": [
+                    {
+                      "id": "32853ed0-13cc-4dac-bdc8-a046eaa3155e",
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/verifications/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "verifications",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"expired\": true,\n  \"deviceFingerprint\": {\n    \"ua\": \"<string>\",\n    \"browser\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"major\": \"<string>\"\n    },\n    \"engine\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"os\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"device\": {\n      \"vendor\": \"<string>\",\n      \"model\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"identity\": {\n    \"status\": \"<string>\"\n  },\n  \"steps\": [\n    {\n      \"status\": 0,\n      \"id\": \"<string>\",\n      \"data\": {\n        \"selfiePhotoUrl\": \"<string>\"\n      },\n      \"error\": {}\n    },\n    {\n      \"status\": 0,\n      \"id\": \"<string>\",\n      \"data\": {\n        \"selfiePhotoUrl\": \"<string>\"\n      },\n      \"error\": {}\n    }\n  ],\n  \"documents\": [\n    {\n      \"country\": \"<string>\",\n      \"type\": \"<string>\",\n      \"steps\": [\n        {\n          \"status\": 0,\n          \"id\": \"<string>\",\n          \"error\": {\n            \"type\": \"<string>\",\n            \"code\": \"<string>\",\n            \"message\": \"<string>\"\n          }\n        },\n        {\n          \"status\": 0,\n          \"id\": \"<string>\",\n          \"error\": {\n            \"type\": \"<string>\",\n            \"code\": \"<string>\",\n            \"message\": \"<string>\"\n          }\n        }\n      ],\n      \"fields\": {\n        \"fullName\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"address\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"documentNumber\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"dateOfBirth\": {\n          \"value\": {},\n          \"label\": \"<string>\",\n          \"format\": \"<string>\"\n        },\n        \"expirationDate\": {\n          \"value\": {},\n          \"label\": \"<string>\",\n          \"format\": \"<string>\"\n        },\n        \"cde\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"curp\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"ne\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"ocrNumber\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        }\n      },\n      \"photos\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"country\": \"<string>\",\n      \"type\": \"<string>\",\n      \"steps\": [\n        {\n          \"status\": 0,\n          \"id\": \"<string>\",\n          \"error\": {\n            \"type\": \"<string>\",\n            \"code\": \"<string>\",\n            \"message\": \"<string>\"\n          }\n        },\n        {\n          \"status\": 0,\n          \"id\": \"<string>\",\n          \"error\": {\n            \"type\": \"<string>\",\n            \"code\": \"<string>\",\n            \"message\": \"<string>\"\n          }\n        }\n      ],\n      \"fields\": {\n        \"fullName\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"address\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"documentNumber\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"dateOfBirth\": {\n          \"value\": {},\n          \"label\": \"<string>\",\n          \"format\": \"<string>\"\n        },\n        \"expirationDate\": {\n          \"value\": {},\n          \"label\": \"<string>\",\n          \"format\": \"<string>\"\n        },\n        \"cde\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"curp\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"ne\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        },\n        \"ocrNumber\": {\n          \"value\": {},\n          \"label\": \"<string>\"\n        }\n      },\n      \"photos\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"hasProblem\": true,\n  \"computed\": {\n    \"age\": {\n      \"data\": 0\n    },\n    \"isDocumentExpired\": {\n      \"data\": {\n        \"national-id\": true,\n        \"passport\": true,\n        \"proof-of-residency\": {}\n      }\n    }\n  },\n  \"id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:09:39.000Z",
+                      "updatedAt": "2026-07-28T02:09:39.000Z",
+                      "uid": "35240-32853ed0-13cc-4dac-bdc8-a046eaa3155e"
+                    },
+                    {
+                      "id": "853c52bf-e25e-4f26-8dec-befa15f36717",
+                      "name": "400",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/verifications/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "verifications",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:09:39.000Z",
+                      "updatedAt": "2026-07-28T02:09:39.000Z",
+                      "uid": "35240-853c52bf-e25e-4f26-8dec-befa15f36717"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:09:39.000Z",
+                  "updatedAt": "2026-07-28T02:09:39.000Z",
+                  "uid": "35240-88e3e62b-2cb8-45c4-8b8e-b155f27d0fe3"
+                }
+              ],
+              "id": "84854131-1133-4864-bc73-351b3e51f795",
+              "createdAt": "2026-07-28T02:09:39.000Z",
+              "updatedAt": "2026-07-28T02:09:39.000Z",
+              "uid": "35240-84854131-1133-4864-bc73-351b3e51f795"
+            }
+          ],
+          "id": "d5e6fbcd-131f-4cb9-8146-b4282703577f",
+          "createdAt": "2026-07-28T02:09:39.000Z",
+          "updatedAt": "2026-07-28T02:09:39.000Z",
+          "uid": "35240-d5e6fbcd-131f-4cb9-8146-b4282703577f"
+        }
+      ],
+      "id": "f4323a52-bf8a-4b62-a5a4-bef43dcce15c",
+      "createdAt": "2026-07-28T02:09:39.000Z",
+      "updatedAt": "2026-07-28T02:09:39.000Z",
+      "uid": "35240-f4323a52-bf8a-4b62-a5a4-bef43dcce15c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

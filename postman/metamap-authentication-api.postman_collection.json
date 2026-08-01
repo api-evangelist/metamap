@@ -1,0 +1,558 @@
+{
+  "info": {
+    "_postman_id": "e033f52a-402a-427e-ab47-52a7bf973a9a",
+    "name": "MetaMap Authentication API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:06.000Z",
+    "updatedAt": "2026-07-28T02:09:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e033f52a-402a-427e-ab47-52a7bf973a9a"
+  },
+  "item": [
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Authentication Token",
+              "id": "b4239460-fa32-4cfb-a18e-d73fb683b7e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) platform=web_desktop; version=22.2.10",
+                    "key": "x-mati-app",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "scope",
+                      "value": "verification_flow"
+                    },
+                    {
+                      "description": "client ID",
+                      "key": "application_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Your metamap (flow) ID",
+                      "key": "flow_id",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "token"
+                  ]
+                },
+                "description": "Use this API to get your access token for the Skip Verification Upload Wait Time API"
+              },
+              "response": [
+                {
+                  "id": "a297b42f-edd9-4d24-81fa-2563435b5563",
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) platform=web_desktop; version=22.2.10",
+                        "key": "x-mati-app",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "scope",
+                          "value": "verification_flow"
+                        },
+                        {
+                          "description": "client ID",
+                          "key": "application_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Your metamap (flow) ID",
+                          "key": "flow_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": 0,\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:09:06.000Z",
+                  "updatedAt": "2026-07-28T02:09:06.000Z",
+                  "uid": "35240-a297b42f-edd9-4d24-81fa-2563435b5563"
+                },
+                {
+                  "id": "fc4b0743-e094-4882-8869-325586bc2458",
+                  "name": "400",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) platform=web_desktop; version=22.2.10",
+                        "key": "x-mati-app",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "scope",
+                          "value": "verification_flow"
+                        },
+                        {
+                          "description": "client ID",
+                          "key": "application_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Your metamap (flow) ID",
+                          "key": "flow_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": 0,\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"statusCode\": 0\n}",
+                  "createdAt": "2026-07-28T02:09:06.000Z",
+                  "updatedAt": "2026-07-28T02:09:06.000Z",
+                  "uid": "35240-fc4b0743-e094-4882-8869-325586bc2458"
+                },
+                {
+                  "id": "bb9cb48e-6251-4d28-8584-1c7699dc576e",
+                  "name": "401",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) platform=web_desktop; version=22.2.10",
+                        "key": "x-mati-app",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "client_credentials"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "scope",
+                          "value": "verification_flow"
+                        },
+                        {
+                          "description": "client ID",
+                          "key": "application_key",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Your metamap (flow) ID",
+                          "key": "flow_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": 0,\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"statusCode\": 0\n}",
+                  "createdAt": "2026-07-28T02:09:06.000Z",
+                  "updatedAt": "2026-07-28T02:09:06.000Z",
+                  "uid": "35240-bb9cb48e-6251-4d28-8584-1c7699dc576e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:09:06.000Z",
+              "updatedAt": "2026-07-28T02:09:06.000Z",
+              "uid": "35240-b4239460-fa32-4cfb-a18e-d73fb683b7e4"
+            }
+          ],
+          "id": "45a0564c-4e16-4e7c-8e5f-8e2dc623cd19",
+          "createdAt": "2026-07-28T02:09:06.000Z",
+          "updatedAt": "2026-07-28T02:09:06.000Z",
+          "uid": "35240-45a0564c-4e16-4e7c-8e5f-8e2dc623cd19"
+        },
+        {
+          "name": "Authentication",
+          "id": "5d5e9668-869e-4c67-8aec-15867815d11e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) ",
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/oauth",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "oauth"
+              ]
+            },
+            "description": "Use your `client_id` and `client_secret` as your username and password to get your access token."
+          },
+          "response": [
+            {
+              "id": "554108c1-a6f2-4470-aadf-d7c9e6a7d963",
+              "name": "200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"access_token\": \"<string>\",\n  \"expiresIn\": 0,\n  \"payload\": {\n    \"user\": {\n      \"_id\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:06.000Z",
+              "updatedAt": "2026-07-28T02:09:06.000Z",
+              "uid": "35240-554108c1-a6f2-4470-aadf-d7c9e6a7d963"
+            },
+            {
+              "id": "a5ff2f69-d0d5-475f-b00f-2c03cc41f167",
+              "name": "400",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": 0,\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"statusCode\": 0\n}",
+              "createdAt": "2026-07-28T02:09:06.000Z",
+              "updatedAt": "2026-07-28T02:09:06.000Z",
+              "uid": "35240-a5ff2f69-d0d5-475f-b00f-2c03cc41f167"
+            },
+            {
+              "id": "d418364e-91f0-4810-baef-bdc4ad36ee98",
+              "name": "401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": 0,\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"statusCode\": 0\n}",
+              "createdAt": "2026-07-28T02:09:06.000Z",
+              "updatedAt": "2026-07-28T02:09:06.000Z",
+              "uid": "35240-d418364e-91f0-4810-baef-bdc4ad36ee98"
+            }
+          ],
+          "createdAt": "2026-07-28T02:09:06.000Z",
+          "updatedAt": "2026-07-28T02:09:06.000Z",
+          "uid": "35240-5d5e9668-869e-4c67-8aec-15867815d11e"
+        }
+      ],
+      "id": "7bfb6cde-b366-46d3-be33-de8f611e8f28",
+      "createdAt": "2026-07-28T02:09:06.000Z",
+      "updatedAt": "2026-07-28T02:09:06.000Z",
+      "uid": "35240-7bfb6cde-b366-46d3-be33-de8f611e8f28"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}

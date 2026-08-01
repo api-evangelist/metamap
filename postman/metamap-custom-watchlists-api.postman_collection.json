@@ -1,0 +1,364 @@
+{
+  "info": {
+    "_postman_id": "bb9fa7d3-9e23-4e80-817d-0805bd00591d",
+    "name": "MetaMap Authentication Custom Watchlists API",
+    "description": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:12.000Z",
+    "updatedAt": "2026-07-28T02:09:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bb9fa7d3-9e23-4e80-817d-0805bd00591d"
+  },
+  "item": [
+    {
+      "name": "safety",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "upload",
+              "item": [
+                {
+                  "name": "watchlists",
+                  "item": [
+                    {
+                      "name": "file",
+                      "item": [
+                        {
+                          "name": "Upload a Custom Watchlist",
+                          "id": "0b9eec93-83c7-448d-a235-31a49c520698",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"watchlistId\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"file\": \"<binary>\",\n  \"csvSeparator\": \";\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/safety/v1/upload/watchlists/file",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "safety",
+                                "v1",
+                                "upload",
+                                "watchlists",
+                                "file"
+                              ]
+                            },
+                            "description": "Use this API to upload a custom watchlist"
+                          },
+                          "response": [
+                            {
+                              "id": "dd5fd49e-e280-46d4-b1eb-44998107a2d3",
+                              "name": "202",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"watchlistId\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"file\": \"<binary>\",\n  \"csvSeparator\": \";\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/upload/watchlists/file",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "upload",
+                                    "watchlists",
+                                    "file"
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:09:13.000Z",
+                              "updatedAt": "2026-07-28T02:09:13.000Z",
+                              "uid": "35240-dd5fd49e-e280-46d4-b1eb-44998107a2d3"
+                            },
+                            {
+                              "id": "ed0743a8-5c14-4c59-870d-43ddb1ca7e16",
+                              "name": "400",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"watchlistId\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"file\": \"<binary>\",\n  \"csvSeparator\": \";\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/upload/watchlists/file",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "upload",
+                                    "watchlists",
+                                    "file"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": 0,\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:09:13.000Z",
+                              "updatedAt": "2026-07-28T02:09:13.000Z",
+                              "uid": "35240-ed0743a8-5c14-4c59-870d-43ddb1ca7e16"
+                            },
+                            {
+                              "id": "32d2af5c-03f8-4b25-bcc4-f4d7a2f8059a",
+                              "name": "413",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"watchlistId\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"file\": \"<binary>\",\n  \"csvSeparator\": \";\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/upload/watchlists/file",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "upload",
+                                    "watchlists",
+                                    "file"
+                                  ]
+                                }
+                              },
+                              "status": "Request Entity Too Large",
+                              "code": 413,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": 0\n}",
+                              "createdAt": "2026-07-28T02:09:13.000Z",
+                              "updatedAt": "2026-07-28T02:09:13.000Z",
+                              "uid": "35240-32d2af5c-03f8-4b25-bcc4-f4d7a2f8059a"
+                            },
+                            {
+                              "id": "2905c155-2fd1-4a85-b5f0-5344674d5145",
+                              "name": "500",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "text/plain"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"watchlistId\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"file\": \"<binary>\",\n  \"csvSeparator\": \";\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/safety/v1/upload/watchlists/file",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "safety",
+                                    "v1",
+                                    "upload",
+                                    "watchlists",
+                                    "file"
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "text/plain"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"examples\": {\n    \"Result\": {\n      \"value\": \"{\\n  \\\"code\\\": 500,\\n  \\\"message\\\": \\\"Internal error\\\",\\n  \\\"type\\\": \\\"safetyApi.internalError\\\",\\n}\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T02:09:13.000Z",
+                              "updatedAt": "2026-07-28T02:09:13.000Z",
+                              "uid": "35240-2905c155-2fd1-4a85-b5f0-5344674d5145"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:09:13.000Z",
+                          "updatedAt": "2026-07-28T02:09:13.000Z",
+                          "uid": "35240-0b9eec93-83c7-448d-a235-31a49c520698"
+                        }
+                      ],
+                      "id": "0aebaf5a-2457-402c-abb7-15f0ba14ac7d",
+                      "createdAt": "2026-07-28T02:09:13.000Z",
+                      "updatedAt": "2026-07-28T02:09:13.000Z",
+                      "uid": "35240-0aebaf5a-2457-402c-abb7-15f0ba14ac7d"
+                    }
+                  ],
+                  "id": "01458702-c1bd-479a-a4f4-404889075680",
+                  "createdAt": "2026-07-28T02:09:13.000Z",
+                  "updatedAt": "2026-07-28T02:09:13.000Z",
+                  "uid": "35240-01458702-c1bd-479a-a4f4-404889075680"
+                }
+              ],
+              "id": "460178ce-387c-4e38-90ae-edef7cff3b27",
+              "createdAt": "2026-07-28T02:09:13.000Z",
+              "updatedAt": "2026-07-28T02:09:13.000Z",
+              "uid": "35240-460178ce-387c-4e38-90ae-edef7cff3b27"
+            }
+          ],
+          "id": "9d30ab03-30f1-4d45-9aff-ccc52ce770ba",
+          "createdAt": "2026-07-28T02:09:13.000Z",
+          "updatedAt": "2026-07-28T02:09:13.000Z",
+          "uid": "35240-9d30ab03-30f1-4d45-9aff-ccc52ce770ba"
+        }
+      ],
+      "id": "6ce39ee3-9880-443a-9e26-3dd477cceede",
+      "createdAt": "2026-07-28T02:09:13.000Z",
+      "updatedAt": "2026-07-28T02:09:13.000Z",
+      "uid": "35240-6ce39ee3-9880-443a-9e26-3dd477cceede"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.prod.metamap.com"
+    }
+  ]
+}
