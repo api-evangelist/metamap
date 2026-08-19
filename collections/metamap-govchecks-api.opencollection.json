@@ -1,0 +1,552 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication GovChecks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GovChecks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GovCheck: Ghana Verify Card (Facematch)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/gh/verify-card-facematch",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information and performs biometric face verification against the government’s biometric database."
+        },
+        {
+          "info": {
+            "name": "GovCheck: Ghana Verify Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/gh/verify-card",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information by checking against Ghana’s National Identification Authority (NIA) database for the Ghana Card."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico PEP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/pep",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check whether a user is a Politically Exposed Person"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico RFC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/rfc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate CURP and RFC numbers to validate users are eligible to pay taxes"
+        },
+        {
+          "info": {
+            "name": "GovCheck: Paraguay RCP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/py/rcp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information by checking against Paraguay’s RCP database for the Cédula de Identidad Civil."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CNPJ Extended Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cnpj-extended",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a business's National Registry of Legal Entities number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CPF-light",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cpf-light",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's CPF number and identity."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Brazil CPF Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/br/cpf-validation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's CPF number and identity."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Chile Registro Civil",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/cl/registro-civil",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user's RUN number against the Chilean Civil Registry database"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Govcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/govcheck",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's ID card against the Colombian Civil Registry"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Migration Institute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/migraciones",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has a valid immigration status in Colombia"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia PPT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/ppt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify the validity of the Colombian PPT (Permiso por protección temporal =  Temporary Protection Permit)"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia RUES",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/rues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check a business's national tax ID against Colombian Single Business and Social Registry"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Colombia Unified Legal Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/co/unified-criminal-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check a user's full name against Colombian police records."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Costa Rica TSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/cr/tse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI against the Costa Rican TSE database"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Dominican RNC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/do/rnc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an individual's business against the National Registry of Taxpayers"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Kenya BRS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ke/brs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a business against the Kenyan Business Registration Service"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Kenya IPRS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ke/iprs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an individual's national identity card against the Kenyan Integrated Population Registration System"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico CURP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/curp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a user's CURP number and identity"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico INE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/ine",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a user's national ID against Mexico's National Electoral Institute"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Mexico RFC Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/mx/rfc-status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate CURP and RFC numbers to obtain tax data from users and companies"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria CAC Affiliates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/cac-affiliates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns major affiliate names and titles for the given companies."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria CAC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/cac",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a company's Corporate Affairs Commission (CAC) number is valid."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria Driver License",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/dl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's driver license number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria NIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/nin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's National Identity Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria TIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/tin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a company's Tax Identification Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Nigeria VIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ng/vin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's Voting Identity Number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Panama TSE Facematch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pa/tse-facematch",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates national identity information and performs biometric face verification against the government’s biometric database."
+        },
+        {
+          "info": {
+            "name": "GovChecks: Panama TSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pa/tse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI against the Panamanian TSE database via document number and a selfie photo"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru Govcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/govcheck",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's DNI and identity"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru Migration Institute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/migration-institute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has a valid immigration status in Peru"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Peru SUNAT",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/pe/sunat",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify that a user has valid Peruvian tax status"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Philippines UMID/SSN",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/ph/umid-ssn",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's UMID/SSN against the Philippine UMID/SSN database via document number"
+        },
+        {
+          "info": {
+            "name": "GovChecks: Uruguay Registro Civil",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/govchecks/v1/uy/registro-civil",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify a user's national ID against the Uruguay DGREC database"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

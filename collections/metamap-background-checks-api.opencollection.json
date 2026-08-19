@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Background Checks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Background Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Brazil: Court Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/backgroundchecks/v1/br/background",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to check for users for court records in Brazil"
+        },
+        {
+          "info": {
+            "name": "Mexico: Court Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/backgroundchecks/v1/mx/background-buholegal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to check for users for court records in Mexico."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

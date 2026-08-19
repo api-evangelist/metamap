@@ -1,0 +1,359 @@
+{
+  "item": [
+    {
+      "id": "1eaee707-00fc-42f3-a5d8-19e244aea8ee",
+      "name": "Background Checks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b2a1f71-69e2-4588-85d6-8cc3bfb54c29",
+          "name": "Brazil: Court Records",
+          "request": {
+            "name": "Brazil: Court Records",
+            "description": {
+              "content": "Use this API to check for users for court records in Brazil",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "backgroundchecks",
+                "v1",
+                "br",
+                "background"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48137ece-bcb1-401c-8ee7-ec7c0d43fde7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backgroundchecks",
+                    "v1",
+                    "br",
+                    "background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"error\\\": null,\\n  \\\"data\\\": {\\n    \\\"fullName\\\": \\\"JOHN DOE\\\",\\n    \\\"cpf\\\": \\\"00000000000\\\",\\n    \\\"dateOfBirth\\\": \\\"1980-01-01\\\",\\n    \\\"status\\\": \\\"Accepted\\\",\\n    \\\"fullBackgroundCheck\\\": {\\n      \\\"search\\\": {\\n        \\\"id\\\": \\\"ffffffff-ffff-ffff-ffff-ffffffffffff\\\",\\n        \\\"tags\\\": {\\n          \\\"identityId\\\": \\\"ffffffff-ffff-ffff-ffff-ffffffffffff\\\"\\n        },\\n        \\\"BranchId\\\": 278,\\n        \\\"isStatusTemporary\\\": true,\\n        \\\"status\\\": \\\"preApproved\\\",\\n        \\\"createdAt\\\": \\\"2021-07-07T11:14:48.342Z\\\",\\n        \\\"receivedNotifiableStatusAt\\\": \\\"2021-07-07T11:20:59.956Z\\\",\\n        \\\"finishedProcessingAt\\\": null,\\n        \\\"priorityFinishedProcessingAt\\\": \\\"2021-07-07T11:20:59.956Z\\\",\\n        \\\"exceptionListStatus\\\": null,\\n        \\\"notifiedWebhookAt\\\": null,\\n        \\\"officialNameStatus\\\": \\\"match\\\",\\n        \\\"candidate\\\": {\\n          \\\"officialName\\\": \\\"JOHN DOE\\\",\\n          \\\"name\\\": \\\"JOHN DOE\\\",\\n          \\\"cpf\\\": \\\"00000000000\\\",\\n          \\\"birthday\\\": \\\"1980-01-01\\\"\\n        },\\n        \\\"receivedFinalStatusAt\\\": \\\"2021-07-07T11:20:59.956Z\\\",\\n        \\\"results\\\": [\\n          {\\n            \\\"id\\\": 123895176,\\n            \\\"crawler\\\": \\\"ACTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Acre (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895177,\\n            \\\"crawler\\\": \\\"RJJFCP\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Rio de Janeiro (Consulta Processual)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzExYjMzNWYzLTkxNWUtNGQwNC05NTM5LTljOWMyMDY2MWE4Mi83ZTgxOWZkNC1lZTRmLTQxOWQtYjcwYy0zMmNiNWU0NTYzNWEvP3JlZ2lvbj11cy1lYXN0LTE.WvQjhZdh5nyJFjtf22uCuQ6WI_fYO-z2QCALt5TKr0k\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:43.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895178,\\n            \\\"crawler\\\": \\\"SCTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Santa Catarina (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": true,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895179,\\n            \\\"crawler\\\": \\\"SPTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de SÃ£o Paulo (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895180,\\n            \\\"crawler\\\": \\\"PETJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal de JustiÃ§a de Pernambuco\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzk2MzlkNTY0LTcxOWMtNDVjZS05NzNhLTAwMWJmNmQxYzhjNC9mZmE4NGQxZi04ODkzLTRiNDQtODViZi05NjY1OTUyMGM2ODYvP3JlZ2lvbj11cy1lYXN0LTE.M_YHvaHbAbJPPCp6CDFnfLoxc3s2JeUphAcIWwqcxWs\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:59.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895181,\\n            \\\"crawler\\\": \\\"ALTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Alagoas (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzIzNDNjOTVhLTI0NDEtNDY0ZS05ZTVmLWI5NDY0OWZmYWE0ZC84YzI2MjFkOC1mYThjLTQ5OWYtYWFiNy0wNTE0YzU2YTdjYjAvP3JlZ2lvbj11cy1lYXN0LTE.YND1LUGdiPjMI71kz-240HQm10ff9vFfAL3XczDncho\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895182,\\n            \\\"crawler\\\": \\\"MSTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Mato Grosso do Sul (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2YyZDljOWNkLTBmZjUtNDc2Ny1iZDA0LTU2MjNhZjQ2ZTJiMS9mNTI2OGQ4Ny0zOWVkLTQ3YjMtYjFiMi1mZmU1MjllMTM4NGMvP3JlZ2lvbj11cy1lYXN0LTE.SJokNWn1VDQ5Vzgfiwit6Q168MCjyzE7tavQafICy7w\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:19:41.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895183,\\n            \\\"crawler\\\": \\\"SPTJSICPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de SÃ£o Paulo (Segunda instÃ¢ncia - Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895184,\\n            \\\"crawler\\\": \\\"SCTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Santa Catarina (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895185,\\n            \\\"crawler\\\": \\\"TRF3PJESI\\\",\\n            \\\"crawlerFullName\\\": \\\"Processo JurÃ­dico EletrÃ´nico da JustiÃ§a Federal da 3Âª RegiÃ£o (Segunda InstÃ¢ncia)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzQyNmYxOWI2LTI5Y2MtNGI4ZC04Yjc4LTE2MDFlOWU1MDA4OS84N2EzYWNmNy1jNTQ3LTQyZmQtOTRhMC03MDRkYjcyNzY3YjUvP3JlZ2lvbj11cy1lYXN0LTE.p9myT9nDB2P4mLxQTxOu7fE7sIdAF2T0HL6IiFXe4bM\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:38.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895186,\\n            \\\"crawler\\\": \\\"ROTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de RondÃ´nia (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2RiZmZjMzMwLWZiOWEtNDkwZC04YTliLWM5MTMwNDI2MjIyYy81OTJmMjUyZC00YzIyLTRhMDAtOTNhOS1lNzBlZmMyZWMzNDQvP3JlZ2lvbj11cy1lYXN0LTE.YFQQgIbeMNls8DmXTxBqFF7epis64TK3MsXwb4KmYCk\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:20:57.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895187,\\n            \\\"crawler\\\": \\\"PRTJSI\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do ParanÃ¡ (Segunda InstÃ¢ncia)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2I2NzU1YmMwLTQzN2MtNGUzNi04ZTM2LWZmMDdhMTRhZmE3Zi9mNzYzZjQ5OS1kNzNlLTRkOWItYTE0Yi0zOGNlZmI3MDkxNmEvP3JlZ2lvbj11cy1lYXN0LTE.enxBOo7b_QIUCHWcH8Pl8SAUBgJSJ771A8ncHaOWGXI\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:43.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895188,\\n            \\\"crawler\\\": \\\"SETJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Sergipe\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzdkMjNjYzA5LWU1ZjEtNDhkMy1hMzljLTk3NDQ1NDM4ODE4MS9jMjFmNjJmMi0zYTU3LTRhNGMtODA0MS00NzFkYWU0ZmMzZjgvP3JlZ2lvbj11cy1lYXN0LTE.LRg03FZp-de2tzrGqmnRG5PctRNgcd1_3gJamsJvk7o\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:55.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895189,\\n            \\\"crawler\\\": \\\"MSTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Mato Grosso do Sul (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895190,\\n            \\\"crawler\\\": \\\"MGJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal de Minas Gerais Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzUyNDViYWFlLTQ5NjItNDhmOC05NGJjLWY4YWYxNGUxN2E1NC9hM2UyYjJmZi0xZTBkLTRiNzEtYTI2Yi04ZGJlNTJmYjA3ZjMvP3JlZ2lvbj11cy1lYXN0LTE.hjko_3rAOSen3_kaVb2PiRUXDMoxT7JWTehq6fKAeXw\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:46.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895191,\\n            \\\"crawler\\\": \\\"RNTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Rio Grande do Norte (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895192,\\n            \\\"crawler\\\": \\\"APTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do AmapÃ¡\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzc5M2IzNmZiLTdmMGMtNDM3Ni1hZjRmLTgzZDdkMDcyMTFmMS8yY2UzMTRiZS0zYWYxLTRiNjQtYTM1Mi1lNTMzZDBkODE5Y2EvP3JlZ2lvbj11cy1lYXN0LTE.KowPdzhDCJXui2nvQf6QJGsm5HvJRRPhXDLXDgwOUb4\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:52.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895193,\\n            \\\"crawler\\\": \\\"ACJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Acre Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzQ1OWI5NzU3LTMwNDItNGNkMi1hYWRiLWIyMDYyOWY0MDRjYi8yYTg5YmYxMy0zZTBhLTQ1NjEtODhhYy0yYTE3YWE2MTg5YWYvP3JlZ2lvbj11cy1lYXN0LTE.iVz1pEREfI5aBf0gRJa2tMzLO5CVlhs7WbwW5l1Tx-Q\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:54.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895194,\\n            \\\"crawler\\\": \\\"GOTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de GoiÃ¡s\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzVmNjZkMzFiLTJiY2MtNDQyNS04NzA3LTk2MDQ2YjM2MzkyOC81Y2Q1NWMzMS1lNWI3LTQ0MTQtYjYyYy1iNGFhNjM4ZGVmZGEvP3JlZ2lvbj11cy1lYXN0LTE.Tjkr5TwUURq-eqN7KL9IHMBEdANs_hYkhi8EzGHndm4\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:54.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895195,\\n            \\\"crawler\\\": \\\"AMTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Amazonas (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzcwODNmNmIwLWEyNGQtNDNhYS04NTI4LWNmZjQxMjhlOTk1OS80MjM3M2I5NC1mMTk5LTRlNTMtYTg1NS00NzFiMDM4YjgyM2QvP3JlZ2lvbj11cy1lYXN0LTE.wWFo6HZy_Kql5KvOy6kWbgQXoIyIc6GsZLwsGt1EeAo\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:41.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895196,\\n            \\\"crawler\\\": \\\"CETJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do CearÃ¡ (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895197,\\n            \\\"crawler\\\": \\\"PAJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Para Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzBmNTA3Y2Y5LTgzNGEtNGNlMi1iMTI4LTBmOTU5ZTNhMDc2Mi81NDQwNjgzNi1jYmVjLTQxZDEtOGQzYy0xZmM0MjIzYzUzODEvP3JlZ2lvbj11cy1lYXN0LTE._4t5ufjrztXZapTN96JzbvhB44V8KQ1Q-5kmDh1RRDQ\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:51.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895198,\\n            \\\"crawler\\\": \\\"MGTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Minas Gerais\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": true,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895199,\\n            \\\"crawler\\\": \\\"TRF1PJESI\\\",\\n            \\\"crawlerFullName\\\": \\\"Processo JurÃ­dico EletrÃ´nico da JustiÃ§a Federal da 1Âª RegiÃ£o - Segunda InstÃ¢ncia\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzYxY2Q5OTRmLWYxZGUtNDJkMi04ZTUxLWI1YTA4MDNiZjIzMC9iMWU0YjY5Yy0wMDFlLTRjNzAtOTMyNS1kMDA2Nzk3MDEyNDAvP3JlZ2lvbj11cy1lYXN0LTE.Lma6IFO7nb9Puln5xCjtTgvoTZs9VMAdYAHaktXR-co\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:46.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895200,\\n            \\\"crawler\\\": \\\"BATJSICPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a da Bahia (Segunda InstÃ¢ncia - Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzE2N2JmYWZhLWIyZjgtNGEyZC1hODRjLTIyMDA1ZDNjZmE0Yy9hOTIyMDYxZi1jOTMxLTQ5NDItOTc4Mi0zMGE0NTg2YWQ3ZDgvP3JlZ2lvbj11cy1lYXN0LTE.Brn_uWZcP0GVut1ZZcbvN0LuL6p1UCGLP8p5TQfLTBg\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:53.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895201,\\n            \\\"crawler\\\": \\\"AMTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Amazonas (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895202,\\n            \\\"crawler\\\": \\\"MTTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Mato Grosso\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzRiZDIxNjI3LTMxYmYtNDc1YS05ZjJiLTViZWJhMDkwMWFkYi9jYWExZWExOC0yMDQxLTQyNWUtYTU3OS01ZWE1M2M0YjZhNjkvP3JlZ2lvbj11cy1lYXN0LTE.j6OcVYYmaQk3NlHt2tYeDEYZsWwmPGRq0P5xslf2anQ\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:59.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895203,\\n            \\\"crawler\\\": \\\"BATJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal de JustiÃ§a da Bahia (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2I0NWI0MjQ3LWQ1ODMtNGUwOC1iN2JkLWQ5YjBlNDk1MzI0MS8xOWQ4ZjFhZC1jZGIyLTQzMjktODEwOS1jY2UzNGEzOWRjMTEvP3JlZ2lvbj11cy1lYXN0LTE.m10mycyizKPXoWzcw6ZJA9rdBt4sry3Z_ywxZO48Vsk\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:00.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895204,\\n            \\\"crawler\\\": \\\"APJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do AmapÃ¡ Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzhlYmNiOTRiLTA2ZWItNGFlNy04NGJlLTUzYzFhN2JlYzlmZi82N2FmNTExMy0xMzViLTRjZmEtYTVhMy04MjE4ZDhhYjVkOTUvP3JlZ2lvbj11cy1lYXN0LTE.oWqCKwsSeg2rjMHvgnoG1L-2mo82aXRQzw51L_-75pE\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:46.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895205,\\n            \\\"crawler\\\": \\\"GOJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal de Goias Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2Q2OGJlOGY2LTljZGItNGY3Yi05Y2VkLWMyOGE2Nzg3MmYxOS8wYWJkODAyMi0xMzQ0LTRhZWEtYWViYS1hOTExNmFiODQxOTkvP3JlZ2lvbj11cy1lYXN0LTE.Fc6yuC5NTM4PyKPeVSY2aZst67O7HMI1_nmyuItjHaU\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:53.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895206,\\n            \\\"crawler\\\": \\\"MTJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Mato Grosso Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzMxY2FkZDhkLTBlOGUtNGFhOC1iODBkLTYzZWQ2Y2ZjNzM1ZC9lYWMxMDQ2MS1hNDEzLTQyOGMtOGZlNi0xMWY3NWYwMTc4MmUvP3JlZ2lvbj11cy1lYXN0LTE.5a2u-fLAWNi0A8m1gPDpsxADM_da1nwBqUhAEYNdItg\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:44.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895207,\\n            \\\"crawler\\\": \\\"DFTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Distrito Federal\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzFkODgyZGQzLThlMzctNGI0ZS05MjdkLWVkZmY3YjI5MDA1Mi9jNjI4YjVmZC1hM2ExLTQwNDUtOGNiZC1hZDAwNWQwNDM0OGEvP3JlZ2lvbj11cy1lYXN0LTE.wtJr2UG_jt3Wt1CaV7yE4XUFx2Jl8uaGODQXQIYyQS4\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:41.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895208,\\n            \\\"crawler\\\": \\\"TOJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Tocantis Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzBiNzllMTE4LTI5MzctNGIyOS1iN2I4LWJkYzY4NGZhOTI0YS8zN2VhZmEwOS00ZGI3LTQ2MDgtOWRmNi0xMzUxZDIzMjE2NWUvP3JlZ2lvbj11cy1lYXN0LTE.9Bv6eURIsliyJLgZP0mTjmAa7ec741Y77OUau-LSNwg\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:51.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895209,\\n            \\\"crawler\\\": \\\"RJTJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal de JustiÃ§a do Rio de Janeiro\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzkwY2NlZDU0LWU5OWYtNDdiYS04ZGQyLTI0MWZhYjIzMzQzNC85M2JmNGRkNy0xZTRmLTQ2OTAtYTliZS04ODdiOGNjN2RiZWIvP3JlZ2lvbj11cy1lYXN0LTE.lTS5iobXx7o5hWryBANU9U3oA0-TyATFQQdgbrgB2f8\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:53.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895210,\\n            \\\"crawler\\\": \\\"RRTJSI\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Roraima (Segunda InstÃ¢ncia)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895211,\\n            \\\"crawler\\\": \\\"AMJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Amazonas Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2QxZGZjNGY0LTg5YWEtNDE3Yi04ZDg0LTczZDIxMDY2NmE1MC9hOTkxYTZkZC05Y2JjLTRiOGUtYjA3Ni01ZThmZjdjMzgyMjIvP3JlZ2lvbj11cy1lYXN0LTE.E7RKxkzUUDbcyWudqBJ_2yXfwJfb9VyLLR3jFOZBIXo\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:52.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895212,\\n            \\\"crawler\\\": \\\"ACTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Acre (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzg2Mzg2YzgzLThiYmItNDU5Ny05NmJlLTQzYWM4NjUyYmNhOC8xYjhiNDhlOC00ODg0LTQ2OWQtOWU2ZS03ZjE4ZDM4MWNjNzIvP3JlZ2lvbj11cy1lYXN0LTE.-CNjLNdAijsgJUdhJErJvFZwzW3aW88F7GmAKoshCRc\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:38.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895213,\\n            \\\"crawler\\\": \\\"BAJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Bahia Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzE0NDM0ZjdhLTc4MTAtNGI3Ni04MTgxLTkyOWU1YmM1ODE4Ny9hODE5YTdmMC1hNjBmLTRmN2YtOTFkNi01MzZmZjZkM2I5NmIvP3JlZ2lvbj11cy1lYXN0LTE.j76q8LK3r61M5LCPinMzc8xe58BI7KDG943kCa2GlpY\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:45.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895214,\\n            \\\"crawler\\\": \\\"ROTJSIRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de RondÃ´nia (Segunda InstÃ¢ncia - Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895215,\\n            \\\"crawler\\\": \\\"ROTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de RondÃ´nia (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895216,\\n            \\\"crawler\\\": \\\"RRJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Roraima Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2E1OGI2NmY5LTM5NzItNDMyNS04NmMzLTVkZjMwYzc2OTRjNy8zOTdiNTQ2ZC00YjA1LTQ3N2EtOTg2YS1lNTM1YjI3ZTViYTUvP3JlZ2lvbj11cy1lYXN0LTE.qg-03hWNF3mLfmW1Qt-Ea5I0JYGx_H8ZA9qiC9ZJq38\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:45.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895217,\\n            \\\"crawler\\\": \\\"DFTJPJE\\\",\\n            \\\"crawlerFullName\\\": \\\"Processo Juridico Eletronico do Distrito Federal\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzhlMzUxNmUzLTUwMWEtNDIwOC04Mjc2LTU2NDA4ZWYyZWRkYy81ZWY4ODgzMi03NTc0LTQ5ZTgtYjRkOC05NDBmZjFiMTljOTIvP3JlZ2lvbj11cy1lYXN0LTE.B1CoXx-uBvKg7WddwxdjGZts7hNJcQFklDNpyB_H9Xw\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:38.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895218,\\n            \\\"crawler\\\": \\\"TRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzZmZWJiMTY3LWVjZWYtNDU0OS05MWE3LTA5NjVhZDJmOGFiYS84MjhiNzE5NS00ZDY0LTQxNTgtYTNjZC1lM2YzY2NkOTcwZDIvP3JlZ2lvbj11cy1lYXN0LTE.I2ylgARWKIADvcejwmCRYskT3OAPwyNKeFvU6h8laBI\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:51.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895219,\\n            \\\"crawler\\\": \\\"SPTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de SÃ£o Paulo (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2ViMTk4ZWZjLWExYTItNGYzMy1hNmQ2LTkwNTIyN2IxMGYyMy8zMmZjYmQ5Ni1mZTcyLTQwMGUtYmMyMi0wYjA2MWM5MDMwZDkvP3JlZ2lvbj11cy1lYXN0LTE.3iMAzDv-udONSbbqplsMgU1gj3meYor_9VgNhbfjn0g\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:19:54.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895220,\\n            \\\"crawler\\\": \\\"PIJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Piaui Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzM3ZmM0ZjU0LTJmNmYtNDM5Yy1hMDViLTExMTE2ZTgzNDZjNC9jNmY1MDFjNy1iNDU3LTRkNWItODZkOS00OTk5NzNkOWE0MDYvP3JlZ2lvbj11cy1lYXN0LTE.RBVQWodRFE1uznJY5ShVAFfs7f-MOEl_yioOC3Tn2S0\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:51.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895221,\\n            \\\"crawler\\\": \\\"TRF2\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal Regional Federal da 2Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzhjNTQ0ODhmLTZiNTktNDI0Yi1iMmY2LWZiMTY4MTkzNDUzMS8xYjRkZGZlNC00MmUzLTQyMDAtYmI3OS04MThmZDNmZWEyZmQvP3JlZ2lvbj11cy1lYXN0LTE.ly2yxSUvFvvvBk7REiGOLsqnI4EQZ_Cig8Rlfh6CLtI\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:44.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895222,\\n            \\\"crawler\\\": \\\"SPJF\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal de SÃ£o Paulo\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzYzMWQ2MzA0LWVlMWMtNDc3Ny04ZTM0LTQ1OTYzNzZmNDY4MC9jYTdkY2YwZS0wOWYzLTRjM2ItYWM4OC1lMzRmNDg2OWYyNDcvP3JlZ2lvbj11cy1lYXN0LTE.qYOHLToupROmvktinzGIi326HNroxy0uYoFMsa8uP2k\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:49.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895223,\\n            \\\"crawler\\\": \\\"NACIONALBNMP\\\",\\n            \\\"crawlerFullName\\\": \\\"Banco Nacional de Mandados de PrisÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzVjM2ZmMTA0LTE3NTYtNGVhYi1hOTMwLTUyOGNjNTFiZDA2Ni8yNjJlZjRhOC1iZTQxLTQyOTktYjIxMC02OTZiYmU3OWVjZWUvP3JlZ2lvbj11cy1lYXN0LTE.Vuzv6SylsrqPQXSR0BYldOP-1EOB-fWo97jupNksTU0\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:18:27.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895224,\\n            \\\"crawler\\\": \\\"ALTJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de Alagoas (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895225,\\n            \\\"crawler\\\": \\\"BATJRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal de JustiÃ§a da Bahia (Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895226,\\n            \\\"crawler\\\": \\\"ROJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Rondonia Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzIyMTZjMDNjLTgwYTYtNDA2ZS1iNWM0LWRmMmQ5MTk5YTRkYy9hODBiMWI5Yy1jMDNjLTQzZDQtOGIxNy05NDMwZTlmZGRiN2YvP3JlZ2lvbj11cy1lYXN0LTE.o5JyriDXSnwC17zAKB72bzwU0blbG4lch8V_r_dI5Ls\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:51.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895227,\\n            \\\"crawler\\\": \\\"MATJ\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do MaranhÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": true,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895228,\\n            \\\"crawler\\\": \\\"DFTJPJESI\\\",\\n            \\\"crawlerFullName\\\": \\\"Processo Juridico Eletronico do Distrito Federal (Segunda Instancia)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"processing\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": null,\\n            \\\"ignored\\\": true,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895229,\\n            \\\"crawler\\\": \\\"DFJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Distrito Federal Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzg0MmNmM2FkLWJhNWQtNDUyNC1hMGUxLTMxN2U1NWYwNzk4Mi85Y2M3YWIzYy03ZjU1LTQ5YzgtYWEyMi1jYTVhMzBjNDFhMjkvP3JlZ2lvbj11cy1lYXN0LTE.md8U4eLYs9QwwV_pSQb4i0Fk8uFYf8-RoJ9nc7Fk_sE\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:47.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895230,\\n            \\\"crawler\\\": \\\"RNTJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do Rio Grande do Norte (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzQzM2RmMGM5LTMyNjYtNDg2ZS04MWIxLTQ5NmJmNTkyN2NkMC8zNDE0OWZiMS1jYWJkLTQwMTctYWM2MS0yYjQyMDM3MWI3ZWUvP3JlZ2lvbj11cy1lYXN0LTE.RMBRLhMjCsrOhTyl07g-924gdDOp1TCRKjE36y_LBGs\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895231,\\n            \\\"crawler\\\": \\\"MAJFTRF1\\\",\\n            \\\"crawlerFullName\\\": \\\"JustiÃ§a Federal do Maranhao Tribunal Regional Federal da 1Âª RegiÃ£o\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzLzZkZWQwNWExLTZhY2ItNDU5MC1hN2FiLWQzY2IwZTkzODBmZi8yYjI4NjE3MC1lMTM4LTRiMTEtODM2ZC04NTM2YzFjOTUxYmEvP3JlZ2lvbj11cy1lYXN0LTE.eKKZTrDdl-hWYjSDS8DlNmGvvOIFC-oaP0PbrOjo2c0\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:45.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895232,\\n            \\\"crawler\\\": \\\"ROTJSICPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de RondÃ´nia (Segunda InstÃ¢ncia - Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2I2ZWFjMzJlLTYzZDAtNDQyOC1iYTMyLTE3MjM2MDZjMmU4ZC8zNzk2MTlhNy00ZDQ2LTQ0NGItOWIwNi05NzJkMzY4MDBlMzYvP3JlZ2lvbj11cy1lYXN0LTE.wxXSzex-_OM100tsaov68KrvNeT55TSpGjDuo1pLdRs\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:20:38.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895233,\\n            \\\"crawler\\\": \\\"CETJCPF\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a do CearÃ¡ (Busca por CPF)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2RmNWFmOWQxLWYzY2EtNGRkOC1hZTQ0LTU4MzQ1NWI4MWUwYi8xZGNkZmFhYi1hMmE5LTQ1MmQtYWViNi1hZjk3ODViZDg2MGMvP3JlZ2lvbj11cy1lYXN0LTE.nqz5qGb3AeGtnRDzNIkUp_yg0Ttrk0JtcJBXnExjLNI\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:56.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895234,\\n            \\\"crawler\\\": \\\"BATJPJE\\\",\\n            \\\"crawlerFullName\\\": \\\"Processo Juridico Eletronico da Bahia\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"approved\\\",\\n            \\\"linkEvidence\\\": \\\"crawlers.bgcbrasil.com.br/evidences/eyJhbGciOiJIUzI1NiJ9.aHR0cHM6Ly9zMy5jb25zb2xlLmF3cy5hbWF6b24uY29tL3MzL2J1Y2tldHMvYmdjLWNyYXdsZXJzLXByb2R1Y3Rpb24tZXZpZGVuY2VzL2RmNzU0M2U1LTg1MWUtNGNhYy04NGIyLWIyZGNhOTViYTE5OS8wNDE0ZDdlZi0wNWU0LTRiYWQtOGUwMS1kZWNiNjY5MjY2OTkvP3JlZ2lvbj11cy1lYXN0LTE.yzxbgksPuoAKMI-ZmpPY1joaB_1Ph9b0IKrP4t18pg4\\\",\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:17:53.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895235,\\n            \\\"crawler\\\": \\\"BATJSIRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a da Bahia (Segunda InstÃ¢ncia - Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          },\\n          {\\n            \\\"id\\\": 123895236,\\n            \\\"crawler\\\": \\\"SPTJSIRG\\\",\\n            \\\"crawlerFullName\\\": \\\"Tribunal da JustiÃ§a de SÃ£o Paulo (Segunda instÃ¢ncia - Busca por RG)\\\",\\n            \\\"isCertificate\\\": false,\\n            \\\"status\\\": \\\"invalidInput\\\",\\n            \\\"linkEvidence\\\": null,\\n            \\\"finishedProcessingAt\\\": \\\"2021-07-07T11:14:50.000Z\\\",\\n            \\\"ignored\\\": false,\\n            \\\"review\\\": null,\\n            \\\"certificate\\\": null,\\n            \\\"trials\\\": []\\n          }\\n        ]\\n      }\\n    }\\n  },\\n  \\\"timestamp\\\": \\\"2020-11-24T22:42:12.209Z\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e46797fe-62c7-4316-9456-686539671028",
+              "name": "503",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backgroundchecks",
+                    "v1",
+                    "br",
+                    "background"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"fullCheck\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"error\\\": {\\n    \\\"code\\\": \\\"system.serviceUnavailable\\\",\\n    \\\"message\\\": \\\"The Background Check service is currently unavailable, please try again later\\\"\\n  },\\n  \\\"data\\\": null,\\n  \\\"timestamp\\\": \\\"2020-11-24T22:42:12.209Z\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f23e0525-a5b8-44fe-841f-955f0d86165f",
+          "name": "Mexico: Court Records",
+          "request": {
+            "name": "Mexico: Court Records",
+            "description": {
+              "content": "Use this API to check for users for court records in Mexico.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "backgroundchecks",
+                "v1",
+                "mx",
+                "background-buholegal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "201ca772-235a-4f76-b8ea-235ac0b4d46f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backgroundchecks",
+                    "v1",
+                    "mx",
+                    "background-buholegal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"data\\\": {\\n    \\\"firstName\\\": \\\"JOHN\\\",\\n    \\\"firstSurname\\\": \\\"DOE\\\",\\n    \\\"lastSurname\\\": \\\"DOE\\\",\\n    \\\"secondSurname\\\": \\\"DOE\\\",\\n    \\\"curp\\\": \\\"AAAA000000HCHLRN00\\\",\\n    \\\"dateOfBirth\\\": \\\"01/01/2000\\\",\\n    \\\"age\\\": 22,\\n    \\\"gender\\\": \\\"Male\\\",\\n    \\\"status\\\": \\\"Accepted\\\",\\n    \\\"resource\\\": null,\\n    \\\"timestamp\\\": null,\\n    \\\"stepExtra\\\": [\\n      {\\n        \\\"query\\\": {\\n          \\\"nombre\\\": \\\"JOHN\\\",\\n          \\\"paterno\\\": \\\"DOE\\\",\\n          \\\"materno\\\": \\\"DOE\\\",\\n          \\\"persona\\\": \\\"fisica\\\",\\n          \\\"curp\\\": \\\"AAAA000000HCHLRN00\\\",\\n          \\\"estado\\\": \\\"nacional\\\",\\n          \\\"fecha_inicio\\\": null,\\n          \\\"fecha_fin\\\": null,\\n          \\\"detalle\\\": true\\n        },\\n        \\\"numero_resultados\\\": 0,\\n        \\\"resultados\\\": [],\\n        \\\"homonimia\\\": \\\"1\\\",\\n        \\\"validacion_curp\\\": {\\n          \\\"nombre\\\": \\\"JOHN\\\",\\n          \\\"paterno\\\": \\\"DOE\\\",\\n          \\\"materno\\\": \\\"DOE\\\",\\n          \\\"fecha_nacimiento\\\": \\\"01/01/2000\\\",\\n          \\\"sexo\\\": \\\"HOMBRE\\\",\\n          \\\"entidad_nacimiento\\\": \\\"DISTRITO FEDERAL\\\",\\n          \\\"curp\\\": \\\"AAAA000000HCHLRN00\\\"\\n        },\\n        \\\"cedula_profesional\\\": []\\n      }\\n    ]\\n  },\\n  \\\"error\\\": null\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "413baccd-0da7-49ce-ba78-f8614ab49d67",
+              "name": "503",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backgroundchecks",
+                    "v1",
+                    "mx",
+                    "background-buholegal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"firstSurname\": \"<string>\",\n  \"secondSurname\": \"<string>\",\n  \"curp\": \"<string>\",\n  \"callbackUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"error\\\": {\\n    \\\"code\\\": \\\"system.serviceUnavailable\\\",\\n    \\\"message\\\": \\\"The Background Check service is currently unavailable, please try again later\\\"\\n  },\\n  \\\"data\\\": null,\\n  \\\"timestamp\\\": \\\"2020-11-24T22:42:12.209Z\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prod.metamap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fb445fcb-aba7-4fe5-b0e1-766c40a0c9db",
+    "name": "MetaMap Authentication Background Checks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+      "type": "text/plain"
+    }
+  }
+}

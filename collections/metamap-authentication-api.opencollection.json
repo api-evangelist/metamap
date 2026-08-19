@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/oauth/token",
+            "headers": [
+              {
+                "name": "x-mati-app",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "application_key",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                },
+                {
+                  "name": "flow_id",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use this API to get your access token for the Skip Verification Upload Wait Time API"
+        },
+        {
+          "info": {
+            "name": "Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/oauth",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use your `client_id` and `client_secret` as your username and password to get your access token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

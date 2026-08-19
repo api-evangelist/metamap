@@ -1,0 +1,365 @@
+{
+  "item": [
+    {
+      "id": "97301c6e-67d6-4aa5-8166-3553b4a5288e",
+      "name": "Email Checks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cc08846-efa1-4ce4-9786-31dc54a002f4",
+          "name": "Email Ownership",
+          "request": {
+            "name": "Email Ownership",
+            "description": {
+              "content": "This API sends an OTP to the email address to verify user ownership",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "safety",
+                "v1",
+                "checks",
+                "email",
+                "otp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30a236c1-816f-432a-9e2b-83d44c33c8f0",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "email",
+                    "otp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n\\t\\\"error\\\": null,\\n  \\\"data\\\": {\\n  \\t\\\"confirmationCode\\\": \\\"0301\\\"\\n  },\\n  \\\"metadata\\\": {\\n  \\t\\\"user_defined\\\": \\\"id00000\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9af674f4-db52-4c4e-884e-537ef6153441",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "email",
+                    "otp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"locale\": \"en_US\",\n  \"senderName\": \"<string>\",\n  \"senderEmail\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d6de91b-2912-4502-8f1d-621cc9181c11",
+          "name": "Email Risk",
+          "request": {
+            "name": "Email Risk",
+            "description": {
+              "content": "This API provides a behavioral risk assessment based on email address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "safety",
+                "v1",
+                "checks",
+                "email",
+                "risk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3f2683a-f960-4797-939a-90e4c7436128",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "email",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"error\\\": null,\\n  \\\"data\\\": {\\n    \\\"email\\\": \\\"example@mati.io\\\",\\n    \\\"riskScore\\\": 0,\\n    \\\"message\\\": \\\"Success.\\\",\\n    \\\"success\\\": true,\\n    \\\"valid\\\": true,\\n    \\\"disposable\\\": false,\\n    \\\"smtp_score\\\": 2,\\n    \\\"overall_score\\\": 3,\\n    \\\"first_name\\\": \\\"Corporate\\\",\\n    \\\"generic\\\": true,\\n    \\\"common\\\": false,\\n    \\\"dns_valid\\\": true,\\n    \\\"honeypot\\\": false,\\n    \\\"deliverability\\\": \\\"medium\\\",\\n    \\\"frequent_complainer\\\": false,\\n    \\\"spam_trap_score\\\": \\\"none\\\",\\n    \\\"catch_all\\\": true,\\n    \\\"timed_out\\\": false,\\n    \\\"suspect\\\": true,\\n    \\\"recent_abuse\\\": false,\\n    \\\"suggested_domain\\\": \\\"N/A\\\",\\n    \\\"leaked\\\": false,\\n    \\\"domain_age\\\": {\\n      \\\"human\\\": \\\"7 years ago\\\",\\n      \\\"timestamp\\\": 1439710398,\\n      \\\"iso\\\": \\\"2015-08-16T03:33:18-04:00\\\"\\n    },\\n    \\\"first_seen\\\": {\\n      \\\"human\\\": \\\"4 minutes ago\\\",\\n      \\\"timestamp\\\": 1650250506,\\n      \\\"iso\\\": \\\"2022-04-17T22:55:06-04:00\\\"\\n    },\\n    \\\"sanitized_email\\\": \\\"example@mati.io\\\",\\n    \\\"domain_velocity\\\": \\\"Enterprise Mini or higher required.\\\",\\n    \\\"user_activity\\\": \\\"Enterprise L4+ required.\\\",\\n    \\\"request_id\\\": \\\"3Ab9vwBZsY\\\"\\n  },\\n  \\\"metadata\\\": {\\n  \\t\\\"user_defined\\\": \\\"id00000\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "918c3a45-d8e0-4754-b5ca-b18b6c5e473c",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "email",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prod.metamap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f5d682b-651e-4234-96f5-574a72415313",
+    "name": "MetaMap Authentication Email Checks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+      "type": "text/plain"
+    }
+  }
+}

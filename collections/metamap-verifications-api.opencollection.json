@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Verifications API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.prod.metamap.com/verifications/:verificationId",
+            "params": [
+              {
+                "name": "verificationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique string assigned to a user's verification status"
+              }
+            ]
+          },
+          "docs": "Delete Verification"
+        },
+        {
+          "info": {
+            "name": "Download Verification Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/verification/v1/pdf/download",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to download verification results in a PDF file."
+        },
+        {
+          "info": {
+            "name": "Get Verification Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prod.metamap.com/file",
+            "params": [
+              {
+                "name": "media_auth",
+                "value": "",
+                "type": "path",
+                "description": "The `media_auth` is part of the path returned when a Retrieve Webhook Resource call succeeds."
+              }
+            ]
+          },
+          "docs": "Use this API to download user documents, photos, and videos."
+        },
+        {
+          "info": {
+            "name": "Send Inputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/v2/identities/:identity/send-input",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "identity",
+                "value": "",
+                "type": "path",
+                "description": "The identity is in the successful response to a Verification Creation request"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to send documents, selfies, videos, or other identifying information"
+        },
+        {
+          "info": {
+            "name": "Skip Verification Upload Wait Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prod.metamap.com/v2/verifications/:verification_id/inputs/document-photo/skip",
+            "headers": [
+              {
+                "name": "x-mati-app",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "verification_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID returned by the Start Verification endpoint."
+              }
+            ]
+          },
+          "docs": "Use this API to skip the wait time when uploading the back of a document"
+        },
+        {
+          "info": {
+            "name": "Start Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/v2/verifications",
+            "headers": [
+              {
+                "name": "x-forwarded-for",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to create a new user verification or reverify an existing user."
+        },
+        {
+          "info": {
+            "name": "Update Verification Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.prod.metamap.com/v2/verifications/:verificationId/status",
+            "params": [
+              {
+                "name": "verificationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique string assigned to a user's verification status"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Verification Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

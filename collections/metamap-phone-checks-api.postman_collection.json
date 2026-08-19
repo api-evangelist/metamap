@@ -1,0 +1,365 @@
+{
+  "item": [
+    {
+      "id": "2ef5fdd8-63d9-4001-b7d4-748fc740a591",
+      "name": "Phone Checks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a84edf50-cf6a-428a-853e-faeedb11d0e6",
+          "name": "Phone Ownership",
+          "request": {
+            "name": "Phone Ownership",
+            "description": {
+              "content": "This API sends an OTP through SMS to verify ownership",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "safety",
+                "v1",
+                "checks",
+                "phone",
+                "otp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5012f37a-6ab2-4e65-adaf-d293281abab3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "phone",
+                    "otp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "{\n  \"error\": null,\n  \"data\": {\n    \"confirmationCode\": \"8844\"\n  },\n  \"metadata\": {\n  \t\"user_defined\": \"id00000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85a65b8e-aef7-470d-80da-ad689bb5038d",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "phone",
+                    "otp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callbackUrl\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e01bbd4c-4c52-4112-931a-599fa8ac6836",
+          "name": "Phone Risk",
+          "request": {
+            "name": "Phone Risk",
+            "description": {
+              "content": "Use this API to assess a user's behavioral risk through their phone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "safety",
+                "v1",
+                "checks",
+                "phone",
+                "risk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e4c8393-3ce2-4f07-8360-11c82026fd4d",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "phone",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"error\\\": null,\\n  \\\"data\\\": {\\n    \\\"phoneNumber\\\": \\\"00000000000\\\",\\n    \\\"countryCode\\\": \\\"7\\\",\\n    \\\"phoneType\\\": \\\"Mobile\\\",\\n    \\\"phoneTypeStatus\\\": \\\"Allowed\\\",\\n    \\\"riskLevel\\\": \\\"very-high\\\",\\n    \\\"riskInsights\\\": [\\n      {\\n        \\\"name\\\": \\\"high-risk irregular activity\\\",\\n        \\\"description\\\": \\\"Highest-risk category, based on past behavior.\\\",\\n        \\\"impact\\\": \\\"Negative\\\",\\n        \\\"type\\\": \\\"Category\\\"\\n      },\\n      {\\n        \\\"name\\\": \\\"no range activity\\\",\\n        \\\"description\\\": \\\"Very little activity, or none at all, for a risky range that this number belongs to over the past 90 days. Also returned if the number does not belong to a risky range.\\\",\\n        \\\"impact\\\": \\\"Positive\\\",\\n        \\\"type\\\": \\\"Automation to human activity\\\"\\n      },\\n      {\\n        \\\"name\\\": \\\"no activity\\\",\\n        \\\"description\\\": \\\"Very little activity, or none at all, was ever observed on this number. Very short tenure. Cannot classify.\\\",\\n        \\\"impact\\\": \\\"Neutral\\\",\\n        \\\"type\\\": \\\"Human to human activity\\\"\\n      }\\n    ],\\n    \\\"riskScore\\\": 80,\\n    \\\"maxPossibleRiskScore\\\": 100,\\n    \\\"recommendation\\\": \\\"block\\\",\\n    \\\"timezone\\\": \\\"+2\\\",\\n    \\\"lineType\\\": \\\"MOBILE\\\",\\n    \\\"carrier\\\": \\\"Vimpel Communications\\\",\\n    \\\"location\\\": {\\n      \\\"city\\\": \\\"Moscow\\\",\\n      \\\"state\\\": null,\\n      \\\"zip\\\": null,\\n      \\\"metroCode\\\": null,\\n      \\\"county\\\": null,\\n      \\\"country\\\": \\\"Russia\\\"\\n    }\\n  },\\n  \\\"metadata\\\": { \\n  \\t\\\"user_defined\\\": \\\"id00000\\\"\\n  } \\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88adce46-cd3d-4e68-943a-d1c9833da16d",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "safety",
+                    "v1",
+                    "checks",
+                    "phone",
+                    "risk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"recipient\": \"<string>\",\n  \"callbackUrl\": \"<string>\",\n  \"metadata\": \"{ \\\"user-defined-1\\\" : \\\"abcde\\\", \\\"user-defined-2\\\" : \\\"12345\\\" }\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.prod.metamap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0c3e4ca-ac2f-4440-a6bb-137420d91e0a",
+    "name": "MetaMap Authentication Phone Checks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MetaMap (formerly Mati) identity verification REST API. Start and manage user verifications, retrieve verification media, run watchlist, email, phone, credit, court-record, and government database checks across Latin America, Africa, and Asia.\n\nContact Support:\n Name: MetaMap",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Email Checks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Email Ownership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/email/otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API sends an OTP to the email address to verify user ownership"
+        },
+        {
+          "info": {
+            "name": "Email Risk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/email/risk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API provides a behavioral risk assessment based on email address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

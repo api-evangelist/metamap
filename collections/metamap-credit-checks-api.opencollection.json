@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Credit Checks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Brazil Credit Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/creditchecks/v1/br/credit-serasa",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Review a user's credit score against Brazil's Serasa"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

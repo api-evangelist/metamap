@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Phone Checks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Phone Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Phone Ownership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/phone/otp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API sends an OTP through SMS to verify ownership"
+        },
+        {
+          "info": {
+            "name": "Phone Risk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.prod.metamap.com/safety/v1/checks/phone/risk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this API to assess a user's behavioral risk through their phone number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

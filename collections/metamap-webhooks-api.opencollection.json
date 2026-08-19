@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MetaMap Authentication Webhooks API",
+    "version": "1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Webhook Resource Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.prod.metamap.com/v2/verifications/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The `id` is in the successful response to a [Verification Creation](https://docs.metamap.com/reference/verification-creation) request"
+              }
+            ]
+          },
+          "docs": "Use this API to retrieve Webhook Resource Data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
