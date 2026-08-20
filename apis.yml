@@ -161,6 +161,8 @@ apis:
   humanURL: https://docs.metamap.com/reference/authentication
   baseURL: https://api.prod.metamap.com
   tags:
+  - Verification
+  tags_raw:
   - Verifications
   properties:
   - type: OpenAPI
@@ -205,6 +207,8 @@ apis:
   humanURL: https://docs.metamap.com/reference/authentication
   baseURL: https://api.prod.metamap.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
@@ -223,6 +227,26 @@ apis:
     url: https://docs.metamap.com/docs/errors
 name: MetaMap
 tags:
+- Identity Verification
+- KYC
+- AML
+- Anti-Money Laundering
+- Compliance
+- Biometrics
+- Document Verification
+- Face Match
+- Liveness
+- GovCheck
+- Watchlist
+- Background Check
+- Credit Check
+- Risk
+- Fraud Prevention
+- Onboarding
+- LatAm
+- Africa
+- Mobile SDK
+tags_raw:
 - Identity Verification
 - KYC
 - AML
