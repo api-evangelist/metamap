@@ -161,7 +161,7 @@ apis:
   humanURL: https://docs.metamap.com/reference/authentication
   baseURL: https://api.prod.metamap.com
   tags:
-  - Verification
+  - Verifications
   tags_raw:
   - Verifications
   properties:
@@ -234,7 +234,7 @@ tags:
 - Compliance
 - Biometrics
 - Document Verification
-- Face Match
+- Facematch
 - Liveness
 - GovCheck
 - Watchlist
