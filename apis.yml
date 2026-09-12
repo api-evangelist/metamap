@@ -296,6 +296,8 @@ accessModel:
 image: https://files.readme.io/8daff99-MetaMap_logo.svg
 access: 3rd-Party
 common:
+- type: Website
+  url: https://www.metamap.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/metamap/overview
 - type: AgenticAccess
