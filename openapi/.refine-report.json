@@ -1,16 +1,7 @@
 {
   "provider": "metamap",
   "sources": [
-    "metamap-authentication-api-openapi.yml",
-    "metamap-background-checks-api-openapi.yml",
-    "metamap-credit-checks-api-openapi.yml",
-    "metamap-custom-watchlists-api-openapi.yml",
-    "metamap-email-checks-api-openapi.yml",
-    "metamap-govchecks-api-openapi.yml",
-    "metamap-phone-checks-api-openapi.yml",
-    "metamap-verifications-api-openapi.yml",
-    "metamap-watchlist-checks-api-openapi.yml",
-    "metamap-webhooks-api-openapi.yml"
+    "_original/metamap-openapi.yml"
   ],
   "outputs": [
     "metamap-authentication-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "metamap-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "metamap-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-background-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-credit-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-custom-watchlists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-email-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-govchecks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-phone-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-verifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-watchlist-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "metamap-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
