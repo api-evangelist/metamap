@@ -1,4 +1,4 @@
-# MetaMap (metamap)
+# MetaMap
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,166 +66,194 @@
 
 MetaMap (formerly Mati) is an identity verification platform founded in 2017 in San Francisco and headquartered there, serving 600+ companies across 50+ countries with a focus on Latin America, Africa, and other emerging markets. The platform combines document verification, biometric liveness, facematch, watchlist screening, behavioral risk signals, and 40+ government-database "GovChecks" to power KYC, AML compliance, customer onboarding, authentication, and financial risk management workflows for banks, fintechs, lenders, telcos, and transportation providers. Developers integrate via a REST API on api.prod.metamap.com, configurable workflows ("metamaps"), webhooks, and native SDKs for Web, iOS, Android, Flutter, React Native, Cordova, and Capacitor. MetaMap joined Incode in 2024 to expand identity-verification coverage globally.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/metamap/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/metamap/refs/heads/main/apis.yml)
+**Areas:** Identity Verification · KYC · AML · Compliance · Biometrics · Document Verification · Face Matching · Liveness · GovCheck · Watchlist · Background Checks · Credit Check
 
-## Scope
+## MetaMap on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for MetaMap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/metamap/](https://apis.io/providers/metamap/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- Identity Verification
-- KYC
-- AML
-- Anti-Money Laundering
-- Compliance
-- Biometrics
-- Document Verification
-- Facematch
-- Liveness
-- GovCheck
-- Watchlist
-- Background Check
-- Credit Check
-- Risk
-- Fraud Prevention
-- Onboarding
-- LatAm
-- Africa
-- Mobile SDK
+- [MetaMap Authentication API](https://apis.io/apis/metamap/metamap-authentication-api/) — The Authentication API from MetaMap — 2 operation(s) for authentication.
+- [MetaMap Background Checks API](https://apis.io/apis/metamap/metamap-background-checks-api/) — The Background Checks API from MetaMap — 2 operation(s) for background checks.
+- [MetaMap Credit Checks API](https://apis.io/apis/metamap/metamap-credit-checks-api/) — The Credit Checks API from MetaMap — 1 operation(s) for credit checks.
+- [MetaMap Custom Watchlists API](https://apis.io/apis/metamap/metamap-custom-watchlists-api/) — The Custom Watchlists API from MetaMap — 1 operation(s) for custom watchlists.
+- [MetaMap Email Checks API](https://apis.io/apis/metamap/metamap-email-checks-api/) — The Email Checks API from MetaMap — 2 operation(s) for email checks.
+- [MetaMap GovChecks API](https://apis.io/apis/metamap/metamap-govchecks-api/) — The GovChecks API from MetaMap — 34 operation(s) for govchecks.
+- [MetaMap Phone Checks API](https://apis.io/apis/metamap/metamap-phone-checks-api/) — The Phone Checks API from MetaMap — 2 operation(s) for phone checks.
+- [MetaMap Verifications API](https://apis.io/apis/metamap/metamap-verifications-api/) — The Verifications API from MetaMap — 7 operation(s) for verifications.
+- [MetaMap Watchlist Checks API](https://apis.io/apis/metamap/metamap-watchlist-checks-api/) — The Watchlist Checks API from MetaMap — 1 operation(s) for watchlist checks.
+- [MetaMap Webhooks API](https://apis.io/apis/metamap/metamap-webhooks-api/) — The Webhooks API from MetaMap — 1 operation(s) for webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### MetaMap API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-MetaMap's identity verification REST API. Start and manage user verifications, send document photos/selfies/videos, run watchlist screening (Comply Advantage and custom watchlists), email and phone ownership/risk checks, credit checks, court-record background checks, and 40+ government database checks across Latin America (Brazil, Mexico, Colombia, Chile, Costa Rica, Dominican Republic, Panama, Paraguay, Peru, Uruguay), Africa (Ghana, Kenya, Nigeria), and Asia (Philippines). OAuth 2.0 client-credentials flow yields a 1-hour JWT bearer token; results are delivered via configurable webhooks.
+- [Metamap Agentic Access](https://apis.io/agentic-access/metamap/metamap-agentic-access/)
 
-- **Human URL:** [https://docs.metamap.com/reference/authentication](https://docs.metamap.com/reference/authentication)
-- **Base URL:** `https://api.prod.metamap.com`
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- Identity Verification
-- KYC
-- AML
-- Compliance
-- Authentication
-- Verifications
+- [MetaMap GovCheck](https://apis.io/schemas/metamap/metamap-govcheck/)
+- [MetaMap Verification](https://apis.io/schemas/metamap/metamap-verification/)
+- [MetaMap Webhook Event](https://apis.io/schemas/metamap/metamap-webhook/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://docs.metamap.com/docs/api-guide)
-- [Documentation](https://docs.metamap.com/reference/authentication)
-- [OpenAPI](openapi/metamap-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/metamap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/metamap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://docs.metamap.com/llms.txt)
-- [Webhooks](https://docs.metamap.com/docs/webhook-specifications)
-- [Webhooks](https://docs.metamap.com/docs/configure-your-webhook-url)
-- [Errors](https://docs.metamap.com/docs/errors)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Metamap Verification Structure](https://apis.io/json-structure/metamap/metamap-verification-structure/)
 
-- [Portal](https://metamap.com)
-- [About Us](https://metamap.com/about-metamap)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Metamap Context](https://apis.io/jsonld/metamap/metamap-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Metamap Vocabulary](https://apis.io/vocabularies/metamap/metamap-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Metamap Authentication Example](https://apis.io/examples/metamap/metamap-authentication-example/)
+- [Metamap Comply Advantage Example](https://apis.io/examples/metamap/metamap-comply-advantage-example/)
+- [Metamap Govcheck Mexico Curp Example](https://apis.io/examples/metamap/metamap-govcheck-mexico-curp-example/)
+- [Metamap Start Verification Example](https://apis.io/examples/metamap/metamap-start-verification-example/)
+
+#### Collections (21)
+
+Postman and Open Collection request collections.
+
+- [MetaMap API](https://apis.io/collections/metamap/open-metamap/)
+- [MetaMap Authentication API](https://apis.io/collections/metamap/open-metamap-authentication-api/)
+- [MetaMap Authentication Background Checks API](https://apis.io/collections/metamap/open-metamap-background-checks-api/)
+- [MetaMap Authentication Credit Checks API](https://apis.io/collections/metamap/open-metamap-credit-checks-api/)
+- [MetaMap Authentication Custom Watchlists API](https://apis.io/collections/metamap/open-metamap-custom-watchlists-api/)
+- [MetaMap Authentication Email Checks API](https://apis.io/collections/metamap/open-metamap-email-checks-api/)
+- [MetaMap Authentication GovChecks API](https://apis.io/collections/metamap/open-metamap-govchecks-api/)
+- [MetaMap Authentication Phone Checks API](https://apis.io/collections/metamap/open-metamap-phone-checks-api/)
+- [MetaMap Authentication Verifications API](https://apis.io/collections/metamap/open-metamap-verifications-api/)
+- [MetaMap Authentication Watchlist Checks API](https://apis.io/collections/metamap/open-metamap-watchlist-checks-api/)
+- [MetaMap Authentication Webhooks API](https://apis.io/collections/metamap/open-metamap-webhooks-api/)
+- [MetaMap Authentication API](https://apis.io/collections/metamap/postman-metamap-authentication-api/)
+- [MetaMap Authentication Background Checks API](https://apis.io/collections/metamap/postman-metamap-background-checks-api/)
+- [MetaMap Authentication Credit Checks API](https://apis.io/collections/metamap/postman-metamap-credit-checks-api/)
+- [MetaMap Authentication Custom Watchlists API](https://apis.io/collections/metamap/postman-metamap-custom-watchlists-api/)
+- [MetaMap Authentication Email Checks API](https://apis.io/collections/metamap/postman-metamap-email-checks-api/)
+- [MetaMap Authentication GovChecks API](https://apis.io/collections/metamap/postman-metamap-govchecks-api/)
+- [MetaMap Authentication Phone Checks API](https://apis.io/collections/metamap/postman-metamap-phone-checks-api/)
+- [MetaMap Authentication Verifications API](https://apis.io/collections/metamap/postman-metamap-verifications-api/)
+- [MetaMap Authentication Watchlist Checks API](https://apis.io/collections/metamap/postman-metamap-watchlist-checks-api/)
+- [MetaMap Authentication Webhooks API](https://apis.io/collections/metamap/postman-metamap-webhooks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [MetaMap — jsonschema rules](https://apis.io/rules/metamap/metamap-jsonschema-spectral-rules/)
+- [MetaMap API Rules](https://apis.io/rules/metamap/metamap-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Metamap Authentication](https://apis.io/security/metamap/metamap-authentication/)
+- [Metamap Domain Security](https://apis.io/security/metamap/metamap-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Metamap Plans Pricing](https://apis.io/plans/metamap/metamap-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Metamap Rate Limits](https://apis.io/rate-limits/metamap/metamap-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Metamap Finops](https://apis.io/finops/metamap/metamap-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.metamap.com/)
 - [Documentation](https://metamap.com/why-metamap)
-- [Documentation](https://metamap.com/verification-tools-library)
-- [Documentation](https://metamap.com/all-industries)
-- [Documentation](https://metamap.com/kyc-solutions-aml-compliance/)
-- [Documentation](https://metamap.com/banking-industry-kyc-solutions/)
-- [Documentation](https://metamap.com/fintech-kyc-solutions/)
-- [Documentation](https://metamap.com/lending-payments-kyc-solutions/)
-- [Documentation](https://metamap.com/telecommunication-kyc-solutions/)
-- [Documentation](https://metamap.com/transportation-kyc-solutions/)
-- [Contact](https://metamap.com/contact-metamap)
-- [Documentation](https://metamap.com/careers)
-- [Press](https://metamap.com/press-and-media/)
-- [Documentation](https://metamap.com/resources-home)
-- [Privacy Policy](https://metamap.com/privacy-policy)
-- [Status Page](https://status.metamap.com)
-- [Sign Up](https://dashboard.getmati.com/)
-- [Documentation](https://dashboard.getmati.com/dev)
-- [Documentation](https://docs.metamap.com/)
-- [Getting Started](https://docs.metamap.com/docs/getting-started)
-- [Documentation](https://docs.metamap.com/docs/dashboard)
-- [Documentation](https://docs.metamap.com/docs/single-sign-on)
-- [Documentation](https://docs.metamap.com/docs/metamaps)
-- [Documentation](https://docs.metamap.com/docs/merits)
-- [Documentation](https://docs.metamap.com/docs/metamap-button)
-- [Documentation](https://docs.metamap.com/docs/verification-results)
-- [Documentation](https://docs.metamap.com/docs/custom-encryption)
-- [Documentation](https://docs.metamap.com/docs/sdk-customization)
-- [Documentation](https://docs.metamap.com/docs/document-verification)
-- [Documentation](https://docs.metamap.com/docs/biometrics)
-- [Documentation](https://docs.metamap.com/docs/govcheck)
-- [Documentation](https://docs.metamap.com/docs/list-of-government-checks-by-country)
-- [Documentation](https://docs.metamap.com/docs/location-intelligence)
-- [Documentation](https://docs.metamap.com/docs/uam)
-- [Documentation](https://docs.metamap.com/docs/facematch)
-- [Documentation](https://docs.metamap.com/docs/email-check)
-- [Documentation](https://docs.metamap.com/docs/phone-check)
-- [Documentation](https://docs.metamap.com/docs/anti-money-laundering)
-- [Documentation](https://docs.metamap.com/docs/custom-watchlists)
-- [Documentation](https://docs.metamap.com/docs/e-signature)
-- [Documentation](https://docs.metamap.com/docs/credit-check)
-- [Documentation](https://docs.metamap.com/docs/tax-data)
-- [Documentation](https://docs.metamap.com/docs/background-check)
-- [Documentation](https://docs.metamap.com/docs/video-agreement-1)
-- [Documentation](https://docs.metamap.com/docs/on-demand-configuration-odc)
-- [Webhooks](https://docs.metamap.com/docs/webhooks)
-- [Webhooks](https://docs.metamap.com/docs/webhook-specifications)
-- [F A Q](https://docs.metamap.com/docs/webhook-faq)
-- [Errors](https://docs.metamap.com/docs/errors)
-- [SDK](https://docs.metamap.com/docs/sdk)
-- [Getting Started](https://docs.metamap.com/docs/quick-start-6)
-- [SDK](https://docs.metamap.com/docs/android)
-- [SDK](https://docs.metamap.com/docs/ios)
-- [SDK](https://docs.metamap.com/docs/quick-start-1)
-- [SDK](https://docs.metamap.com/docs/quick-start-3)
-- [Changelog](https://docs.metamap.com/docs/android-changelog)
-- [Changelog](https://docs.metamap.com/docs/ios-changelog)
-- [GitHub Organization](https://github.com/GetMetaMap)
-- [SDK](https://github.com/GetMetaMap/metamap-android-sdk)
-- [SDK](https://github.com/GetMetaMap/metamap-ios-sdk)
-- [SDK](https://github.com/GetMetaMap/metamap-flutter-plugin)
-- [SDK](https://github.com/GetMetaMap/metamap-reactnative-plugin)
-- [SDK](https://github.com/GetMetaMap/metamap-cordova-plugin)
-- [SDK](https://github.com/GetMetaMap/metamap-capacitor-plugin)
-- [Code Examples](https://github.com/GetMetaMap/metamap-mobile-examples)
-- [Code Examples](https://github.com/GetMetaMap/metamap-android-demo-kotlin)
-- [Code Examples](https://github.com/GetMetaMap/metamap-demo-web-apps)
-- [Code Examples](https://github.com/GetMetaMap/iOS_app_with_web_sdk_integration)
-- [Code Examples](https://github.com/GetMetaMap/android_app_with_web_sdk_integration)
-- [SDK](https://github.com/GetMetaMap/mati-python)
-- [SDK](https://github.com/GetMetaMap/mati_ruby)
-- [SDK](https://github.com/GetMetaMap/mati-node)
-- [Features](undefined)
+- [Getting started](https://docs.metamap.com/docs/getting-started)
 - [Pricing](https://metamap.com/contact-metamap)
-- [Sign Up](https://dashboard.getmati.com/)
-- [Sandbox](https://dashboard.getmati.com/)
-- [Forum](https://docs.metamap.com/discuss)
-- [Plans](plans/metamap-plans-pricing.yml)
-- [Rate Limits](rate-limits/metamap-rate-limits.yml)
-- [Fin Ops](finops/metamap-finops.yml)
-- [Trust Center](https://app.vanta.com/metamap/trust/home)
-- [Webhooks](https://docs.metamap.com/docs/biometric-verification-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/document-verification-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/location-intelligence-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/customer-access-management-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/custom-watchlist-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/email-check-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/phone-check-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/video-agreement-webhooks)
-- [Webhooks](https://docs.metamap.com/docs/webhook-messages)
+- [Changelog](https://docs.metamap.com/docs/android-changelog)
+- [Blog](https://metamap.com/feed/)
+- [Trust centre](https://app.vanta.com/metamap/trust/home)
+- [Privacy policy](https://metamap.com/privacy-policy)
+- [GitHub](https://github.com/GetMetaMap)
+- [Status](https://status.metamap.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 51.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.9 |
+| Contract quality | 59.8 |
+| Contract governance | 13.6 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 67.9 |
+| Access clarity | 47.4 |
+
+**Agent readiness 31.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 19.8** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/metamap/](https://apis.io/providers/metamap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for MetaMap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/metamap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
